@@ -1,11 +1,21 @@
 # 昆特牌 · GWENT — Web Edition
 
+> 🎮 **在线试玩（GitHub Pages）**：<https://weixshaw.github.io/gwent-web/>
+>
+> 打开即玩，无需安装；第一次点击后解锁音效。
+
 > 《巫师3：狂猎》昆特牌（含 石之心 / 血与酒 / 次世代 4.0 内容）的网页复刻：**完整规则、完整牌库**，并重新设计了牌面美术、交互与战斗特效。
 > 纯原生 ES Modules + HTML/CSS，**无构建步骤、无第三方运行时依赖、无外部图片/音频素材**。所有牌面插画由程序化 SVG 生成，音效由 WebAudio 实时合成。
 
 ![首页](screenshots/menu.png)
 
 ## 快速开始
+
+### 方式一：在线玩（推荐）
+
+直接打开 <https://weixshaw.github.io/gwent-web/>。
+
+### 方式二：本地运行
 
 ```bash
 npm start          # 启动静态服务器 → http://127.0.0.1:8788
