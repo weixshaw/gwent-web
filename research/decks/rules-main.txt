@@ -1,0 +1,119 @@
+ 
+ This article is about the mini-game in The Witcher 3: Wild Hunt . For the standalone version, see Gwent: The Witcher Card Game . 
+ Gwent 
+ Information 
+ Developer(s) 
+ Damien Monnier 
+ Publisher(s) 
+ CD PROJEKT RED 
+ Platform(s) 
+ Microsoft Windows PlayStation 4 Xbox One Nintendo Switch 
+ Genre(s) 
+ Mini-game Card game 
+ Invented by dwarves and perfected over centuries of tavern table play, Gwent is a game of initial simplicity and ultimate depth, something beloved by both road-weary travellers during long nights around the campfire and elegant nobles looking to liven up dragging dinner parties. 
+ Gwent ( Polish: Gwint ) is a fast-paced card game that can be played within The Witcher 3: Wild Hunt on every platform.
+ The game is about the clash of two armies locked in mortal struggle on a battlefield where the players are the leaders and the cards their forces. With four different factions offering unique combat styles and endless paths to victory, Gwent is every adventurer's first choice when it comes to one-on-one card-based dueling.
+ Take risks and think on your feet, strategize and deliver cunning combos, use potent magic and mighty hero cards and be the last one standing on the field of honor! [ 1 ] 
+ On June 15, 2016 CD PROJEKT RED announced the development of a stand-alone Gwent: The Witcher Card Game . GWENT was later released for Xbox One, PC, and PlayStation 4 as a free to play game.. [ 2 ] 
+ Contents 
+ 1 Factions 
+ 2 Minigame rules 
+ 3 Card Types 
+ 4 Tips for playing 
+ 5 Associated quests and achievements 
+ 5.1 Associated quests 
+ 5.2 Associated achievements 
+ 6 List of Players 
+ 7 Trivia 
+ 8 Videos 
+ 9 References 
+ Factions [ ] 
+ From Evil Chriss official twitter In the base game, there are 4 decks to choose from, while a 5th deck was added on with the Blood and Wine expansion. There are also neutral cards that, while not a deck onto itself, can be used with any of the main decks to boost their abilities.
+ Icon
+ Deck
+ Ability
+ Monsters Gwent deck 
+ Keeps random Unit Card out after each round.
+ Nilfgaardian Empire Gwent deck 
+ Wins any round that ends in a draw.
+ Northern Realms Gwent deck 
+ Grants an extra card upon winning a round.
+ Scoia'tael Gwent deck 
+ Decides who takes first turn.
+ Skellige Gwent deck 
+ 2 random cards from the graveyard are placed on the battlefield at the start of the third round.
+ Gwent neutral cards 
+ n/a (not a faction onto itself but can supplement the other decks)
+ Minigame rules [ ] 
+ Phase of redrawing 
+ To begin a match, the game selects the starting player with a coin toss. 
+ Each player receives 10 random cards pulled from their decks. Players can discard two cards and redraw in the hope of receiving two superior cards. This is done once. 
+ Players place a Unit Card on the Gwent board in the dedicated combat row. Each player may play one card per turn unless a special ability enables them to do otherwise. Players may also utilize Weather Cards from the Neutral Deck. 
+ Each unit Card has Strength points that are added for each player's total. A player will win a round of Gwent when the player has more points than the other and both players no longer have cards to play or the other player passes their turn. 
+ Matches are set with 2 wins out of 3 rounds. This is represented by the Round Points, or red gems, next to each player's name. Losing a round loses you one of the points, if you lose both you lose the match. A draw makes both players lose a point unless you are the Nilfgaardian Empire . 
+ Card Types [ ] 
+ Foltest leader cards 
+ Combat rows 
+ Close combat cards 
+ Ranged Combat Cards 
+ Siege Cards 
+ Abilities 
+ Agile Cards 
+ Hero Cards 
+ Medic Cards 
+ Morale Boost Cards 
+ Muster Cards 
+ Spy Cards 
+ Tight Bond Cards 
+ Effects 
+ Weather Cards 
+ Decoy Cards 
+ Commander's Horn Cards 
+ Scorch Cards 
+ Summon Avenger Cards 
+ Mardroeme Cards 
+ Berserker Cards 
+ Tips for playing [ ] 
+ Be careful while choosing cards 
+ Be very careful of when you choose to 'Pass' in a round if your opponent has not. When you 'Pass', you will not be allowed to put down any more cards for the remainder of that round, no matter how many your opponent puts down afterwards. Even if you had a higher points score when you 'Passed', your opponent could easily keep putting down cards to surpass you and win the round. 
+ Unless you have the special abilities of the Northern Kingdoms , Monsters factions or a spy card, your 10 cards is all you have for your full three rounds and you discard everything played after each round, so make sure to plan for the long game. If you empty your deck in the first round and win but your opponent has at least two unit cards left at that time, he can simply put down one unit card each in the following two rounds to beat you. Try to win each round with as few cards as possible, and this also chains into how to develop your deck when collecting cards; for your 'Units' try to only have cards with very high point values so that you don't need many for a very high points score in a round. In fact, sacrificing the first round to make your opponent burn out most of their deck while keeping several of your own high strength cards in reserve can be an extremely effective tactic. 
+ Related to the above, Close, Ranged, and Siege unit types by themselves have no inherent strengths or weaknesses to each other (i.e. Ranged does not get a bonus against 'Close', 'Siege' doesn't get a bonus against Ranged, etc.). However, they can be affected by certain Weather cards and some special cards have abilities that will pertain to a particular row. In this case it's best to keep an even mix of types in your deck rather than focus on one particular row. 
+ If on your turn you play something that gives you a sudden massive spike in point value far above the current value of your opponent and they have two 'Round Points', they are very likely to 'Pass' that round. 
+ For setting up your deck, know that there are several rules you must follow.
+ Your deck must have at minimum 22 'Unit' cards in it, no matter how weak some of them may be. 
+ Several cards have multiples, so pick up all the ones you can as many of them have tight bonds or muster ability, allowing you get more points in a round. 
+ The starter deck is weak and while possible to win with it in easy matches, one will need to collect more cards to take on tougher opponents. 
+ Associated quests and achievements [ ] 
+ Cow card from Hearts of Stone expansion 
+ Associated quests [ ] 
+ Collect 'Em All (overall) 
+ Gwent: Playing Innkeeps 
+ Gwent: Velen Players 
+ Gwent: Big City Players 
+ Gwent: Old Pals 
+ Gwent: Skellige Style 
+ Gwent: Playing Thaler 
+ A Dangerous Game 
+ High Stakes 
+ Gwent: Never Fear, Skellige's Here 
+ Gwent: To Everything - Turn, Turn, Tournament! 
+ Associated achievements [ ] 
+ All In 
+ Card Collector 
+ Geralt and Friends 
+ Gwent Master 
+ Killed It 
+ I Have a Gwent Problem 
+ List of Players [ ] 
+ See Gwent players for complete list (including expansions) 
+ Trivia [ ] 
+ Gwent was also a medieval kingdom in Wales, lying between the Rivers Wye and Usk. 
+ Barrel is a dwarven card game in the Witcher series by Andrzej Sapkowski by which the "Gwent" card game is inspired. 
+ Interestingly Gwent is actually mentioned in the first The Witcher game during an idle conversation between dwarves in the Nonhuman district. One of the dwarves will mention being cheated by a certain Brugenhaff in that game.
+ In the Polish (original) version the conversation is more vulgar and mentions it being a card game. 
+ Videos [ ] 
+ The Witcher 3- Wild Hunt - Let's Talk Gwent 
+ References [ ] 
+ ↑ thewitcher.com News , introducing the game 
+ ↑ playgwent.com News , official anouncement 
+ 

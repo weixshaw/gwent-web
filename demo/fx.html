@@ -1,0 +1,1747 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>昆特牌 · 特效验收台 · FX / SFX Test Bench</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="../src/styles/fx.css" />
+    <style>
+      /* ------------------------------------------------------------------
+         demo 页自包含主题 token（与 ART_DIRECTION §2 对齐；theme.css 就位后
+         正式对局由 theme.css 提供同名变量，本页不依赖 theme.css）。
+         ------------------------------------------------------------------ */
+      :root {
+        --ink-0: #070605;
+        --ink-1: #0d0b09;
+        --ink-2: #14100c;
+        --ink-3: #1e1812;
+        --paper: #e7dcc2;
+        --paper-dim: #c9bda3;
+        --paper-faint: #8f8570;
+        --gold: #c9a227;
+        --gold-bright: #f0d078;
+        --gold-dim: #8a6f22;
+        --blood: #7a1f1f;
+        --ember: #ff7a2f;
+        --nr: #4d7ea8;
+        --nr-glow: #9cc4e4;
+        --ng: #c9a227;
+        --ng-glow: #f0d078;
+        --st: #2f7a4a;
+        --st-glow: #a8e0a0;
+        --mo: #8a2323;
+        --mo-glow: #ff6b5a;
+        --sk: #2f6f6a;
+        --sk-glow: #9adfd6;
+        --neutral: #8b7d5c;
+        --neutral-glow: #d9cbb3;
+        --font-display: "Palatino Linotype", "Iowan Old Style", "Songti SC", "Noto Serif SC", serif;
+        --font-ui: "Avenir Next", "PingFang SC", "Noto Sans SC", system-ui, sans-serif;
+        --card-radius: 10px;
+        --ease-out: cubic-bezier(0.22, 0.8, 0.3, 1);
+        --shadow-deep: 0 18px 44px rgba(0, 0, 0, 0.65), 0 2px 8px rgba(0, 0, 0, 0.5);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+      }
+      body {
+        overflow: hidden;
+        background:
+          radial-gradient(120% 90% at 50% -10%, rgba(240, 208, 120, 0.08), transparent 55%),
+          radial-gradient(90% 80% at 50% 110%, rgba(255, 122, 47, 0.05), transparent 60%),
+          radial-gradient(140% 120% at 50% 50%, #14100c, #070605 72%);
+        color: var(--paper);
+        font-family: var(--font-ui);
+        -webkit-font-smoothing: antialiased;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.35;
+        background-image: radial-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+        background-size: 3px 3px;
+        mix-blend-mode: overlay;
+      }
+
+      #app {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        padding: 14px 18px 12px;
+        gap: 12px;
+      }
+
+      /* ---------------------------------------------------------------- HUD */
+      .hud {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 0 4px 10px;
+        border-bottom: 1px solid rgba(201, 162, 39, 0.22);
+        position: relative;
+      }
+      .hud::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -1px;
+        width: 180px;
+        height: 1px;
+        background: linear-gradient(90deg, var(--gold), transparent);
+      }
+      .hud__title h1 {
+        margin: 0;
+        font-family: var(--font-display);
+        font-size: 25px;
+        letter-spacing: 0.3em;
+        color: var(--gold-bright);
+        text-shadow: 0 0 26px rgba(240, 208, 120, 0.24);
+        white-space: nowrap;
+      }
+      .hud__title h1 span {
+        margin-left: 10px;
+        font-size: 11px;
+        letter-spacing: 0.42em;
+        color: var(--paper-faint);
+      }
+      .hud__title p {
+        margin: 5px 0 0;
+        font-size: 11px;
+        letter-spacing: 0.34em;
+        color: var(--paper-faint);
+      }
+      .hud__stats {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+      .stat {
+        min-width: 82px;
+        padding: 5px 12px 6px;
+        border: 1px solid rgba(201, 162, 39, 0.26);
+        border-radius: 3px;
+        background: linear-gradient(180deg, rgba(30, 24, 18, 0.75), rgba(13, 11, 9, 0.8));
+        text-align: center;
+      }
+      .stat label {
+        display: block;
+        font-size: 9px;
+        letter-spacing: 0.26em;
+        color: var(--paper-faint);
+        text-transform: uppercase;
+      }
+      .stat b {
+        display: block;
+        margin-top: 2px;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        color: var(--gold-bright);
+        font-variant-numeric: tabular-nums;
+      }
+
+      /* --------------------------------------------------------------- 布局 */
+      .layout {
+        flex: 1;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 384px;
+        gap: 14px;
+        min-height: 0;
+      }
+
+      /* --------------------------------------------------------------- 舞台 */
+      .stage-wrap {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+        border: 1px solid rgba(201, 162, 39, 0.24);
+        border-radius: 8px;
+        background:
+          radial-gradient(80% 70% at 50% 40%, rgba(240, 208, 120, 0.045), transparent 70%),
+          linear-gradient(180deg, rgba(20, 16, 12, 0.9), rgba(7, 6, 5, 0.94));
+        box-shadow: var(--shadow-deep), inset 0 0 60px rgba(0, 0, 0, 0.6);
+        overflow: hidden;
+      }
+      .stage-wrap::before,
+      .stage-wrap::after {
+        content: "";
+        position: absolute;
+        width: 46px;
+        height: 46px;
+        border: 1px solid rgba(201, 162, 39, 0.5);
+        pointer-events: none;
+      }
+      .stage-wrap::before {
+        left: 8px;
+        top: 8px;
+        border-right: 0;
+        border-bottom: 0;
+      }
+      .stage-wrap::after {
+        right: 8px;
+        bottom: 8px;
+        border-left: 0;
+        border-top: 0;
+      }
+
+      .stage {
+        position: relative;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 8px;
+        padding: 14px 18px 12px;
+        min-height: 0;
+      }
+
+      .board {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        height: 100%;
+        min-height: 0;
+      }
+      .side {
+        display: grid;
+        grid-template-columns: 118px minmax(0, 1fr);
+        gap: 12px;
+        align-items: center;
+      }
+      .side--opp {
+        opacity: 0.96;
+      }
+      .rows {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .row {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-height: 62px;
+        padding: 5px 12px 5px 10px;
+        border: 1px solid rgba(201, 162, 39, 0.13);
+        border-radius: 5px;
+        background:
+          linear-gradient(90deg, rgba(30, 24, 18, 0.65), rgba(13, 11, 9, 0.35)),
+          radial-gradient(70% 140% at 50% 0%, rgba(201, 162, 39, 0.04), transparent 70%);
+      }
+      .row::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 8px;
+        bottom: 8px;
+        width: 2px;
+        background: linear-gradient(180deg, transparent, rgba(201, 162, 39, 0.45), transparent);
+      }
+      .row__name {
+        writing-mode: vertical-rl;
+        font-size: 10px;
+        letter-spacing: 0.28em;
+        color: var(--paper-faint);
+        text-orientation: upright;
+        user-select: none;
+      }
+      .row__cards {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        flex-wrap: nowrap;
+        overflow: hidden;
+      }
+      .row__score {
+        margin-left: auto;
+        padding-left: 10px;
+        font-family: var(--font-display);
+        font-size: 19px;
+        color: var(--gold-bright);
+        text-shadow: 0 0 16px rgba(240, 208, 120, 0.25);
+      }
+
+      /* 真假牌（demo 专用） */
+      .demo-card {
+        position: relative;
+        width: 82px;
+        height: 114px;
+        flex: 0 0 auto;
+        overflow: hidden;
+        border: 1px solid rgba(201, 162, 39, 0.45);
+        border-radius: 6px;
+        background: var(--ink-2);
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.55), inset 0 0 0 1px rgba(0, 0, 0, 0.6);
+        transition: transform 160ms var(--ease-out);
+      }
+      .demo-card:hover {
+        transform: translateY(-3px);
+      }
+      .demo-card__art {
+        height: 58%;
+        background:
+          radial-gradient(70% 90% at 50% 30%, var(--card-glow, #9cc4e4), transparent 68%),
+          radial-gradient(120% 100% at 50% 110%, rgba(0, 0, 0, 0.85), transparent 60%),
+          repeating-conic-gradient(from 12deg at 50% 40%, rgba(0, 0, 0, 0.35) 0deg 5deg, transparent 5deg 24deg),
+          linear-gradient(160deg, var(--card-accent, #4d7ea8), #0b0806 72%);
+        border-bottom: 1px solid rgba(201, 162, 39, 0.3);
+      }
+      .demo-card__name {
+        height: 27%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 4px;
+        font-size: 9px;
+        line-height: 1.2;
+        text-align: center;
+        letter-spacing: 0.04em;
+        color: var(--paper);
+        background: linear-gradient(180deg, rgba(28, 22, 16, 0.9), rgba(10, 8, 6, 0.95));
+      }
+      .demo-card__power {
+        position: absolute;
+        top: 2px;
+        right: 2px;
+        width: 20px;
+        height: 22px;
+        display: grid;
+        place-items: center;
+        font-family: var(--font-display);
+        font-size: 11px;
+        font-weight: 700;
+        color: #fff6e0;
+        background: radial-gradient(circle at 38% 30%, #ff8a76, #8a2323 62%, #3d0f0f);
+        clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+        box-shadow: 0 0 8px rgba(255, 107, 90, 0.35);
+      }
+      .demo-card.f-nr {
+        --card-accent: #4d7ea8;
+        --card-glow: #9cc4e4;
+      }
+      .demo-card.f-ng {
+        --card-accent: #8a6f22;
+        --card-glow: #f0d078;
+      }
+      .demo-card.f-st {
+        --card-accent: #2f7a4a;
+        --card-glow: #a8e0a0;
+      }
+      .demo-card.f-mo {
+        --card-accent: #8a2323;
+        --card-glow: #ff6b5a;
+      }
+      .demo-card.f-sk {
+        --card-accent: #2f6f6a;
+        --card-glow: #9adfd6;
+      }
+      .demo-card.f-neutral {
+        --card-accent: #8b7d5c;
+        --card-glow: #d9cbb3;
+      }
+      .demo-card--hero {
+        border-color: rgba(240, 208, 120, 0.85);
+        box-shadow: 0 0 4px rgba(240, 208, 120, 0.5), 0 8px 18px rgba(0, 0, 0, 0.55),
+          inset 0 0 0 1px rgba(240, 208, 120, 0.5);
+      }
+      .demo-card--special {
+        background: linear-gradient(160deg, #241c13, #0b0806);
+        border-color: rgba(201, 162, 39, 0.65);
+      }
+      .demo-card--special .demo-card__art {
+        background:
+          radial-gradient(60% 70% at 50% 40%, rgba(240, 208, 120, 0.55), transparent 70%),
+          repeating-conic-gradient(from 0deg at 50% 45%, rgba(201, 162, 39, 0.18) 0deg 3deg, transparent 3deg 18deg),
+          linear-gradient(160deg, #3a2c12, #0b0806 70%);
+      }
+
+      /* 领袖位 */
+      .leader-slot {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        height: 100%;
+        min-height: 86px;
+        padding: 8px;
+        border: 1px solid rgba(201, 162, 39, 0.35);
+        border-radius: 6px;
+        background:
+          radial-gradient(90% 80% at 50% 20%, rgba(240, 208, 120, 0.08), transparent 70%),
+          linear-gradient(180deg, rgba(36, 28, 20, 0.8), rgba(10, 8, 6, 0.9));
+        text-align: center;
+        overflow: hidden;
+      }
+      .leader-slot__sigil {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: 1px solid var(--gold-dim);
+        background:
+          repeating-conic-gradient(from 0deg, rgba(201, 162, 39, 0.28) 0deg 5deg, transparent 5deg 28deg),
+          radial-gradient(circle at 50% 45%, var(--gold-bright), var(--gold) 55%, #2a2012 78%);
+        box-shadow: 0 0 14px rgba(240, 208, 120, 0.18);
+      }
+      .leader-slot[data-fx-leader="1"] .leader-slot__sigil {
+        background:
+          repeating-conic-gradient(from 0deg, rgba(255, 107, 90, 0.3) 0deg 5deg, transparent 5deg 28deg),
+          radial-gradient(circle at 50% 45%, #ff8a76, #8a2323 55%, #240808 80%);
+      }
+      .leader-slot__name {
+        font-size: 10px;
+        letter-spacing: 0.08em;
+        color: var(--paper-dim);
+      }
+      .leader-slot__faction {
+        font-size: 9px;
+        letter-spacing: 0.3em;
+        color: var(--paper-faint);
+      }
+      .leader-slot--player {
+        border-color: rgba(201, 162, 39, 0.5);
+      }
+
+      /* 天气栏 */
+      .weather-bar {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        align-self: center;
+        padding: 5px 14px;
+        border: 1px solid rgba(201, 162, 39, 0.22);
+        border-radius: 24px;
+        background: linear-gradient(180deg, rgba(24, 19, 14, 0.85), rgba(10, 8, 6, 0.9));
+        box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6);
+      }
+      .weather-bar__label {
+        font-size: 9px;
+        letter-spacing: 0.26em;
+        color: var(--paper-faint);
+      }
+      .weather-pip {
+        display: grid;
+        place-items: center;
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        border: 1px solid rgba(201, 162, 39, 0.24);
+        font-size: 10px;
+        color: var(--paper-faint);
+        background: rgba(7, 6, 5, 0.7);
+        transition: all 240ms ease;
+      }
+      .weather-pip.is-on {
+        color: #0b0806;
+        border-color: var(--gold-bright);
+        background: radial-gradient(circle at 40% 30%, #fff6e0, var(--gold-bright) 55%, var(--gold));
+        box-shadow: 0 0 14px rgba(240, 208, 120, 0.55);
+      }
+
+      /* 手牌区 */
+      .hand-bar {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        gap: 14px;
+        padding-top: 2px;
+      }
+      .hand {
+        display: flex;
+        align-items: flex-end;
+        gap: 8px;
+      }
+      .hand .demo-card:nth-child(1) {
+        transform: rotate(-3deg) translateY(2px);
+      }
+      .hand .demo-card:nth-child(2) {
+        transform: translateY(-4px);
+      }
+      .hand .demo-card:nth-child(3) {
+        transform: rotate(3deg) translateY(2px);
+      }
+      .pile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2px;
+        width: 60px;
+        height: 84px;
+        border: 1px dashed rgba(201, 162, 39, 0.35);
+        border-radius: 6px;
+        background: linear-gradient(160deg, rgba(201, 162, 39, 0.07), rgba(9, 7, 5, 0.9));
+        font-size: 9px;
+        letter-spacing: 0.12em;
+        color: var(--paper-faint);
+        text-align: center;
+      }
+      .pile b {
+        font-family: var(--font-display);
+        font-size: 15px;
+        color: var(--gold);
+      }
+      .pile--grave {
+        border-style: solid;
+        border-color: rgba(122, 31, 31, 0.5);
+      }
+
+      .stage-hint {
+        padding: 5px 16px 7px;
+        font-size: 10px;
+        letter-spacing: 0.16em;
+        color: rgba(143, 133, 112, 0.75);
+        border-top: 1px solid rgba(201, 162, 39, 0.1);
+        background: rgba(7, 6, 5, 0.5);
+      }
+      .stage-hint b {
+        color: var(--gold-dim);
+        font-weight: 500;
+      }
+
+      /* --------------------------------------------------------------- 控制台 */
+      .controls {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        min-height: 0;
+        overflow-y: auto;
+        padding-right: 6px;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(201, 162, 39, 0.35) transparent;
+      }
+      .controls::-webkit-scrollbar {
+        width: 7px;
+      }
+      .controls::-webkit-scrollbar-thumb {
+        background: rgba(201, 162, 39, 0.3);
+        border-radius: 4px;
+      }
+      .ctrl-group {
+        border: 1px solid rgba(201, 162, 39, 0.2);
+        border-radius: 6px;
+        background: linear-gradient(180deg, rgba(26, 21, 15, 0.72), rgba(10, 8, 6, 0.8));
+        padding: 9px 10px 11px;
+      }
+      .ctrl-group h2 {
+        margin: 0 0 8px;
+        padding-bottom: 6px;
+        border-bottom: 1px solid rgba(201, 162, 39, 0.16);
+        font-family: var(--font-display);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.3em;
+        color: var(--gold);
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+      }
+      .ctrl-group h2 small {
+        font-family: var(--font-ui);
+        font-size: 8px;
+        letter-spacing: 0.24em;
+        color: var(--paper-faint);
+      }
+      .btn-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .btn {
+        appearance: none;
+        cursor: pointer;
+        padding: 6px 11px;
+        border: 1px solid rgba(201, 162, 39, 0.35);
+        border-radius: 3px;
+        background: linear-gradient(180deg, rgba(36, 29, 21, 0.9), rgba(13, 11, 9, 0.92));
+        color: var(--paper-dim);
+        font-family: var(--font-ui);
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        transition: border-color 140ms ease, color 140ms ease, box-shadow 140ms ease, transform 90ms ease;
+        white-space: nowrap;
+      }
+      .btn:hover {
+        border-color: rgba(240, 208, 120, 0.7);
+        color: var(--gold-bright);
+        box-shadow: 0 0 12px rgba(240, 208, 120, 0.14);
+      }
+      .btn:active {
+        transform: translateY(1px);
+      }
+      .btn--primary {
+        border-color: rgba(240, 208, 120, 0.7);
+        color: var(--gold-bright);
+        background: linear-gradient(180deg, rgba(74, 57, 20, 0.9), rgba(30, 23, 10, 0.95));
+        box-shadow: 0 0 14px rgba(240, 208, 120, 0.1);
+      }
+      .btn--on {
+        border-color: var(--gold-bright);
+        color: #0b0806;
+        background: linear-gradient(180deg, #f0d078, #c9a227);
+        text-shadow: none;
+      }
+      .btn--sfx {
+        padding: 4px 8px;
+        font-size: 10px;
+        letter-spacing: 0.04em;
+      }
+      .sfx-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 5px;
+      }
+      .field-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 8px;
+        font-size: 10px;
+        letter-spacing: 0.1em;
+        color: var(--paper-faint);
+      }
+      .field-row select,
+      .field-row input[type="range"] {
+        flex: 1;
+        min-width: 0;
+      }
+      .field-row select {
+        padding: 4px 6px;
+        border: 1px solid rgba(201, 162, 39, 0.35);
+        border-radius: 3px;
+        background: rgba(13, 11, 9, 0.95);
+        color: var(--paper-dim);
+        font-family: var(--font-ui);
+        font-size: 11px;
+      }
+      .field-row input[type="range"] {
+        accent-color: var(--gold);
+      }
+      .note {
+        margin: 6px 0 0;
+        font-size: 9px;
+        line-height: 1.5;
+        letter-spacing: 0.05em;
+        color: rgba(143, 133, 112, 0.75);
+      }
+
+      /* --------------------------------------------------------------- 日志 */
+      .logbar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        height: 34px;
+        padding: 0 12px;
+        border: 1px solid rgba(201, 162, 39, 0.16);
+        border-radius: 5px;
+        background: rgba(8, 6, 5, 0.82);
+        overflow: hidden;
+      }
+      .logbar__label {
+        flex: 0 0 auto;
+        font-size: 9px;
+        letter-spacing: 0.3em;
+        color: var(--gold-dim);
+      }
+      .logbar ol {
+        display: flex;
+        gap: 18px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        overflow: hidden;
+        font-size: 10px;
+        letter-spacing: 0.04em;
+        color: var(--paper-faint);
+        white-space: nowrap;
+      }
+      .logbar li {
+        flex: 0 0 auto;
+        max-width: 340px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .logbar li b {
+        color: var(--paper-dim);
+        font-weight: 500;
+      }
+      .logbar li.is-ok b {
+        color: var(--gold);
+      }
+      .logbar li.is-err b {
+        color: #e05a4a;
+      }
+
+      /* 舞台尺寸收敛：保证 1280×720 / 1440×900 视口内完整可见（验收页专用） */
+      .row .demo-card {
+        width: 58px;
+        height: 80px;
+      }
+      .row .demo-card__name {
+        height: 30%;
+        font-size: 8px;
+      }
+      .row .demo-card__power {
+        width: 17px;
+        height: 19px;
+        font-size: 10px;
+      }
+      .row {
+        min-height: 46px;
+        padding: 3px 10px 3px 8px;
+      }
+      .row__cards {
+        gap: 6px;
+      }
+      .row__score {
+        font-size: 16px;
+      }
+      .rows {
+        gap: 5px;
+      }
+      .side {
+        grid-template-columns: 104px minmax(0, 1fr);
+        gap: 10px;
+      }
+      .leader-slot {
+        min-height: 64px;
+        padding: 6px;
+        gap: 4px;
+      }
+      .leader-slot__sigil {
+        width: 22px;
+        height: 22px;
+      }
+      .leader-slot__faction {
+        font-size: 8px;
+      }
+      .leader-slot__name {
+        font-size: 9px;
+        line-height: 1.3;
+      }
+      .weather-bar {
+        padding: 3px 12px;
+        gap: 6px;
+      }
+      .weather-pip {
+        width: 21px;
+        height: 21px;
+        font-size: 9px;
+      }
+      .stage {
+        padding: 9px 16px 7px;
+        gap: 5px;
+      }
+      .board {
+        gap: 5px;
+      }
+      .hand-bar {
+        gap: 10px;
+      }
+      .hand {
+        gap: 7px;
+      }
+      .hand .demo-card {
+        width: 60px;
+        height: 84px;
+      }
+      .hand .demo-card__name {
+        font-size: 8px;
+      }
+      .hand .demo-card__power {
+        width: 17px;
+        height: 19px;
+        font-size: 10px;
+      }
+      .pile {
+        width: 46px;
+        height: 62px;
+        gap: 0;
+        font-size: 8px;
+      }
+      .pile b {
+        font-size: 12px;
+      }
+      .stage-hint {
+        padding: 4px 14px 5px;
+        font-size: 9px;
+        letter-spacing: 0.1em;
+      }
+
+      /* 牌面加一点剪影，避免 demo 假牌看起来像纯色块 */
+      .demo-card__art {
+        position: relative;
+        overflow: hidden;
+      }
+      .demo-card__art::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: -6%;
+        width: 46%;
+        height: 74%;
+        transform: translateX(-50%);
+        clip-path: polygon(50% 0%, 68% 26%, 62% 52%, 78% 100%, 22% 100%, 38% 52%, 32% 26%);
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.62));
+        opacity: 0.55;
+      }
+      .demo-card--special .demo-card__art::before {
+        clip-path: circle(30% at 50% 54%);
+        background: radial-gradient(circle at 50% 45%, rgba(255, 246, 224, 0.25), rgba(0, 0, 0, 0.55) 70%);
+        opacity: 0.8;
+      }
+
+      /* 1280×720 等矮视口：进一步收敛尺寸，保证完整可见 */
+      @media (max-height: 840px) {
+        #app {
+          padding: 10px 14px 8px;
+          gap: 8px;
+        }
+        .hud {
+          padding-bottom: 6px;
+        }
+        .hud__title h1 {
+          font-size: 21px;
+        }
+        .hud__title p {
+          margin-top: 3px;
+          font-size: 9px;
+        }
+        .stat {
+          padding: 4px 10px 5px;
+          min-width: 72px;
+        }
+        .row .demo-card {
+          width: 46px;
+          height: 62px;
+        }
+        .row {
+          min-height: 38px;
+          padding: 2px 8px;
+        }
+        .row__cards {
+          gap: 5px;
+        }
+        .row__score {
+          font-size: 14px;
+        }
+        .rows {
+          gap: 4px;
+        }
+        .side {
+          grid-template-columns: 88px minmax(0, 1fr);
+          gap: 8px;
+        }
+        .leader-slot {
+          min-height: 50px;
+          padding: 4px;
+          gap: 3px;
+        }
+        .leader-slot__sigil {
+          width: 18px;
+          height: 18px;
+        }
+        .leader-slot__faction {
+          font-size: 7px;
+        }
+        .leader-slot__name {
+          font-size: 8px;
+        }
+        .weather-pip {
+          width: 18px;
+          height: 18px;
+          font-size: 8px;
+        }
+        .weather-bar {
+          padding: 2px 10px;
+        }
+        .weather-bar__label {
+          font-size: 8px;
+        }
+        .hand .demo-card {
+          width: 48px;
+          height: 68px;
+        }
+        .hand .demo-card__name {
+          font-size: 7px;
+        }
+        .hand .demo-card__power {
+          width: 14px;
+          height: 16px;
+          font-size: 8px;
+        }
+        .row .demo-card__power {
+          width: 14px;
+          height: 16px;
+          font-size: 8px;
+        }
+        .pile {
+          width: 40px;
+          height: 52px;
+          font-size: 7px;
+        }
+        .pile b {
+          font-size: 10px;
+        }
+        .stage {
+          padding: 6px 12px 5px;
+          gap: 4px;
+        }
+        .board {
+          gap: 4px;
+        }
+        .stage-hint {
+          display: none;
+        }
+        .logbar {
+          height: 28px;
+        }
+      }
+
+      @media (max-width: 1100px) {
+        .layout {
+          grid-template-columns: minmax(0, 1fr) 330px;
+        }
+        .demo-card {
+          width: 70px;
+          height: 98px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <header class="hud">
+        <div class="hud__title">
+          <h1>昆特牌<span>GWENT</span></h1>
+          <p>特效验收台 · FX / SFX TEST BENCH · vfx</p>
+        </div>
+        <div class="hud__stats">
+          <div class="stat"><label>FPS</label><b id="statFps">—</b></div>
+          <div class="stat"><label>粒子</label><b id="statParticles">0</b></div>
+          <div class="stat"><label>天气</label><b id="statWeather">clear</b></div>
+          <div class="stat"><label>音效</label><b id="statAudio">未解锁</b></div>
+          <div class="stat"><label>阵营</label><b id="statFaction">北方领域</b></div>
+        </div>
+      </header>
+
+      <main class="layout">
+        <!-- ------------------------------------------------------------ 舞台 -->
+        <section class="stage-wrap">
+          <div class="stage" id="stage">
+            <div class="board">
+              <!-- 对手 -->
+              <div class="side side--opp">
+                <div class="leader-slot" data-fx-leader="1">
+                  <div class="leader-slot__sigil"></div>
+                  <span class="leader-slot__faction">怪物</span>
+                  <span class="leader-slot__name">艾瑞汀 · 狂猎之王</span>
+                </div>
+                <div class="rows">
+                  <div class="row" data-fx-row="siege" data-fx-player="1">
+                    <span class="row__name">攻城行</span>
+                    <div class="row__cards">
+                      <div class="demo-card f-mo" data-uid="opp-siege-1">
+                        <div class="demo-card__art"></div>
+                        <div class="demo-card__name">山岳巨人</div>
+                        <div class="demo-card__power">10</div>
+                      </div>
+                      <div class="demo-card f-mo" data-uid="opp-siege-2">
+                        <div class="demo-card__art"></div>
+                        <div class="demo-card__name">巨魔</div>
+                        <div class="demo-card__power">7</div>
+                      </div>
+                    </div>
+                    <span class="row__score">17</span>
+                  </div>
+                  <div class="row" data-fx-row="ranged" data-fx-player="1">
+                    <span class="row__name">远程行</span>
+                    <div class="row__cards">
+                      <div class="demo-card f-mo" data-uid="opp-ranged-1">
+                        <div class="demo-card__art"></div>
+                        <div class="demo-card__name">鹰身女妖</div>
+                        <div class="demo-card__power">5</div>
+                      </div>
+                      <div class="demo-card f-mo" data-uid="opp-ranged-2">
+                        <div class="demo-card__art"></div>
+                        <div class="demo-card__name">石化蜥蜴</div>
+                        <div class="demo-card__power">6</div>
+                      </div>
+                      <div class="demo-card f-mo" data-uid="opp-ranged-3">
+                        <div class="demo-card__art"></div>
+                        <div class="demo-card__name">夜行女妖</div>
+                        <div class="demo-card__power">4</div>
+                      </div>
+                    </div>
+                    <span class="row__score">15</span>
+                  </div>
+                  <div class="row" data-fx-row="close" data-fx-player="1">
+                    <span class="row__name">近战行</span>
+                    <div class="row__cards">
+                      <div class="demo-card f-mo" data-uid="opp-close-1">
+                        <div class="demo-card__art"></div>
+                        <div class="demo-card__name">食尸鬼</div>
+                        <div class="demo-card__power">4</div>
+                      </div>
+                      <div class="demo-card f-mo" data-uid="opp-close-2">
+                        <div class="demo-card__art"></div>
+                        <div class="demo-card__name">巨棘魔树</div>
+                        <div class="demo-card__power">6</div>
+                      </div>
+                    </div>
+                    <span class="row__score">10</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 天气栏 -->
+              <div class="weather-bar">
+                <span class="weather-bar__label">天气</span>
+                <span class="weather-pip" data-weather-pip="frost">霜</span>
+                <span class="weather-pip" data-weather-pip="fog">雾</span>
+                <span class="weather-pip" data-weather-pip="rain">雨</span>
+                <span class="weather-pip" data-weather-pip="storm">暴</span>
+              </div>
+
+              <!-- 玩家 -->
+              <div class="side side--play">
+                <div class="leader-slot leader-slot--player" data-fx-leader="0">
+                  <div class="leader-slot__sigil"></div>
+                  <span class="leader-slot__faction">北方领域</span>
+                  <span class="leader-slot__name">弗尔泰斯特 · 泰莫利亚之王</span>
+                </div>
+                <div class="rows">
+                  <div class="row" data-fx-row="close" data-fx-player="0">
+                    <span class="row__name">近战行</span>
+                    <div class="row__cards">
+                      <div class="demo-card f-nr demo-card--hero" data-uid="row-1" id="targetCard">
+                        <div class="demo-card__art"></div>
+                        <div class="demo-card__name">蓝衣铁卫</div>
+                        <div class="demo-card__power">12</div>
+                      </div>
+                      <div class="demo-card f-nr" data-uid="row-2">
+                        <div class="demo-card__art"></div>
+                        <div class="demo-card__name">泰莫利亚步兵</div>
+                        <div class="demo-card__power">7</div>
+                      </div>
+                      <div class="demo-card f-nr" data-uid="row-3">
+                        <div class="demo-card__art"></div>
+                        <div class="demo-card__name">凯德温攻城专家</div>
+                        <div class="demo-card__power">5</div>
+                      </div>
+                    </div>
+                    <span class="row__score">24</span>
+                  </div>
+                  <div class="row" data-fx-row="ranged" data-fx-player="0">
+                    <span class="row__name">远程行</span>
+                    <div class="row__cards">
+                      <div class="demo-card f-nr" data-uid="row-ranged-1">
+                        <div class="demo-card__art"></div>
+                        <div class="demo-card__name">精灵弓手</div>
+                        <div class="demo-card__power">5</div>
+                      </div>
+                      <div class="demo-card f-nr" data-uid="row-ranged-2">
+                        <div class="demo-card__art"></div>
+                        <div class="demo-card__name">弩手</div>
+                        <div class="demo-card__power">4</div>
+                      </div>
+                    </div>
+                    <span class="row__score">9</span>
+                  </div>
+                  <div class="row" data-fx-row="siege" data-fx-player="0">
+                    <span class="row__name">攻城行</span>
+                    <div class="row__cards">
+                      <div class="demo-card f-nr" data-uid="row-siege-1">
+                        <div class="demo-card__art"></div>
+                        <div class="demo-card__name">投石机</div>
+                        <div class="demo-card__power">8</div>
+                      </div>
+                      <div class="demo-card f-nr" data-uid="row-siege-2">
+                        <div class="demo-card__art"></div>
+                        <div class="demo-card__name">攻城塔</div>
+                        <div class="demo-card__power">6</div>
+                      </div>
+                    </div>
+                    <span class="row__score">14</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 手牌 / 牌堆 / 弃牌堆 -->
+              <div class="hand-bar">
+                <div class="pile" data-fx-deck="0">
+                  <span>牌堆</span>
+                  <b>10</b>
+                  <span>DECK</span>
+                </div>
+                <div class="hand">
+                  <div class="demo-card f-nr" data-uid="hand-1" id="handCard">
+                    <div class="demo-card__art"></div>
+                    <div class="demo-card__name">蓝衣铁卫</div>
+                    <div class="demo-card__power">12</div>
+                  </div>
+                  <div class="demo-card f-neutral" data-uid="hand-2">
+                    <div class="demo-card__art"></div>
+                    <div class="demo-card__name">诱饵</div>
+                    <div class="demo-card__power">0</div>
+                  </div>
+                  <div class="demo-card f-neutral demo-card--special" data-uid="hand-3" id="specialCard">
+                    <div class="demo-card__art"></div>
+                    <div class="demo-card__name">灼烧</div>
+                    <div class="demo-card__power">—</div>
+                  </div>
+                </div>
+                <div class="pile pile--grave" data-fx-grave="0">
+                  <span>弃牌堆</span>
+                  <b>6</b>
+                  <span>GRAVE</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="stage-hint">
+            特效层为 <b>canvas + DOM overlay · pointer-events:none</b>；舞台上的按钮始终可点击。数值/位置为 demo 假数据，仅用于验收视觉。
+          </div>
+        </section>
+
+        <!-- ------------------------------------------------------------ 控制台 -->
+        <aside class="controls" id="controls">
+          <div class="ctrl-group">
+            <h2>快速验收 <small>AUTO</small></h2>
+            <div class="btn-row">
+              <button class="btn btn--primary" data-fx="visualTour">自动视觉巡演</button>
+              <button class="btn" data-fx="audioTour">音效巡礼</button>
+              <button class="btn" data-fx="resetWeather">重置天气</button>
+            </div>
+            <p class="note">首次点击页面后自动解锁 WebAudio（浏览器 Autoplay 策略）；未解锁时不会出声。</p>
+          </div>
+
+          <div class="ctrl-group">
+            <h2>出牌与战斗 <small>BATTLE</small></h2>
+            <div class="btn-row">
+              <button class="btn" data-fx="cardPlay">出牌飞入</button>
+              <button class="btn" data-fx="cardPlayRow" title="Lead board 的真实调用方式：fromRect + 行容器 toEl">出牌→行容器</button>
+              <button class="btn" data-fx="cardSummon">召唤</button>
+              <button class="btn" data-fx="muster">集结</button>
+              <button class="btn" data-fx="spy">间谍</button>
+              <button class="btn" data-fx="medic">医师</button>
+              <button class="btn" data-fx="scorch">灼烧</button>
+              <button class="btn" data-fx="horn">号角</button>
+              <button class="btn" data-fx="mardroeme">曼陀罗</button>
+              <button class="btn" data-fx="avenger">复仇者</button>
+              <button class="btn" data-fx="powerUp">战力 +3</button>
+              <button class="btn" data-fx="powerDown">战力 -3</button>
+            </div>
+          </div>
+
+          <div class="ctrl-group">
+            <h2>天气 <small>WEATHER</small></h2>
+            <div class="btn-row">
+              <button class="btn" data-fx="weather" data-kind="frost">霜</button>
+              <button class="btn" data-fx="weather" data-kind="fog">雾</button>
+              <button class="btn" data-fx="weather" data-kind="rain">雨</button>
+              <button class="btn" data-fx="weather" data-kind="storm">风暴</button>
+              <button class="btn" data-fx="weather" data-kind="clear">晴天</button>
+            </div>
+          </div>
+
+          <div class="ctrl-group">
+            <h2>结算与氛围 <small>CINEMA</small></h2>
+            <div class="btn-row">
+              <button class="btn" data-fx="coinFlip">抛硬币</button>
+              <button class="btn" data-fx="roundBanner" data-kind="win">小局胜</button>
+              <button class="btn" data-fx="roundBanner" data-kind="lose">小局负</button>
+              <button class="btn" data-fx="roundBanner" data-kind="draw">小局平</button>
+              <button class="btn btn--primary" data-fx="gameOver" data-outcome="win">比赛胜利</button>
+              <button class="btn" data-fx="gameOver" data-outcome="lose">比赛失败</button>
+              <button class="btn" data-fx="gameOver" data-outcome="draw">比赛平局</button>
+              <button class="btn" data-fx="leaderActivate">领袖特写</button>
+              <button class="btn" data-fx="goldRain">胜利金雨</button>
+              <button class="btn" data-fx="screenFlash" data-color="#fff8e0">闪白</button>
+              <button class="btn" data-fx="screenFlash" data-color="#f0d078">闪金</button>
+              <button class="btn" data-fx="shake">震屏</button>
+              <button class="btn" data-fx="toast">Toast 提示</button>
+              <button class="btn" data-fx="menuAmbient">菜单氛围</button>
+            </div>
+          </div>
+
+          <div class="ctrl-group">
+            <h2>引擎事件模拟 <small>onEvent</small></h2>
+            <div class="btn-row">
+              <button class="btn" data-fx="evCardPlayed">出牌事件</button>
+              <button class="btn" data-fx="evWeather">天气事件</button>
+              <button class="btn" data-fx="evRoundEnded">回合结算事件</button>
+              <button class="btn" data-fx="evGameOver">比赛结束事件</button>
+              <button class="btn" data-fx="evPower">力量变化事件</button>
+              <button class="btn" data-fx="evToast">Toast 事件</button>
+            </div>
+            <p class="note">按 ARCHITECTURE §5.3 的事件格式分派；ctx 提供 board 定位 helper / view / prevView。</p>
+          </div>
+
+          <div class="ctrl-group">
+            <h2>音效 <small>WEBAUDIO SYNTH</small></h2>
+            <div class="field-row">
+              <span>音量</span>
+              <input id="volume" type="range" min="0" max="100" value="72" />
+              <button class="btn btn--sfx" data-fx="toggleMute" id="muteBtn">静音</button>
+              <button class="btn btn--sfx" data-fx="toggleAmbient" id="ambientBtn">环境音</button>
+            </div>
+            <div class="sfx-grid" id="sfxGrid"></div>
+          </div>
+
+          <div class="ctrl-group">
+            <h2>阵营主题 <small>FACTION</small></h2>
+            <div class="field-row">
+              <select id="factionSelect">
+                <option value="northern-realms">北方领域</option>
+                <option value="nilfgaard">尼弗迦德帝国</option>
+                <option value="scoiatael">松鼠党</option>
+                <option value="monsters">怪物</option>
+                <option value="skellige">史凯利格</option>
+                <option value="neutral">中立</option>
+              </select>
+              <button class="btn btn--sfx" data-fx="applyFaction">应用</button>
+            </div>
+            <p class="note">fx.setFactionTheme() 只改 --fx-faction* CSS 变量，不触碰 theme.css / 卡牌样式。</p>
+          </div>
+        </aside>
+      </main>
+
+      <footer class="logbar">
+        <span class="logbar__label">LOG</span>
+        <ol id="log"></ol>
+      </footer>
+    </div>
+
+    <script type="module">
+      import { fx } from '../src/ui/fx.js';
+      import { audio } from '../src/ui/audio.js';
+
+      // -------------------------------------------------------------- helpers
+      const $ = (sel, scope = document) => scope.querySelector(sel);
+      const $$ = (sel, scope = document) => Array.from(scope.querySelectorAll(sel));
+      const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+      const logList = $('#log');
+      const logEntries = [];
+
+      function log(text, kind = '') {
+        const item = document.createElement('li');
+        if (kind) item.className = `is-${kind}`;
+        const label = document.createElement('b');
+        label.textContent = text;
+        item.appendChild(label);
+        logEntries.unshift(item);
+        while (logEntries.length > 6) logEntries.pop();
+        logList.replaceChildren(...logEntries);
+      }
+
+      function note(name, extra = '') {
+        console.info(`[fx-demo] ${name}${extra ? ' · ' + extra : ''}`);
+      }
+
+      async function run(name, fn) {
+        try {
+          log(`▶ ${name}`, '');
+          await fn();
+          log(`✓ ${name}`, 'ok');
+        } catch (err) {
+          log(`✗ ${name}`, 'err');
+          console.warn('[fx-demo] action failed:', name, err);
+        }
+      }
+
+      const rectOf = (el) => (el ? el.getBoundingClientRect() : null);
+      const sfxNames = [
+        ['ui-click', '点击'],
+        ['ui-hover', '悬停'],
+        ['coin', '金币'],
+        ['card-draw', '抽牌'],
+        ['card-place', '出牌'],
+        ['card-flip', '翻牌'],
+        ['hero-place', '英雄'],
+        ['spy', '间谍'],
+        ['medic', '医师'],
+        ['muster', '集结'],
+        ['scorch', '灼烧'],
+        ['weather-frost', '霜'],
+        ['weather-fog', '雾'],
+        ['weather-rain', '雨'],
+        ['weather-storm', '风暴'],
+        ['weather-clear', '晴天'],
+        ['horn', '号角'],
+        ['mardroeme', '曼陀罗'],
+        ['avenger', '复仇者'],
+        ['leader', '领袖'],
+        ['pass', 'Pass'],
+        ['turn', '回合'],
+        ['round-win', '小局胜'],
+        ['round-lose', '小局负'],
+        ['round-draw', '平局'],
+        ['gem-crack', '宝石碎裂'],
+        ['victory', '胜利'],
+        ['defeat', '失败'],
+        ['error', '错误'],
+      ];
+
+      // -------------------------------------------------------------- fake data
+      const rowEl = (player, row) => $(`[data-fx-row="${row}"][data-fx-player="${player}"]`);
+      const boardApi = {
+        getCardEl: (uid) => (uid == null ? null : document.querySelector(`[data-uid="${String(uid)}"]`)),
+        getRowEl: (player, row) => rowEl(player, row),
+        getDeckEl: (player) => $(`[data-fx-deck="${player}"]`),
+        getGraveyardEl: (player) => $(`[data-fx-grave="${player}"]`),
+        getLeaderEl: (player) => $(`[data-fx-leader="${player}"]`),
+      };
+      const ghostWeather = { frost: false, fog: false, rain: false, storm: false };
+
+      function fakeView(overrides = {}) {
+        const weatherNow = fx.stats().weather;
+        return {
+          weather: { ...weatherNow },
+          activePlayer: 0,
+          players: [
+            {
+              index: 0,
+              isAI: false,
+              faction: 'northern-realms',
+              gems: 2,
+              score: 47,
+              rowScores: { close: 24, ranged: 9, siege: 14 },
+              passed: false,
+            },
+            {
+              index: 1,
+              isAI: true,
+              faction: 'monsters',
+              gems: 1,
+              score: 42,
+              rowScores: { close: 10, ranged: 15, siege: 17 },
+              passed: false,
+            },
+          ],
+          ...overrides,
+        };
+      }
+
+      function sfxClick(name) {
+        setTimeout(() => {
+          if (!audio.isEnabled()) return;
+          audio.play(name);
+        }, 240);
+      }
+
+      // -------------------------------------------------------------- init fx
+      fx.init({
+        root: $('#app'),
+        getCardRect: () => rectOf($('#handCard')),
+        faction: 'northern-realms',
+        eventEffects: 'lite',
+        eventAudio: true,
+      });
+      fx.setFactionTheme('northern-realms');
+      audio.init();
+      // 暴露给 QA / Playwright 验收（不属于游戏契约）
+      window.__fx = fx;
+      window.__audio = audio;
+
+      let unlockedOnce = false;
+      async function ensureAudio() {
+        if (audio.isUnlocked && audio.isUnlocked()) return true;
+        const ok = await audio.unlock();
+        if (ok) {
+          unlockedOnce = true;
+          if (!audio.isEnabled()) audio.setEnabled(true);
+          log('✓ 音效已解锁', 'ok');
+          syncHud();
+        } else {
+          log('音效解锁失败（重新点击）', 'err');
+        }
+        return ok;
+      }
+      // 首次用户交互解锁（浏览器自动播放策略）
+      const unlockHandler = () => {
+        ensureAudio();
+        if (unlockedOnce) window.removeEventListener('pointerdown', unlockHandler, true);
+      };
+      window.addEventListener('pointerdown', unlockHandler, true);
+
+      // -------------------------------------------------------------- actions
+      let menuAmbientOn = false;
+      let ambientOn = false;
+      let muted = false;
+
+      const handRect = () => rectOf($('#handCard'));
+      const oppCards = () => $$('[data-uid^="opp-"]');
+      const playerCloseRow = () => rowEl(0, 'close');
+      const playerRangedRow = () => rowEl(0, 'ranged');
+      const oppRangedRow = () => rowEl(1, 'ranged');
+      const oppCloseRow = () => rowEl(1, 'close');
+
+      const actions = {
+        visualTour: async () => {
+          await ensureAudio();
+          await actions.resetWeather();
+          await fx.coinFlip({ firstPlayer: 0 });
+          audio.play('coin');
+          await fx.weather('frost', true);
+          audio.play('weather-frost');
+          await sleep(500);
+          await fx.cardPlay({ fromRect: handRect(), toEl: $('#targetCard'), card: { nameZh: '蓝衣铁卫' } });
+          audio.play('card-place');
+          await fx.horn(playerRangedRow());
+          audio.play('horn');
+          await fx.scorch({ els: oppCards().slice(0, 4), cardEls: [$('#specialCard')] });
+          audio.play('scorch');
+          await actions.resetWeather();
+          await fx.weather('storm', true);
+          audio.play('weather-storm');
+          await sleep(1100);
+          await actions.resetWeather();
+          await sleep(250);
+          await fx.roundBanner({ kind: 'win', scores: [47, 42], gems: [2, 1] });
+          audio.play('round-win');
+          await fx.gameOver({ winner: 0, view: fakeView() });
+          audio.play('victory');
+        },
+
+        audioTour: async () => {
+          const ok = await ensureAudio();
+          if (!ok) {
+            log('请先点击页面解锁音效', 'err');
+            return;
+          }
+          for (const [name] of sfxNames) {
+            audio.play(name);
+            await sleep(360);
+          }
+        },
+
+        resetWeather: async () => {
+          await fx.weather('clear', true);
+          log('天气已重置', 'ok');
+        },
+
+        cardPlay: async () => {
+          await fx.cardPlay({ fromRect: handRect(), toEl: $('#targetCard'), card: { nameZh: '蓝衣铁卫' } });
+          sfxClick('card-place');
+        },
+
+        cardPlayRow: async () => {
+          // 复现 Lead 的真实调用：fromRect = 手牌元素 rect，toEl = 行容器（.board-row），
+          // 行内此刻可能没有目标卡元素 —— 用于验证 ghost 清理 + 槽位尺寸推算。
+          await fx.cardPlay({ fromRect: handRect(), toEl: playerCloseRow(), card: { nameZh: '蓝衣铁卫' } });
+          sfxClick('card-place');
+        },
+
+        cardSummon: async () => {
+          await fx.cardSummon({ toEl: $('#opp-ranged-2'), card: { nameZh: '石化蜥蜴' } });
+          sfxClick('muster');
+        },
+
+        muster: async () => {
+          await fx.muster({ cardEls: $$('[data-fx-row="close"][data-fx-player="1"] .demo-card') });
+          sfxClick('muster');
+        },
+
+        spy: async () => {
+          await fx.spy({ fromEl: $('#handCard'), toRowEl: oppRangedRow(), card: { nameZh: '间谍' } });
+          sfxClick('spy');
+        },
+
+        medic: async () => {
+          await fx.medic({ fromEl: $('[data-fx-grave="0"]'), toRowEl: playerCloseRow(), card: { nameZh: '医师' } });
+          sfxClick('medic');
+        },
+
+        scorch: async () => {
+          await fx.scorch({ els: oppCards().slice(0, 4), cardEls: [$('#specialCard')] });
+          sfxClick('scorch');
+        },
+
+        horn: async () => {
+          await fx.horn(playerRangedRow());
+          sfxClick('horn');
+        },
+
+        mardroeme: async () => {
+          await fx.mardroeme(playerCloseRow(), $$('[data-fx-row="close"][data-fx-player="0"] .demo-card').slice(0, 2));
+          sfxClick('mardroeme');
+        },
+
+        avenger: async () => {
+          await fx.avenger({
+            els: $$('[data-fx-row="ranged"][data-fx-player="1"] .demo-card').slice(0, 2),
+            tokenEl: $('#opp-ranged-3'),
+          });
+          sfxClick('avenger');
+        },
+
+        powerUp: async () => {
+          await fx.powerPulse('row-1', 3);
+          sfxClick('card-flip');
+        },
+
+        powerDown: async () => {
+          await fx.powerPulse('row-2', -3);
+          sfxClick('card-flip');
+        },
+
+        weather: async (btn) => {
+          const kind = btn.dataset.kind || 'frost';
+          await fx.weather(kind, true);
+          audio.play(`weather-${kind}`);
+          syncWeatherPips(kind);
+        },
+
+        coinFlip: async () => {
+          await fx.coinFlip({ firstPlayer: 0 });
+          sfxClick('coin');
+        },
+
+        roundBanner: async (btn) => {
+          const kind = btn.dataset.kind || 'win';
+          await fx.roundBanner({ kind, scores: [47, 42], gems: kind === 'win' ? [2, 1] : [1, 2] });
+          audio.play(kind === 'win' ? 'round-win' : kind === 'lose' ? 'round-lose' : 'round-draw');
+        },
+
+        gameOver: async (btn) => {
+          const outcome = btn.dataset.outcome || 'win';
+          await fx.gameOver({
+            winner: outcome === 'win' ? 0 : outcome === 'lose' ? 1 : null,
+            view: fakeView(),
+          });
+          audio.play(outcome === 'win' ? 'victory' : outcome === 'lose' ? 'defeat' : 'round-draw');
+        },
+
+        leaderActivate: async () => {
+          await fx.leaderActivate({ el: $('[data-fx-leader="0"]'), faction: factionSelect.value });
+          audio.play('leader');
+        },
+
+        goldRain: async () => {
+          // 通过比赛胜利复用金雨；单独按钮则触发一次性金色粒子
+          await fx.gameOver({ winner: 0, view: fakeView() });
+        },
+
+        screenFlash: async (btn) => {
+          await fx.screenFlash(btn.dataset.color || '#fff8e0', 0.42);
+        },
+
+        shake: async () => {
+          await fx.shake(2);
+        },
+
+        toast: async () => {
+          await fx.toast('你打出了「蓝衣铁卫」到近战行（+12）');
+          sfxClick('turn');
+        },
+
+        menuAmbient: async () => {
+          menuAmbientOn = !menuAmbientOn;
+          await fx.menuAmbient(menuAmbientOn);
+          updateToggleBtn(btnFor('menuAmbient'), menuAmbientOn);
+          log(menuAmbientOn ? '菜单氛围开' : '菜单氛围关', 'ok');
+        },
+
+        evCardPlayed: async () => {
+          fx.onEvent(
+            { type: 'cardPlayed', player: 1, row: 'ranged', uid: 'opp-ranged-1', card: { nameZh: '鹰身女妖' } },
+            { board: boardApi, view: fakeView(), prevView: fakeView() }
+          );
+        },
+
+        evWeather: async () => {
+          ghostWeather.frost = !ghostWeather.frost;
+          const prev = fakeView({ weather: { ...ghostWeather, frost: !ghostWeather.frost } });
+          fx.onEvent(
+            { type: 'weatherChanged', weather: { ...ghostWeather, rain: false } },
+            { board: boardApi, view: fakeView({ weather: { ...ghostWeather } }), prevView: prev }
+          );
+          syncWeatherPips(ghostWeather.frost ? 'frost' : 'clear');
+        },
+
+        evRoundEnded: async () => {
+          fx.onEvent(
+            {
+              type: 'roundEnded',
+              scores: [47, 42],
+              cards: [],
+            },
+            { board: boardApi, view: fakeView(), prevView: fakeView({ players: fakeView().players.map((p) => ({ ...p, score: 47 })) }) }
+          );
+        },
+
+        evGameOver: async () => {
+          fx.onEvent(
+            { type: 'gameOver', winner: 0 },
+            { board: boardApi, view: fakeView(), prevView: fakeView() }
+          );
+        },
+
+        evPower: async () => {
+          fx.onEvent(
+            { type: 'powerUpdate', player: 0, uid: 'row-2', delta: 2 },
+            { board: boardApi, view: fakeView(), prevView: fakeView() }
+          );
+        },
+
+        evToast: async () => {
+          fx.onEvent({ type: 'toast', text: '第三小局开始 · 先手：对手' }, { board: boardApi, view: fakeView() });
+        },
+
+        toggleMute: async () => {
+          muted = !muted;
+          audio.setEnabled(!muted);
+          $('#muteBtn').textContent = muted ? '取消静音' : '静音';
+          $('#muteBtn').classList.toggle('btn--on', muted);
+          log(muted ? '已静音' : '已取消静音', 'ok');
+          syncHud();
+        },
+
+        toggleAmbient: async () => {
+          const ok = await ensureAudio();
+          if (!ok) return;
+          if (audio.isEnabled()) {
+            ambientOn = !ambientOn;
+            if (ambientOn) audio.startAmbient();
+            else audio.stopAmbient();
+            $('#ambientBtn').classList.toggle('btn--on', ambientOn);
+            log(ambientOn ? '环境音开' : '环境音关', 'ok');
+          }
+        },
+
+        applyFaction: async () => {
+          const fid = factionSelect.value;
+          const colors = fx.setFactionTheme(fid);
+          audio.play('leader', { volume: 0.5, pitch: 1.1 });
+          log(`阵营主题 → ${colors.name}`, 'ok');
+          syncHud();
+        },
+      };
+
+      // 音频按钮点击（含 unlock 与 play）
+      async function playSfx(name, button) {
+        const ok = await ensureAudio();
+        if (!ok) {
+          log(`音效 ${name} 需先点击页面解锁`, 'err');
+          return;
+        }
+        const played = audio.play(name);
+        log(`${played ? '♪' : '·'} ${name}`, played ? 'ok' : '');
+        if (button) {
+          button.classList.add('btn--on');
+          setTimeout(() => button.classList.remove('btn--on'), 220);
+        }
+      }
+
+      function btnFor(action) {
+        return $(`[data-fx="${action}"]`);
+      }
+
+      function updateToggleBtn(button, on) {
+        if (!button) return;
+        button.classList.toggle('btn--on', !!on);
+      }
+
+      // 事件绑定
+      $$('[data-fx]').forEach((button) => {
+        button.addEventListener('click', () => {
+          const name = button.dataset.fx;
+          const handler = actions[name];
+          if (!handler) return;
+          run(button.textContent.trim() || name, () => handler(button));
+        });
+      });
+
+      // 音效按钮
+      const sfxGrid = $('#sfxGrid');
+      for (const [name, label] of sfxNames) {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'btn btn--sfx';
+        button.textContent = label;
+        button.title = name;
+        button.addEventListener('click', (event) => {
+          event.stopPropagation();
+          run(`sfx:${name}`, () => playSfx(name, button));
+        });
+        sfxGrid.appendChild(button);
+      }
+
+      // 音量 / 阵营
+      const volume = $('#volume');
+      volume.value = String(Math.round(audio.volume * 100));
+      volume.addEventListener('input', () => {
+        audio.setVolume(Number(volume.value) / 100);
+        syncHud();
+      });
+      const factionSelect = $('#factionSelect');
+      factionSelect.addEventListener('change', () => {
+        const colors = fx.setFactionTheme(factionSelect.value);
+        log(`阵营主题 → ${colors.name}`, 'ok');
+        syncHud();
+      });
+
+      // -------------------------------------------------------------- HUD / 状态
+      const statFps = $('#statFps');
+      const statParticles = $('#statParticles');
+      const statWeather = $('#statWeather');
+      const statAudio = $('#statAudio');
+      const statFaction = $('#statFaction');
+
+      function syncWeatherPips(activeKind) {
+        const stats = fx.stats();
+        const nowWeather = stats.weather;
+        $$('[data-weather-pip]').forEach((pip) => {
+          const kind = pip.dataset.weatherPip;
+          let on = !!nowWeather[kind];
+          if (activeKind === 'clear') on = false;
+          if (activeKind === 'frost') on = kind === 'frost';
+          pip.classList.toggle('is-on', on);
+        });
+      }
+
+      function syncHud() {
+        const stats = fx.stats();
+        statFps.textContent = String(stats.fps || 0);
+        statParticles.textContent = `${stats.particles}/${stats.maxParticles}`;
+        const active = Object.keys(stats.weather || {}).filter((k) => stats.weather[k]);
+        statWeather.textContent = active.length ? active.join('+') : 'clear';
+        const unlocked = audio.isUnlocked ? audio.isUnlocked() : false;
+        statAudio.textContent = audio.isEnabled() ? (unlocked ? '已就绪' : '未解锁') : '静音';
+        const factionNames = {
+          'northern-realms': '北方领域',
+          nilfgaard: '尼弗迦德',
+          scoiatael: '松鼠党',
+          monsters: '怪物',
+          skellige: '史凯利格',
+          neutral: '中立',
+        };
+        statFaction.textContent = factionNames[stats.faction] || stats.faction;
+        syncWeatherPips(null);
+      }
+      setInterval(syncHud, 450);
+      syncHud();
+
+      // 首次进入提示
+      log('特效层已初始化 · 点击任意处解锁音效', 'ok');
+      note('ready', 'fx.init + audio.init done');
+    </script>
+  </body>
+</html>

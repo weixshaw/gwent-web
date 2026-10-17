@@ -1,0 +1,2370 @@
+/* ============================================================================
+   deckbuilder.css — 组牌器界面（Owner: deck-smith）
+   ----------------------------------------------------------------------------
+   作用域约定：只使用 .deckbuilder 命名空间；不覆盖全局样式。
+   颜色 / 字体 / 动效全部消费 src/styles/theme.css 的 token。
+   ========================================================================== */
+
+/* ---------------------------------------------------------------- 外层框架 */
+.deckbuilder {
+  /* 局部 token */
+  --db-panel-bg: linear-gradient(180deg, rgba(30, 24, 18, 0.94), rgba(13, 11, 9, 0.975));
+  --db-line: rgba(201, 162, 39, 0.22);
+  --db-line-strong: rgba(201, 162, 39, 0.44);
+  --db-gap: clamp(10px, 1.05vw, 18px);
+  --db-pad: clamp(12px, 1.15vw, 20px);
+  --db-radius: 8px;
+  --db-faction: var(--gold);
+  --db-faction-glow: var(--gold-bright);
+  --db-faction-accent: var(--gold-bright);
+
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  isolation: isolate;
+  outline: none;
+  color: var(--paper);
+  font-family: var(--font-ui);
+  background:
+    radial-gradient(120% 80% at 50% -20%, rgba(201, 162, 39, 0.1), transparent 60%),
+    radial-gradient(70% 60% at 6% 105%, rgba(122, 31, 31, 0.11), transparent 62%),
+    radial-gradient(60% 55% at 97% 90%, rgba(47, 111, 106, 0.1), transparent 65%),
+    linear-gradient(180deg, #0b0907 0%, #070605 58%, #050404 100%);
+}
+
+.deckbuilder::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.55;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='170'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='170' height='170' filter='url(%23n)' opacity='.038'/%3E%3C/svg%3E");
+}
+
+.deckbuilder::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(125% 105% at 50% 48%, transparent 52%, rgba(0, 0, 0, 0.58) 100%);
+}
+
+.deckbuilder--closed {
+  display: none;
+}
+
+.deckbuilder__shell {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 1.05vh, 14px);
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  padding: clamp(10px, 1.4vh, 20px) clamp(14px, 1.6vw, 36px) clamp(12px, 1.6vh, 22px);
+}
+
+.deckbuilder.is-visible .deckbuilder__shell {
+  animation: db-shell-in var(--dur-slow) var(--ease-out) both;
+}
+
+/* ------------------------------------------------------------------- 顶栏 */
+.deckbuilder__topbar {
+  position: relative;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: clamp(10px, 1.2vw, 22px);
+  min-height: clamp(50px, 6vh, 72px);
+  padding-bottom: clamp(8px, 1vh, 13px);
+}
+
+.deckbuilder__topbar::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(201, 162, 39, 0.5) 16%,
+    rgba(240, 208, 120, 0.72) 50%,
+    rgba(201, 162, 39, 0.5) 84%,
+    transparent
+  );
+}
+
+.deckbuilder__title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  flex: 0 0 auto;
+}
+
+.deckbuilder__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(21px, 1.9vw, 30px);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: 0.24em;
+  text-indent: 0.24em;
+  color: var(--gold-bright);
+  text-shadow: 0 0 22px rgba(240, 208, 120, 0.28), 0 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+.deckbuilder__subtitle {
+  margin: 0;
+  font-size: clamp(7.5px, 0.56vw, 9px);
+  letter-spacing: 0.4em;
+  text-indent: 0.4em;
+  color: var(--paper-faint);
+  white-space: nowrap;
+}
+
+.deckbuilder__topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: clamp(7px, 0.7vw, 12px);
+  margin-left: auto;
+  min-width: 0;
+}
+
+.deckbuilder__save-state {
+  flex: 0 1 auto;
+  padding-left: 10px;
+  border-left: 1px solid var(--db-line);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--paper-faint);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color var(--dur-mid) var(--ease-out), text-shadow var(--dur-mid) var(--ease-out);
+}
+
+.deckbuilder__save-state.is-flash {
+  color: var(--gold-bright);
+  animation: db-save-glow 900ms var(--ease-out);
+}
+
+.deckbuilder__save-state.is-error {
+  color: #ff9b84;
+}
+
+/* --------------------------------------------------------------- 通用按钮 */
+.deckbuilder__ghost-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 7px 13px;
+  border: 1px solid var(--db-line);
+  border-radius: 4px;
+  background: linear-gradient(180deg, rgba(42, 33, 24, 0.6), rgba(13, 11, 9, 0.62));
+  color: var(--paper-dim);
+  font-family: var(--font-ui);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  transition: color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out),
+    background var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+}
+
+.deckbuilder__ghost-btn:hover:not(:disabled) {
+  color: var(--gold-bright);
+  border-color: var(--db-line-strong);
+  background: linear-gradient(180deg, rgba(201, 162, 39, 0.14), rgba(13, 11, 9, 0.72));
+}
+
+.deckbuilder__ghost-btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.deckbuilder__ghost-btn:disabled {
+  opacity: 0.38;
+  cursor: default;
+}
+
+.deckbuilder__back svg {
+  width: 15px;
+  height: 15px;
+  margin-left: -2px;
+}
+
+.deckbuilder__primary-btn {
+  position: relative;
+  padding: 9px 22px;
+  border: 1px solid rgba(240, 208, 120, 0.55);
+  border-radius: 4px;
+  background: linear-gradient(180deg, #f2d789 0%, #c9a227 55%, #8a6f22 100%);
+  color: #1a130a;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-indent: 0.14em;
+  text-shadow: 0 1px 0 rgba(255, 246, 214, 0.35);
+  box-shadow: inset 0 1px 0 rgba(255, 246, 214, 0.72), 0 2px 10px rgba(0, 0, 0, 0.5),
+    0 0 16px rgba(240, 208, 120, 0.1);
+  transition: filter var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.deckbuilder__primary-btn:hover:not(:disabled) {
+  filter: brightness(1.07);
+  box-shadow: inset 0 1px 0 rgba(255, 246, 214, 0.8), 0 4px 16px rgba(0, 0, 0, 0.52),
+    0 0 26px rgba(240, 208, 120, 0.28);
+}
+
+.deckbuilder__primary-btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.deckbuilder__primary-btn:disabled {
+  cursor: not-allowed;
+  color: var(--paper-faint);
+  border-color: rgba(201, 162, 39, 0.18);
+  background: linear-gradient(180deg, rgba(48, 40, 30, 0.72), rgba(20, 16, 12, 0.84));
+  box-shadow: none;
+  text-shadow: none;
+}
+
+/* --------------------------------------------------------------- 阵营切换 */
+.deckbuilder__factions {
+  position: relative;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: var(--db-gap);
+  min-height: clamp(40px, 5vh, 54px);
+}
+
+.deckbuilder__faction-tabs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 0 0 auto;
+}
+
+.deckbuilder__faction-tab {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 12px;
+  border: 1px solid rgba(201, 162, 39, 0.16);
+  border-radius: 4px;
+  background: linear-gradient(180deg, rgba(30, 24, 18, 0.6), rgba(13, 11, 9, 0.55));
+  color: var(--paper-dim);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  transition: color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out),
+    background var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.deckbuilder__faction-tab::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(120% 150% at 50% 130%, var(--db-tab-glow, var(--gold-bright)), transparent 62%);
+  opacity: 0.06;
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+
+.deckbuilder__faction-tab:hover {
+  color: var(--paper);
+  border-color: rgba(201, 162, 39, 0.34);
+}
+
+.deckbuilder__faction-tab:hover::before {
+  opacity: 0.12;
+}
+
+.deckbuilder__faction-tab.is-active {
+  color: var(--gold-bright);
+  border-color: rgba(240, 208, 120, 0.5);
+  background: linear-gradient(180deg, rgba(201, 162, 39, 0.2), rgba(13, 11, 9, 0.7));
+  box-shadow: inset 0 0 0 1px rgba(240, 208, 120, 0.12), 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+.deckbuilder__faction-tab.is-active::before {
+  opacity: 0.18;
+}
+
+.deckbuilder__faction-tab.is-active::after {
+  content: "";
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  bottom: -1px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--db-tab-accent, var(--gold-bright)), transparent);
+  box-shadow: 0 0 10px rgba(240, 208, 120, 0.4);
+}
+
+.deckbuilder__faction-sigil {
+  display: inline-flex;
+  width: 21px;
+  height: 21px;
+  color: var(--db-tab-glow, var(--gold-bright));
+  opacity: 0.92;
+  filter: drop-shadow(0 0 4px rgba(240, 208, 120, 0.16));
+  transition: opacity var(--dur-fast) var(--ease-out), filter var(--dur-fast) var(--ease-out);
+}
+
+.deckbuilder__faction-tab:hover .deckbuilder__faction-sigil,
+.deckbuilder__faction-tab.is-active .deckbuilder__faction-sigil {
+  opacity: 1;
+}
+
+.deckbuilder__faction-tab.is-active .deckbuilder__faction-sigil {
+  filter: drop-shadow(0 0 6px rgba(240, 208, 120, 0.42));
+}
+
+.deckbuilder__faction-sigil .db-sigil {
+  width: 100%;
+  height: 100%;
+}
+
+.deckbuilder__faction-ability {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0 0 0 auto;
+  min-width: 0;
+  font-size: 11px;
+  color: var(--paper-faint);
+  letter-spacing: 0.04em;
+}
+
+.deckbuilder__ability-tag {
+  flex: 0 0 auto;
+  padding: 2px 7px;
+  border: 1px solid rgba(201, 162, 39, 0.22);
+  border-radius: 2px;
+  color: var(--db-faction-glow);
+  font-size: 9.5px;
+  letter-spacing: 0.18em;
+}
+
+.deckbuilder__ability-text {
+  min-width: 0;
+  max-width: min(54vw, 740px);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* ------------------------------------------------------------------- 主体 */
+.deckbuilder__body {
+  flex: 1 1 auto;
+  display: grid;
+  grid-template-columns: clamp(250px, 20vw, 400px) minmax(0, 1fr) clamp(292px, 22vw, 440px);
+  gap: var(--db-gap);
+  min-height: 0;
+}
+
+.deckbuilder__panel {
+  position: relative;
+  min-height: 0;
+  border: 1px solid var(--db-line);
+  border-radius: var(--db-radius);
+  background: var(--db-panel-bg);
+  box-shadow: var(--shadow-deep), var(--shadow-inset);
+}
+
+.deckbuilder__panel::before,
+.deckbuilder__panel::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.6;
+  background: center / contain no-repeat
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M2 2h9v2H5v7H2zM22 2h-9v2h6v7h2zM2 22h9v-2H5v-7H2zM22 22h-9v-2h6v-7h2z' fill='%23c9a227'/%3E%3C/svg%3E");
+}
+
+.deckbuilder__panel::before {
+  top: 3px;
+  left: 3px;
+}
+
+.deckbuilder__panel::after {
+  right: 3px;
+  bottom: 3px;
+  transform: rotate(180deg);
+}
+
+/* --------------------------------------------------------------- 左侧栏 */
+.deckbuilder__side {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1.5vh, 20px);
+  padding: var(--db-pad);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(201, 162, 39, 0.35) rgba(0, 0, 0, 0.2);
+}
+
+.deckbuilder__section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.deckbuilder__section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.deckbuilder__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+.deckbuilder__eyebrow::before {
+  content: "";
+  width: 14px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold-dim), rgba(201, 162, 39, 0.2));
+}
+
+.deckbuilder__section-hint {
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  color: var(--paper-faint);
+  white-space: nowrap;
+}
+
+.deckbuilder__muted {
+  margin: 0;
+  color: var(--paper-faint);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+/* ------------------------------------------------------------------- 领袖 */
+.deckbuilder__leaders {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.deckbuilder__leader {
+  position: relative;
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  border: 1px solid rgba(201, 162, 39, 0.14);
+  border-radius: 6px;
+  background: linear-gradient(180deg, rgba(30, 24, 18, 0.6), rgba(13, 11, 9, 0.52));
+  color: inherit;
+  text-align: left;
+  overflow: hidden;
+  transition: border-color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+}
+
+.deckbuilder__leader::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(130% 130% at 0% 50%, var(--db-faction-glow), transparent 58%);
+  opacity: 0.05;
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+
+.deckbuilder__leader:hover {
+  border-color: rgba(201, 162, 39, 0.36);
+  transform: translateX(2px);
+}
+
+.deckbuilder__leader:hover::before {
+  opacity: 0.1;
+}
+
+.deckbuilder__leader.is-selected {
+  border-color: rgba(240, 208, 120, 0.6);
+  background: linear-gradient(180deg, rgba(201, 162, 39, 0.16), rgba(13, 11, 9, 0.64));
+  box-shadow: inset 0 0 0 1px rgba(240, 208, 120, 0.12), 0 0 18px rgba(240, 208, 120, 0.12);
+}
+
+.deckbuilder__leader.is-selected::before {
+  opacity: 0.14;
+}
+
+.deckbuilder__leader-portrait {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 58px;
+  border: 1px solid rgba(201, 162, 39, 0.26);
+  border-radius: 4px;
+  overflow: hidden;
+  background: radial-gradient(80% 80% at 50% 38%, rgba(201, 162, 39, 0.16), rgba(7, 6, 5, 0.92));
+}
+
+.deckbuilder__leader-art {
+  position: absolute;
+  inset: 0;
+}
+
+.deckbuilder__leader-art svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.deckbuilder__leader-sigil {
+  width: 30px;
+  height: 30px;
+  color: var(--db-faction-glow);
+  opacity: 0.85;
+}
+
+.deckbuilder__leader-sigil .db-sigil {
+  width: 100%;
+  height: 100%;
+}
+
+.deckbuilder__leader-body {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.deckbuilder__leader-name {
+  font-family: var(--font-display);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: var(--paper);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.deckbuilder__leader.is-selected .deckbuilder__leader-name {
+  color: var(--gold-bright);
+}
+
+.deckbuilder__leader-ability {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 10.5px;
+  line-height: 1.45;
+  color: var(--paper-faint);
+}
+
+.deckbuilder__leader-check {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 14px;
+  height: 14px;
+  color: var(--gold-bright);
+  filter: drop-shadow(0 0 5px rgba(240, 208, 120, 0.65));
+}
+
+.deckbuilder__leader-check svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* ------------------------------------------------------------------- 阵营志 */
+.deckbuilder__lore {
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid rgba(201, 162, 39, 0.12);
+}
+
+.deckbuilder__lore-text {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 11.5px;
+  line-height: 1.85;
+  letter-spacing: 0.04em;
+  color: var(--paper-faint);
+}
+
+/* ------------------------------------------------------------------- 预设 */
+.deckbuilder__presets {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.deckbuilder__preset {
+  position: relative;
+  padding: 10px 11px;
+  border: 1px solid rgba(201, 162, 39, 0.14);
+  border-radius: 6px;
+  background: linear-gradient(180deg, rgba(30, 24, 18, 0.55), rgba(13, 11, 9, 0.5));
+  transition: border-color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
+}
+
+.deckbuilder__preset:hover {
+  border-color: rgba(201, 162, 39, 0.3);
+}
+
+.deckbuilder__preset.is-current {
+  border-color: rgba(240, 208, 120, 0.45);
+  background: linear-gradient(180deg, rgba(201, 162, 39, 0.13), rgba(13, 11, 9, 0.6));
+}
+
+.deckbuilder__preset-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.deckbuilder__preset-name {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--paper);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.deckbuilder__preset-meta {
+  flex: 0 0 auto;
+  font-size: 9.5px;
+  color: var(--paper-faint);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.deckbuilder__preset-desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 5px 0 8px;
+  font-size: 10.5px;
+  line-height: 1.55;
+  color: var(--paper-faint);
+}
+
+.deckbuilder__preset-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.deckbuilder__preset-leader {
+  min-width: 0;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: var(--paper-faint);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.deckbuilder__preset-load {
+  flex: 0 0 auto;
+  padding: 4px 13px;
+  border: 1px solid rgba(201, 162, 39, 0.42);
+  border-radius: 3px;
+  background: linear-gradient(180deg, rgba(201, 162, 39, 0.16), rgba(13, 11, 9, 0.5));
+  color: var(--gold-bright);
+  font-family: var(--font-ui);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  transition: background var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+
+.deckbuilder__preset-load:hover:not(:disabled) {
+  border-color: rgba(240, 208, 120, 0.66);
+  background: linear-gradient(180deg, rgba(201, 162, 39, 0.3), rgba(13, 11, 9, 0.62));
+}
+
+.deckbuilder__preset-load:disabled {
+  opacity: 0.6;
+  cursor: default;
+  color: var(--paper-faint);
+  border-color: rgba(201, 162, 39, 0.16);
+  background: rgba(7, 6, 5, 0.4);
+}
+
+/* --------------------------------------------------------------- 收藏面板 */
+.deckbuilder__collection {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.deckbuilder__collection-watermark {
+  position: absolute;
+  top: 4%;
+  right: -5%;
+  z-index: 0;
+  width: min(42%, 290px);
+  aspect-ratio: 1;
+  color: var(--gold);
+  opacity: 0.055;
+  pointer-events: none;
+  animation: db-watermark-drift 140s linear infinite;
+}
+
+.deckbuilder__collection-watermark .db-sigil {
+  width: 100%;
+  height: 100%;
+}
+
+.deckbuilder__collection-head {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px var(--db-gap);
+  padding: clamp(12px, 1.4vh, 18px) var(--db-pad) 7px;
+}
+
+.deckbuilder__collection-title {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex: 0 0 auto;
+  min-width: 0;
+}
+
+.deckbuilder__collection-title h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(16px, 1.3vw, 20px);
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-indent: 0.12em;
+  color: var(--gold-bright);
+  text-shadow: 0 0 18px rgba(240, 208, 120, 0.24);
+}
+
+.deckbuilder__collection-summary {
+  min-width: 0;
+  font-size: 10.5px;
+  letter-spacing: 0.05em;
+  color: var(--paper-faint);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.deckbuilder__filters {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  margin-left: auto;
+  flex-wrap: wrap;
+}
+
+.deckbuilder__filter {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  padding: 5px 10px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  color: var(--paper-faint);
+  font-family: var(--font-ui);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  transition: color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+
+.deckbuilder__filter em {
+  font-style: normal;
+  font-size: 9.5px;
+  color: var(--paper-faint);
+}
+
+.deckbuilder__filter:hover {
+  color: var(--paper);
+  background: rgba(201, 162, 39, 0.08);
+}
+
+.deckbuilder__filter.is-active {
+  color: var(--gold-bright);
+  border-color: rgba(201, 162, 39, 0.38);
+  background: linear-gradient(180deg, rgba(201, 162, 39, 0.16), rgba(13, 11, 9, 0.42));
+}
+
+.deckbuilder__filter.is-active em {
+  color: var(--gold);
+}
+
+/* --------------------------------------------------------------- 搜索排序 */
+.deckbuilder__toolbar {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 0 var(--db-pad) 10px;
+}
+
+.deckbuilder__search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1 1 auto;
+  max-width: 300px;
+  height: 32px;
+  padding: 0 10px;
+  border: 1px solid rgba(201, 162, 39, 0.2);
+  border-radius: 4px;
+  background: rgba(7, 6, 5, 0.55);
+  transition: border-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.deckbuilder__search:focus-within {
+  border-color: rgba(240, 208, 120, 0.55);
+  box-shadow: 0 0 0 1px rgba(240, 208, 120, 0.14), 0 0 16px rgba(240, 208, 120, 0.1);
+}
+
+.deckbuilder__search-icon {
+  display: inline-flex;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  color: var(--paper-faint);
+}
+
+.deckbuilder__search-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.deckbuilder__search input {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: none;
+  color: var(--paper);
+  font-family: var(--font-ui);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+}
+
+.deckbuilder__search input::placeholder {
+  color: rgba(143, 133, 112, 0.85);
+}
+
+.deckbuilder__search input::-webkit-search-cancel-button {
+  filter: invert(0.7);
+  cursor: pointer;
+}
+
+.deckbuilder__sort {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-left: auto;
+  flex: 0 0 auto;
+}
+
+.deckbuilder__sort-label {
+  font-size: 9.5px;
+  letter-spacing: 0.2em;
+  color: var(--paper-faint);
+}
+
+.deckbuilder__select-wrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.deckbuilder__select-wrap::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  width: 6px;
+  height: 6px;
+  border-right: 1px solid var(--gold);
+  border-bottom: 1px solid var(--gold);
+  transform: translateY(-72%) rotate(45deg);
+  pointer-events: none;
+}
+
+.deckbuilder__select-wrap select {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 32px;
+  padding: 0 26px 0 10px;
+  border: 1px solid rgba(201, 162, 39, 0.2);
+  border-radius: 4px;
+  background: rgba(7, 6, 5, 0.55);
+  color: var(--paper-dim);
+  font-family: var(--font-ui);
+  font-size: 11.5px;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  outline: none;
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+
+.deckbuilder__select-wrap select:hover {
+  border-color: rgba(201, 162, 39, 0.36);
+}
+
+.deckbuilder__select-wrap select option {
+  background: #14100c;
+  color: var(--paper);
+}
+
+/* --------------------------------------------------------------- 卡牌网格 */
+.deckbuilder__grid-scroll {
+  position: relative;
+  z-index: 1;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 4px var(--db-pad) clamp(14px, 2vh, 22px);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(201, 162, 39, 0.38) rgba(0, 0, 0, 0.25);
+}
+
+.deckbuilder__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(calc(var(--card-sm-w, 92px) + 12px), 1fr));
+  align-items: start;
+  gap: clamp(12px, 1.7vh, 20px) clamp(8px, 0.6vw, 14px);
+}
+
+.deckbuilder__card {
+  position: relative;
+  width: var(--card-sm-w, 92px);
+  margin: 0 auto;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.deckbuilder__card:hover,
+.deckbuilder__card:focus-within {
+  z-index: 3;
+  transform: translateY(-4px);
+}
+
+.deckbuilder__card-visual {
+  position: relative;
+  width: var(--card-sm-w, 92px);
+  height: var(--card-sm-h, 128px);
+  border-radius: var(--card-radius);
+  transition: filter var(--dur-fast) var(--ease-out);
+}
+
+.deckbuilder__card-visual > .gt-card {
+  width: var(--card-sm-w, 92px);
+  height: var(--card-sm-h, 128px);
+}
+
+.deckbuilder__card:hover .deckbuilder__card-visual,
+.deckbuilder__card:focus-within .deckbuilder__card-visual {
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 13px rgba(240, 208, 120, 0.18));
+}
+
+.deckbuilder__card.is-pulsing {
+  animation: db-card-pulse 320ms var(--ease-out);
+}
+
+.deckbuilder__card-badge {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 4;
+  padding: 1px 5px;
+  border: 1px solid rgba(201, 162, 39, 0.22);
+  border-radius: 2px;
+  background: rgba(7, 6, 5, 0.82);
+  color: var(--paper-faint);
+  font-family: var(--font-ui);
+  font-size: 9.5px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+  pointer-events: none;
+  transition: color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out),
+    background var(--dur-fast) var(--ease-out);
+}
+
+.deckbuilder__card.is-picked .deckbuilder__card-badge {
+  color: var(--gold-bright);
+  border-color: rgba(240, 208, 120, 0.5);
+  background: rgba(20, 16, 12, 0.92);
+}
+
+.deckbuilder__card.is-maxed .deckbuilder__card-badge {
+  color: #1a130a;
+  border-color: #f0d078;
+  background: linear-gradient(180deg, #f2d789, #c9a227);
+  font-weight: 700;
+}
+
+.deckbuilder__card-controls {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  width: 100%;
+  height: 23px;
+  margin-top: 4px;
+  padding: 2px 4px;
+  border: 1px solid rgba(201, 162, 39, 0.22);
+  border-radius: 3px;
+  background: linear-gradient(180deg, rgba(30, 24, 18, 0.72), rgba(7, 6, 5, 0.78));
+  transition: border-color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
+}
+
+.deckbuilder__card:hover .deckbuilder__card-controls,
+.deckbuilder__card:focus-within .deckbuilder__card-controls {
+  border-color: rgba(240, 208, 120, 0.52);
+  background: linear-gradient(180deg, rgba(201, 162, 39, 0.14), rgba(7, 6, 5, 0.82));
+}
+
+.deckbuilder__card-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 18px;
+  border-radius: 2px;
+  color: var(--paper-dim);
+  transition: color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
+}
+
+.deckbuilder__card-btn svg {
+  width: 10px;
+  height: 10px;
+}
+
+.deckbuilder__card-btn:hover:not(:disabled) {
+  color: var(--gold-bright);
+  background: rgba(201, 162, 39, 0.2);
+}
+
+.deckbuilder__card-btn:disabled {
+  opacity: 0.26;
+  cursor: default;
+}
+
+.deckbuilder__card-count {
+  min-width: 15px;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 10.5px;
+  color: var(--gold-bright);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ------------------------------------------------ 占位卡（card-render 未就绪） */
+.deckbuilder .db-fallback {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid rgba(201, 162, 39, 0.5);
+  border-radius: var(--card-radius);
+  background: radial-gradient(120% 100% at 50% 0%, rgba(201, 162, 39, 0.09), rgba(7, 6, 5, 0.97) 72%);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.5);
+  user-select: none;
+}
+
+.deckbuilder .db-fallback[data-faction="northern-realms"] {
+  --db-card-tint: var(--nr);
+}
+
+.deckbuilder .db-fallback[data-faction="nilfgaard"] {
+  --db-card-tint: var(--ng);
+}
+
+.deckbuilder .db-fallback[data-faction="scoiatael"] {
+  --db-card-tint: var(--st);
+}
+
+.deckbuilder .db-fallback[data-faction="monsters"] {
+  --db-card-tint: var(--mo);
+}
+
+.deckbuilder .db-fallback[data-faction="skellige"] {
+  --db-card-tint: var(--sk);
+}
+
+.deckbuilder .db-fallback[data-faction="neutral"] {
+  --db-card-tint: var(--neutral);
+}
+
+.deckbuilder .db-fallback::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(155deg, var(--db-card-tint, var(--gold)), transparent 62%);
+  opacity: 0.12;
+}
+
+.deckbuilder .db-fallback::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  z-index: 3;
+  border: 1px solid rgba(201, 162, 39, 0.18);
+  border-radius: calc(var(--card-radius) - 2px);
+  pointer-events: none;
+}
+
+.deckbuilder .db-fallback--hero {
+  border-color: rgba(240, 208, 120, 0.82);
+  box-shadow: inset 0 0 0 1px rgba(240, 208, 120, 0.2), 0 0 14px rgba(240, 208, 120, 0.14);
+}
+
+.deckbuilder .db-fallback__art {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 66%;
+  overflow: hidden;
+}
+
+.deckbuilder .db-fallback__art svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.deckbuilder .db-fallback__sigil {
+  position: absolute;
+  top: 36%;
+  left: 50%;
+  width: 64%;
+  aspect-ratio: 1;
+  color: var(--db-card-tint, var(--gold));
+  opacity: 0.42;
+  transform: translate(-50%, -50%);
+}
+
+.deckbuilder .db-fallback__sigil .db-sigil {
+  width: 100%;
+  height: 100%;
+}
+
+.deckbuilder .db-fallback__veil {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, transparent 26%, rgba(7, 6, 5, 0.3) 56%, rgba(7, 6, 5, 0.95) 84%);
+}
+
+.deckbuilder .db-fallback__name {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 23px;
+  z-index: 2;
+  padding: 3px 20px 3px 18px;
+  background: linear-gradient(180deg, transparent, rgba(7, 6, 5, 0.6));
+  font-family: var(--font-display);
+  font-size: 10.5px;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: var(--paper);
+  text-shadow: 0 1px 3px #000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.deckbuilder .db-fallback__rows {
+  position: absolute;
+  left: 5px;
+  bottom: 26px;
+  z-index: 2;
+  display: flex;
+  gap: 2px;
+  color: var(--gold-dim);
+}
+
+.deckbuilder .db-fallback__rows .gt-icon,
+.deckbuilder .db-fallback__rows .db-rune-icon {
+  width: 11px;
+  height: 11px;
+}
+
+.deckbuilder .db-fallback__power {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 22px;
+  border: 1px solid rgba(240, 208, 120, 0.58);
+  border-radius: 4px;
+  background: radial-gradient(120% 120% at 30% 18%, #9c2b2b, #4a0f0f 76%);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 220, 180, 0.24);
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  color: #f6e8bc;
+  text-shadow: 0 1px 2px #000;
+  font-variant-numeric: tabular-nums;
+}
+
+.deckbuilder .db-fallback__power.is-hero {
+  border-color: #ffe9a8;
+  background: radial-gradient(120% 120% at 30% 18%, #f0d078, #8a6f22 82%);
+  color: #241a06;
+  text-shadow: none;
+}
+
+.deckbuilder .db-fallback__rune {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: 1px solid rgba(201, 162, 39, 0.45);
+  border-radius: 50%;
+  background: rgba(7, 6, 5, 0.72);
+  color: var(--gold-bright);
+}
+
+.deckbuilder .db-fallback__rune svg {
+  width: 13px;
+  height: 13px;
+}
+
+/* ------------------------------------------------------------- 空状态提示 */
+.deckbuilder__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: clamp(40px, 8vh, 80px) 20px;
+  text-align: center;
+  color: var(--paper-faint);
+  font-size: 12px;
+}
+
+.deckbuilder__empty[hidden] {
+  display: none;
+}
+
+.deckbuilder__empty p {
+  margin: 0;
+}
+
+.deckbuilder__empty-ornament {
+  position: relative;
+  display: block;
+  width: 30px;
+  height: 30px;
+  margin-bottom: 8px;
+  border: 1px solid rgba(201, 162, 39, 0.35);
+  transform: rotate(45deg);
+}
+
+.deckbuilder__empty-ornament::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(201, 162, 39, 0.5);
+}
+
+/* --------------------------------------------------------------- 牌组栏 */
+.deckbuilder__deckcol {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.deckbuilder__deck-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: clamp(12px, 1.4vh, 18px) var(--db-pad) 10px;
+  border-bottom: 1px solid rgba(201, 162, 39, 0.14);
+}
+
+.deckbuilder__deck-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.deckbuilder__deck-faction {
+  min-width: 0;
+  font-size: 10.5px;
+  letter-spacing: 0.05em;
+  color: var(--paper-faint);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.deckbuilder__clear-btn {
+  flex: 0 0 auto;
+  padding: 5px 11px;
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+}
+
+/* ------------------------------------------------------------------- 统计 */
+.deckbuilder__stats {
+  display: flex;
+  align-items: stretch;
+  gap: clamp(12px, 1.4vw, 22px);
+  padding: clamp(10px, 1.3vh, 16px) var(--db-pad);
+  border-bottom: 1px solid rgba(201, 162, 39, 0.12);
+  background: linear-gradient(180deg, rgba(201, 162, 39, 0.05), transparent);
+}
+
+.deckbuilder__strength {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 82px;
+  padding-right: clamp(12px, 1.4vw, 22px);
+  border-right: 1px solid rgba(201, 162, 39, 0.14);
+}
+
+.deckbuilder__strength-num {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 3.2vw, 44px);
+  line-height: 1;
+  color: var(--gold-bright);
+  text-shadow: 0 0 20px rgba(240, 208, 120, 0.35), 0 2px 5px rgba(0, 0, 0, 0.9);
+  font-variant-numeric: tabular-nums;
+}
+
+.deckbuilder__strength-label {
+  margin-top: 5px;
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  text-indent: 0.3em;
+  color: var(--paper-faint);
+  white-space: nowrap;
+}
+
+.deckbuilder__meters {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  min-width: 0;
+}
+
+.deckbuilder__meter {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-variant-numeric: tabular-nums;
+}
+
+.deckbuilder__meter-label {
+  order: -1;
+  flex: 0 0 40px;
+  width: 40px;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--paper-faint);
+}
+
+.deckbuilder__meter-value {
+  font-family: var(--font-display);
+  font-size: clamp(14px, 1.1vw, 17px);
+  color: var(--paper);
+  line-height: 1;
+}
+
+.deckbuilder__meter-limit {
+  font-size: 9.5px;
+  letter-spacing: 0.02em;
+  color: var(--paper-faint);
+}
+
+.deckbuilder__meter.is-met .deckbuilder__meter-value {
+  color: var(--gold-bright);
+}
+
+.deckbuilder__meter.is-short .deckbuilder__meter-value,
+.deckbuilder__meter.is-short .deckbuilder__meter-limit {
+  color: #ff9b84;
+}
+
+.deckbuilder__meter.is-over .deckbuilder__meter-value,
+.deckbuilder__meter.is-over .deckbuilder__meter-limit {
+  color: #ff7a68;
+}
+
+/* --------------------------------------------------------------- 合法性 */
+.deckbuilder__validity {
+  flex: 0 1 auto;
+  min-height: 42px;
+  max-height: 132px;
+  padding: 9px var(--db-pad);
+  overflow-y: auto;
+  border-bottom: 1px solid rgba(201, 162, 39, 0.1);
+  font-size: 11px;
+  line-height: 1.5;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(201, 162, 39, 0.3) transparent;
+}
+
+.deckbuilder__validity-ok {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+  color: #a8e0a0;
+  font-size: 11px;
+  letter-spacing: 0.03em;
+}
+
+.deckbuilder__validity-ok svg {
+  flex: 0 0 auto;
+  width: 14px;
+  height: 14px;
+}
+
+.deckbuilder__validity-title {
+  margin: 0 0 4px;
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  color: #ff9b84;
+}
+
+.deckbuilder__validity-list {
+  display: grid;
+  gap: 3px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.deckbuilder__validity-list li {
+  position: relative;
+  padding-left: 10px;
+  font-size: 10.5px;
+  line-height: 1.5;
+  color: #ffb4a4;
+}
+
+.deckbuilder__validity-list li::before {
+  content: "";
+  position: absolute;
+  top: 0.55em;
+  left: 0;
+  width: 4px;
+  height: 4px;
+  background: currentColor;
+  opacity: 0.8;
+  transform: rotate(45deg);
+}
+
+/* --------------------------------------------------------------- 已选列表 */
+.deckbuilder__deck-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 6px var(--db-pad) 10px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(201, 162, 39, 0.35) rgba(0, 0, 0, 0.2);
+}
+
+.deckbuilder__deck-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.deckbuilder__deck-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.deckbuilder__deck-group + .deckbuilder__deck-group {
+  margin-top: 8px;
+}
+
+.deckbuilder__deck-group-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 2px 5px;
+}
+
+.deckbuilder__deck-group-head span {
+  font-size: 9.5px;
+  letter-spacing: 0.26em;
+  color: var(--gold-dim);
+  white-space: nowrap;
+}
+
+.deckbuilder__deck-group-head em {
+  font-style: normal;
+  font-size: 9.5px;
+  color: var(--paper-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+.deckbuilder__deck-group-head i {
+  flex: 1 1 auto;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(201, 162, 39, 0.3), transparent);
+}
+
+.deckbuilder__deck-row {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr) auto auto 20px;
+  align-items: center;
+  gap: 7px;
+  padding: 3px 4px 3px 2px;
+  border-radius: 3px;
+  transition: background var(--dur-fast) var(--ease-out);
+}
+
+.deckbuilder__deck-row:hover {
+  background: rgba(201, 162, 39, 0.08);
+}
+
+.deckbuilder__deck-power {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 19px;
+  padding: 0 3px;
+  border: 1px solid rgba(201, 162, 39, 0.22);
+  border-radius: 3px;
+  background: linear-gradient(180deg, rgba(122, 31, 31, 0.8), rgba(60, 16, 16, 0.9));
+  font-family: var(--font-display);
+  font-size: 11.5px;
+  color: #f3e2b0;
+  font-variant-numeric: tabular-nums;
+}
+
+.deckbuilder__deck-power.is-hero {
+  border-color: rgba(240, 208, 120, 0.7);
+  background: linear-gradient(180deg, rgba(201, 162, 39, 0.85), rgba(122, 95, 24, 0.9));
+  color: #1c1406;
+}
+
+.deckbuilder__deck-power.is-rune {
+  background: rgba(7, 6, 5, 0.62);
+  color: var(--gold);
+}
+
+.deckbuilder__deck-power svg {
+  width: 13px;
+  height: 13px;
+}
+
+.deckbuilder__deck-name {
+  min-width: 0;
+  font-size: 11.5px;
+  letter-spacing: 0.02em;
+  color: var(--paper-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.deckbuilder__deck-row:hover .deckbuilder__deck-name {
+  color: var(--paper);
+}
+
+.deckbuilder__deck-tag {
+  padding: 1px 4px;
+  border: 1px solid rgba(201, 162, 39, 0.2);
+  border-radius: 2px;
+  color: var(--paper-faint);
+  font-size: 8.5px;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.deckbuilder__deck-tag.is-hero {
+  border-color: rgba(240, 208, 120, 0.42);
+  color: var(--gold-bright);
+}
+
+.deckbuilder__deck-tag.is-weather {
+  border-color: rgba(154, 223, 214, 0.32);
+  color: #9adfd6;
+}
+
+.deckbuilder__deck-count {
+  font-family: var(--font-display);
+  font-size: 11px;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+
+.deckbuilder__deck-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 2px;
+  color: var(--paper-faint);
+  opacity: 0.7;
+  transition: color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out),
+    opacity var(--dur-fast) var(--ease-out);
+}
+
+.deckbuilder__deck-remove svg {
+  width: 10px;
+  height: 10px;
+}
+
+.deckbuilder__deck-remove:hover {
+  opacity: 1;
+  color: #ff9b84;
+  background: rgba(122, 31, 31, 0.35);
+}
+
+.deckbuilder__deck-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: clamp(26px, 5vh, 48px) 12px;
+  text-align: center;
+  color: var(--paper-faint);
+  font-size: 11.5px;
+}
+
+.deckbuilder__deck-empty p {
+  margin: 0;
+}
+
+/* --------------------------------------------------------------- 底部操作 */
+.deckbuilder__deck-foot {
+  margin-top: auto;
+  padding: 10px var(--db-pad) clamp(12px, 1.5vh, 18px);
+  border-top: 1px solid rgba(201, 162, 39, 0.14);
+  background: linear-gradient(0deg, rgba(7, 6, 5, 0.5), transparent);
+}
+
+.deckbuilder__start-wide {
+  width: 100%;
+  padding: 11px 16px;
+  font-size: 13.5px;
+  letter-spacing: 0.26em;
+  text-indent: 0.26em;
+}
+
+.deckbuilder__start-hint {
+  margin: 7px 0 0;
+  text-align: center;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--paper-faint);
+}
+
+.deckbuilder__start-hint.is-ok {
+  color: #a8e0a0;
+}
+
+/* ------------------------------------------------------------------- 弹窗 */
+.deckbuilder__dialog-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+}
+
+.deckbuilder__dialog-layer[hidden] {
+  display: none;
+}
+
+.deckbuilder__dialog-backdrop {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(80% 80% at 50% 50%, rgba(7, 6, 5, 0.68), rgba(3, 3, 2, 0.9));
+  opacity: 0;
+  transition: opacity var(--dur-mid) var(--ease-out);
+}
+
+.deckbuilder__dialog-layer.is-open .deckbuilder__dialog-backdrop {
+  opacity: 1;
+}
+
+.deckbuilder__dialog {
+  position: relative;
+  width: min(460px, 84vw);
+  padding: 24px clamp(20px, 2vw, 30px) 20px;
+  border: 1px solid rgba(201, 162, 39, 0.5);
+  border-radius: 6px;
+  background: linear-gradient(180deg, rgba(35, 28, 21, 0.98), rgba(13, 11, 9, 0.99));
+  box-shadow: var(--shadow-deep), 0 0 36px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 235, 190, 0.08);
+  opacity: 0;
+  transform: translateY(8px) scale(0.985);
+  transition: opacity var(--dur-mid) var(--ease-out), transform var(--dur-mid) var(--ease-out);
+}
+
+.deckbuilder__dialog-layer.is-open .deckbuilder__dialog {
+  opacity: 1;
+  transform: none;
+}
+
+.deckbuilder__dialog::before,
+.deckbuilder__dialog::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  opacity: 0.8;
+  pointer-events: none;
+  background: center / contain no-repeat
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M2 2h9v2H5v7H2zM22 2h-9v2h6v7h2zM2 22h9v-2H5v-7H2zM22 22h-9v-2h6v-7h2z' fill='%23c9a227'/%3E%3C/svg%3E");
+}
+
+.deckbuilder__dialog::before {
+  top: -6px;
+  left: -6px;
+}
+
+.deckbuilder__dialog::after {
+  right: -6px;
+  bottom: -6px;
+  transform: rotate(180deg);
+}
+
+.deckbuilder__dialog-title {
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--gold-bright);
+  text-shadow: 0 0 18px rgba(240, 208, 120, 0.22);
+}
+
+.deckbuilder__dialog-desc {
+  margin: 0 0 20px;
+  font-size: 12.5px;
+  line-height: 1.75;
+  color: var(--paper-dim);
+}
+
+.deckbuilder__dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.deckbuilder__dialog-actions .deckbuilder__ghost-btn {
+  padding: 8px 16px;
+  font-size: 12px;
+}
+
+.deckbuilder__primary-btn.is-danger {
+  border-color: rgba(255, 155, 132, 0.55);
+  background: linear-gradient(180deg, #b4433a, #7a1f1f 58%, #4a0f0f);
+  color: #ffe9dc;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.deckbuilder__primary-btn.is-danger:hover:not(:disabled) {
+  filter: brightness(1.1);
+  box-shadow: inset 0 1px 0 rgba(255, 210, 195, 0.5), 0 4px 16px rgba(0, 0, 0, 0.52),
+    0 0 24px rgba(255, 122, 47, 0.24);
+}
+
+/* ------------------------------------------------------------------- 提示 */
+.deckbuilder__toast {
+  position: absolute;
+  bottom: clamp(18px, 3.2vh, 40px);
+  left: 50%;
+  z-index: 30;
+  padding: 9px 20px;
+  border: 1px solid rgba(201, 162, 39, 0.45);
+  border-radius: 4px;
+  background: rgba(13, 11, 9, 0.94);
+  box-shadow: var(--shadow-deep);
+  color: var(--paper);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translate(-50%, 12px);
+  pointer-events: none;
+  transition: opacity var(--dur-mid) var(--ease-out), transform var(--dur-mid) var(--ease-out);
+}
+
+.deckbuilder__toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* --------------------------------------------------------------- 通用元素 */
+.deckbuilder .gt-icon,
+.deckbuilder .db-rune-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+  fill: currentColor;
+}
+
+.deckbuilder__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  border: 0;
+}
+
+/* --------------------------------------------------------------- 动画 */
+@keyframes db-shell-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes db-watermark-drift {
+  from {
+    transform: rotate(-8deg);
+  }
+  to {
+    transform: rotate(352deg);
+  }
+}
+
+@keyframes db-card-pulse {
+  0% {
+    transform: scale(1);
+  }
+  38% {
+    transform: scale(1.055);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes db-save-glow {
+  0% {
+    text-shadow: none;
+  }
+  28% {
+    text-shadow: 0 0 14px rgba(240, 208, 120, 0.5);
+  }
+  100% {
+    text-shadow: none;
+  }
+}
+
+/* --------------------------------------------------------------- 自适应 */
+@media (min-width: 1800px) {
+  /* 大屏等比放大卡牌（card.css 内部尺寸由 --card-sm-w 派生，放大不失真） */
+  .deckbuilder {
+    --card-sm-w: 106px;
+    --card-sm-h: 147px;
+  }
+}
+
+@media (min-width: 1900px) {
+  .deckbuilder__topbar {
+    gap: clamp(14px, 1.4vw, 28px);
+  }
+
+  .deckbuilder__leaders {
+    gap: 10px;
+  }
+
+  .deckbuilder__leader {
+    grid-template-columns: 52px minmax(0, 1fr);
+    padding: 10px;
+  }
+
+  .deckbuilder__leader-portrait {
+    width: 52px;
+    height: 66px;
+  }
+
+  .deckbuilder__leader-name {
+    font-size: 14px;
+  }
+
+  .deckbuilder__leader-ability {
+    font-size: 11px;
+  }
+
+  .deckbuilder__preset {
+    padding: 12px;
+  }
+
+  .deckbuilder__preset-name {
+    font-size: 13px;
+  }
+
+  .deckbuilder__preset-desc {
+    font-size: 11px;
+  }
+
+  .deckbuilder__grid {
+    gap: 22px clamp(10px, 0.8vw, 18px);
+  }
+
+  .deckbuilder__deck-row {
+    padding: 4px;
+  }
+
+  .deckbuilder__card-badge {
+    font-size: 10px;
+  }
+}
+
+@media (min-width: 2300px) {
+  .deckbuilder {
+    --card-sm-w: 118px;
+    --card-sm-h: 164px;
+  }
+
+  .deckbuilder__body {
+    grid-template-columns: clamp(300px, 20vw, 450px) minmax(0, 1fr) clamp(340px, 22vw, 490px);
+  }
+
+  .deckbuilder__strength-num {
+    font-size: 46px;
+  }
+
+  .deckbuilder__meter-value {
+    font-size: 18px;
+  }
+
+  .deckbuilder__deck-name {
+    font-size: 12.5px;
+  }
+
+  .deckbuilder__deck-row {
+    grid-template-columns: 26px minmax(0, 1fr) auto auto 22px;
+  }
+
+  .deckbuilder__preset-desc {
+    -webkit-line-clamp: 3;
+  }
+
+  /* 超大屏整体字号微调，避免 2560 下界面元素显得过小 */
+  .deckbuilder__faction-tab {
+    padding: 8px 15px;
+    font-size: 13px;
+  }
+
+  .deckbuilder__faction-sigil {
+    width: 23px;
+    height: 23px;
+  }
+
+  .deckbuilder__save-state,
+  .deckbuilder__collection-summary,
+  .deckbuilder__meter-limit,
+  .deckbuilder__deck-faction {
+    font-size: 11.5px;
+  }
+
+  .deckbuilder__filter {
+    padding: 6px 12px;
+    font-size: 12.5px;
+  }
+
+  .deckbuilder__filter em {
+    font-size: 10.5px;
+  }
+
+  .deckbuilder__filter,
+  .deckbuilder__search input,
+  .deckbuilder__select-wrap select {
+    font-size: 12.5px;
+  }
+
+  .deckbuilder__search {
+    max-width: 340px;
+    height: 36px;
+  }
+
+  .deckbuilder__select-wrap select {
+    height: 36px;
+  }
+
+  .deckbuilder__leader-name {
+    font-size: 15px;
+  }
+
+  .deckbuilder__leader-ability {
+    font-size: 12px;
+    -webkit-line-clamp: 3;
+  }
+
+  .deckbuilder__leader-portrait {
+    width: 58px;
+    height: 74px;
+    grid-column: 1;
+  }
+
+  .deckbuilder__leader {
+    grid-template-columns: 58px minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .deckbuilder__preset-name {
+    font-size: 15px;
+  }
+
+  .deckbuilder__preset-meta,
+  .deckbuilder__preset-leader {
+    font-size: 11.5px;
+  }
+
+  .deckbuilder__preset-desc {
+    font-size: 12.5px;
+  }
+
+  .deckbuilder__preset-load {
+    padding: 5px 16px;
+    font-size: 12px;
+  }
+
+  .deckbuilder__meter-label {
+    width: 52px;
+    flex-basis: 52px;
+    font-size: 11.5px;
+  }
+
+  .deckbuilder__meter-value {
+    font-size: 19px;
+  }
+
+  .deckbuilder__validity {
+    font-size: 12.5px;
+  }
+
+  .deckbuilder__validity-ok {
+    font-size: 12.5px;
+  }
+
+  .deckbuilder__validity-list li {
+    font-size: 12px;
+  }
+
+  .deckbuilder__validity-title {
+    font-size: 12px;
+  }
+
+  .deckbuilder__deck-power {
+    font-size: 13px;
+    height: 22px;
+    min-width: 26px;
+  }
+
+  .deckbuilder__deck-name {
+    font-size: 13px;
+  }
+
+  .deckbuilder__deck-count,
+  .deckbuilder__deck-tag {
+    font-size: 11px;
+  }
+
+  .deckbuilder__deck-row {
+    padding: 4px 5px 4px 2px;
+  }
+
+  .deckbuilder__start-wide {
+    padding: 13px 18px;
+    font-size: 15px;
+  }
+
+  .deckbuilder__start-hint {
+    font-size: 11.5px;
+  }
+
+  .deckbuilder__back,
+  .deckbuilder__ghost-btn {
+    padding: 9px 16px;
+    font-size: 13px;
+  }
+
+  .deckbuilder__primary-btn {
+    padding: 11px 26px;
+    font-size: 14.5px;
+  }
+
+  .deckbuilder__card-badge {
+    font-size: 11px;
+    padding: 2px 6px;
+  }
+
+  .deckbuilder__card-controls {
+    height: 27px;
+    margin-top: 5px;
+  }
+
+  .deckbuilder__card-btn {
+    width: 26px;
+    height: 22px;
+  }
+
+  .deckbuilder__card-btn svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .deckbuilder__card-count {
+    font-size: 12.5px;
+    min-width: 18px;
+  }
+
+  .deckbuilder__lore-text {
+    font-size: 13px;
+    line-height: 1.9;
+    color: rgba(201, 189, 163, 0.72);
+  }
+
+  .deckbuilder__collection-title h2 {
+    font-size: 22px;
+  }
+
+  .deckbuilder__eyebrow {
+    font-size: 11.5px;
+  }
+
+  .deckbuilder__section-hint {
+    font-size: 10.5px;
+  }
+}
+
+@media (max-height: 900px) {
+  .deckbuilder__lore {
+    display: none;
+  }
+}
+
+@media (max-height: 820px) {
+  .deckbuilder__shell {
+    gap: 7px;
+    padding-top: 9px;
+    padding-bottom: 10px;
+  }
+
+  .deckbuilder__topbar {
+    min-height: 46px;
+    padding-bottom: 7px;
+  }
+
+  .deckbuilder__title {
+    font-size: clamp(19px, 1.7vw, 24px);
+  }
+
+  .deckbuilder__factions {
+    min-height: 38px;
+  }
+
+  .deckbuilder__side {
+    gap: 8px;
+  }
+
+  .deckbuilder__leaders,
+  .deckbuilder__presets {
+    gap: 6px;
+  }
+
+  .deckbuilder__leader-portrait {
+    width: 38px;
+    height: 48px;
+  }
+
+  .deckbuilder__leader {
+    grid-template-columns: 40px minmax(0, 1fr);
+    padding: 6px 8px;
+    gap: 8px;
+  }
+
+  .deckbuilder__leader-portrait {
+    width: 40px;
+    height: 50px;
+  }
+
+  .deckbuilder__leader-name {
+    font-size: 12px;
+  }
+
+  .deckbuilder__leader-ability {
+    font-size: 9.5px;
+  }
+
+  .deckbuilder__section {
+    gap: 6px;
+  }
+
+  .deckbuilder__preset {
+    padding: 8px 10px;
+  }
+
+  .deckbuilder__preset-desc {
+    margin: 4px 0 6px;
+    -webkit-line-clamp: 1;
+  }
+
+  .deckbuilder__preset-name {
+    font-size: 12px;
+  }
+
+  .deckbuilder__strength-num {
+    font-size: 30px;
+  }
+
+  .deckbuilder__validity {
+    max-height: 110px;
+    min-height: 38px;
+    padding: 7px var(--db-pad);
+  }
+
+  .deckbuilder__deck-foot {
+    padding-top: 8px;
+    padding-bottom: 10px;
+  }
+
+  .deckbuilder__start-wide {
+    padding: 9px 14px;
+    font-size: 12.5px;
+  }
+
+  .deckbuilder__start-hint {
+    margin-top: 5px;
+  }
+
+  .deckbuilder__grid {
+    gap: 14px clamp(7px, 0.6vw, 12px);
+  }
+}
+
+@media (max-width: 1360px) {
+  .deckbuilder__faction-tab {
+    padding: 6px 9px;
+    font-size: 11.5px;
+    gap: 6px;
+  }
+
+  .deckbuilder__faction-sigil {
+    width: 17px;
+    height: 17px;
+  }
+
+  .deckbuilder__filter {
+    padding: 5px 8px;
+    font-size: 10.5px;
+  }
+
+  .deckbuilder__deck-scroll,
+  .deckbuilder__grid-scroll {
+    padding-left: clamp(10px, 1vw, 14px);
+    padding-right: clamp(10px, 1vw, 14px);
+  }
+}
+
+@media (max-width: 1180px) {
+  .deckbuilder__faction-ability {
+    display: none;
+  }
+
+  .deckbuilder__save-state {
+    display: none;
+  }
+
+  .deckbuilder__body {
+    grid-template-columns: minmax(220px, 24vw) minmax(0, 1fr) minmax(260px, 27vw);
+  }
+}
+
+@media (max-width: 1024px) {
+  .deckbuilder__subtitle {
+    display: none;
+  }
+
+  .deckbuilder__body {
+    grid-template-columns: minmax(190px, 25vw) minmax(0, 1fr) minmax(240px, 28vw);
+    gap: 8px;
+  }
+
+  .deckbuilder__title {
+    font-size: 18px;
+  }
+
+  .deckbuilder__topbar-actions .deckbuilder__save-btn {
+    display: none;
+  }
+}

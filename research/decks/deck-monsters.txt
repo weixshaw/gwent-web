@@ -1,0 +1,213 @@
+ 
+ Monsters Gwent deck consists of a total of 38 available Gwent cards of monsters that can be encountered in the games. The deck contains only hero and unit cards, often with the Muster ability.
+ Special - One of your units in play is randomly carried over to the next round. 
+ Contents 
+ 1 Overview 
+ 2 Cards 
+ 3 Trivia 
+ 4 External links 
+ Overview [ ] 
+ The Monsters are led by wild hunt characters who are the leaders of this deck. The Monsters faction ability is to keep one random unit card after each round on the battlefield, and they by far have the largest number of Muster cards. They also however have no Spy or Medic cards. Unlike the setup of your decks for the Northern Realms or Nilfgaardian Empire, where you usually want only the 22 best units you have for the deck, for Monsters you want to fill your deck with as many of the Muster cards as you can get your hands on; if you lay down one of them you get them all, even the undealt ones.
+ However, all of your Muster cards are Melee, so one Biting Frost card will obliterate you. Have plenty of Clear Weather cards handy to prevent this, and remember that the Muster swarming effect only happens once; when picking your two cards to swap at the initial setup try to get the most mixed set of Muster card types you can, so you can do Muster swarms several times and not get quickly burned out of your strength in the first round.
+ Cards [ ] 
+ Icon 
+ Name 
+ Type 
+ Row 
+ Str. 
+ Ability 
+ Source
+ Arachas 
+ Unit
+ 4
+ Muster : Find any cards with the same name in your deck and play them instantly.
+ 1 purchased from Arinbjorn 's innkeep 1 purchased from Urialla Harbor 's innkeep 1 purchased from Svorlag 's innkeep 
+ Arachas Behemoth 
+ Unit
+ 6
+ Muster : Find any cards with the same name in your deck and play them instantly.
+ Random reward from gwent players 
+ Botchling 
+ Unit
+ 4
+ Purchased from Jonas at The New Port 
+ Celaeno Harpy 
+ Unit
+ 2
+ Agile: Can be placed in either the Close Combat or the Ranged Combat row. Cannot be moved once placed.
+ Random reward from gwent players 
+ Cockatrice 
+ Unit
+ 2
+ Random reward from gwent players 
+ Crone: Brewess 
+ Unit
+ 6
+ Muster: Find any cards with the same name in your deck and play them instantly.
+ Random reward from gwent players 
+ Crone: Weavess 
+ Unit
+ 6
+ Muster: Find any cards with the same name in your deck and play them instantly.
+ Won from the Old Sage during Gwent: Velen Players 
+ Crone: Whispess 
+ Unit
+ 6
+ Muster: Find any cards with the same name in your deck and play them instantly.
+ Purchased from Arinbjorn 's innkeep 
+ Draug 
+ Hero 
+ 10
+ Hero: Not affected by any Special Cards or abilities.
+ Won from Crach an Craite during Gwent: Skellige Style 
+ Earth Elemental 
+ Unit
+ 6
+ Purchased from Jonas at The New Port 
+ Endrega 
+ Unit
+ 2
+ Random reward from gwent players 
+ Eredin Bréacc Glas: The Treacherous 
+ leader 
+ Doubles the strength of all spy cards (affects both players).
+ Purchase from Dulla kh'Amanni in Upper Mill 
+ Eredin: Bringer of Death 
+ leader 
+ Restore a card from your discard pile to your hand.
+ Won from Count Tybalt during High Stakes 
+ Eredin: Commander of the Red Riders 
+ leader 
+ Double the strength of all your Close Combat units (unless a Commander's horn is also present on that row).
+ Purchased from Jonas at The New Port 
+ Eredin: Destroyer of Worlds 
+ leader 
+ Discard 2 card and draw 1 card of your choice from your deck.
+ Won during Gwent: Velen Players 
+ Eredin: King of the Wild Hunt 
+ leader 
+ Pick any weather card from your deck and play it instantly.
+ Part of the base deck
+ Fiend 
+ Unit
+ 6
+ Purchased from Arinbjorn 's innkeep 
+ Fire Elemental 
+ Unit
+ 6
+ Random reward from gwent players Possible loot in house at Hindar 
+ Foglet 
+ Unit
+ 2
+ Purchased from Svorlag 's innkeep 
+ Forktail 
+ Unit
+ 5
+ Random reward from gwent players 
+ Frightener 
+ Unit
+ 5
+ Random reward from gwent players 
+ Gargoyle 
+ Unit
+ 2
+ Random reward from gwent players 
+ Ghoul 
+ Unit
+ 1
+ Muster : Find any cards with the same name in your deck and play them instantly.
+ 2 are random rewards from gwent players 1 purchased from Harviken 's innkeep 
+ Grave Hag 
+ Unit
+ 5
+ Random reward from gwent players 
+ Griffin 
+ Unit
+ 5
+ Random reward from gwent players 
+ Harpy 
+ Unit
+ 2
+ Agile: Can be placed in either the Close Combat or the Ranged Combat row. Cannot be moved once placed.
+ Purchased from Harviken 's innkeep 
+ Ice Giant 
+ Unit
+ 5
+ Purchased from Svorlag 's innkeep 
+ Imlerith 
+ Hero 
+ 10
+ Hero: Not affected by any Special Cards or abilities.
+ Random reward from gwent players 
+ Kayran 
+ Hero 
+ 8
+ Hero: Not affected by any Special Cards or abilities. Morale boost : Adds +1 to all units in the row (excluding itself). Agile: Can be placed in either the Close Combat or the Ranged Combat row. Cannot be moved once placed.
+ Random reward from gwent players 
+ Leshen 
+ Hero 
+ 10
+ Hero: Not affected by any Special Cards or abilities.
+ Won from Ermion during Gwent: Skellige Style 
+ Nekker 
+ Unit
+ 2
+ Muster : Find any cards with the same name in your deck and play them instantly.
+ 1 obtained during Following the Thread off Hammond 's corpse 1 purchased from Harviken 's innkeep 1 as random reward from gwent players 
+ Plague Maiden 
+ Unit
+ 5
+ Random reward from gwent players 
+ Toad 
+ Unit
+ 7
+ Scorch - Ranged: Destroy your enemy's strongest Ranged Combat unit(s) if the combined strength of all his or her Ranged Combat units is 10 or more.
+ Won from Olgierd von Everec 
+ Vampire: Bruxa 
+ Unit
+ 4
+ Muster: Find any cards with the same name in your deck and play them instantly
+ Won during A Matter of Life and Death Blood and Wine expansion: Rewarded for removing Louis' urn in Till Death Do You Part 
+ Vampire: Ekimmara 
+ Unit
+ 4
+ Muster : Find any cards with the same name in your deck and play them instantly
+ Purchased from Svorlag 's innkeep 
+ Vampire: Fleder 
+ Unit
+ 4
+ Muster: Find any cards with the same name in your deck and play them instantly
+ Purchased from Harviken 's innkeep 
+ Vampire: Garkain 
+ Unit
+ 4
+ Muster: Find any cards with the same name in your deck and play them instantly
+ Random reward from gwent players 
+ Vampire: Katakan 
+ Unit
+ 5
+ Muster : Find any cards with the same name in your deck and play them instantly.
+ Madman Lugos during Gwent: Skellige Style 
+ Werewolf 
+ Unit
+ 5
+ Purchased from Urialla Harbor 's innkeep 
+ Wyvern 
+ Unit
+ 2
+ Random reward from gwent players 
+ Trivia [ ] 
+ In the Japanese version of the game, this deck is named Wild Hunt, instead of Monsters. 
+ External links [ ] 
+   See the GWENT standalone game version card:   Monsters 
+ Gwent cards in The Witcher 3: Wild Hunt Decks 
+ Neutral Cards 
+ Combat Row 
+ Abilities 
+ Other Cards 
+ Hearts of Stone cards 
+ Hero cards 
+ Leader cards 
+ Special cards 
+ Weather cards 
+ 

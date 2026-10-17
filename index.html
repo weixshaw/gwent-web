@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="dark" />
+  <title>昆特牌 · GWENT</title>
+  <meta name="description" content="网页版《巫师3》昆特牌 — 完整规则、完整牌库、升级版牌面与酷炫特效。" />
+  <link rel="stylesheet" href="./src/styles/theme.css" />
+  <link rel="stylesheet" href="./src/styles/card.css" />
+  <link rel="stylesheet" href="./src/styles/fx.css" />
+  <link rel="stylesheet" href="./src/styles/deckbuilder.css" />
+  <link rel="stylesheet" href="./src/styles/screens.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230d0b09'/%3E%3Cpath d='M32 6l6 14 15 2-11 11 3 15-13-8-13 8 3-15L11 22l15-2z' fill='%23c9a227'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <div id="app">
+    <canvas id="fx-canvas" aria-hidden="true"></canvas>
+    <div id="screen-root"></div>
+    <div id="overlay-root" aria-live="polite"></div>
+    <div id="tooltip-root"></div>
+    <div id="toast-root"></div>
+    <div id="boot-screen" class="boot-screen">
+      <div class="boot-mark">⚜</div>
+      <div class="boot-title">昆特牌</div>
+      <div class="boot-sub">GWENT · THE WITCHER CARD GAME</div>
+      <div class="boot-loading">正在展开魔典…</div>
+    </div>
+  </div>
+  <noscript>请启用 JavaScript 以游玩昆特牌。</noscript>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+[
+  {
+    "Name": "Agile",
+    "Ability": "Can be placed in either the Close or Ranged rows. Cannot be moved once placed."
+  },
+  {
+    "Name": "Avenger",
+    "Ability": "When removed from the battlefield, a powerful new Unit Card is summoned to take its place."
+  },
+  {
+    "Name": "Berserker",
+    "Ability": "Transforms into a bear when a Mardroeme card is on its row."
+  },
+  {
+    "Name": "Bond",
+    "Ability": "Place next to a card with the same name to double the strength of both cards."
+  },
+  {
+    "Name": "Decoy",
+    "Ability": "Swap with a card on the battlefield to return it to your hand."
+  },
+  {
+    "Name": "Horn",
+    "Ability": "Doubles the strength of all unit cards in that row. Limited to 1 per row."
+  },
+  {
+    "Name": "Mardroeme",
+    "Ability": "Triggers transformation of all Berserker cards on the same row."
+  },
+  {
+    "Name": "Medic",
+    "Ability": "Choose one card from your discard pile and play it instantly (no Heroes or Special Cards)."
+  },
+  {
+    "Name": "Morale",
+    "Ability": "Adds +1 to all units in the row (excluding itself)."
+  },
+  {
+    "Name": "Muster",
+    "Ability": "Find any cards with the same name in your deck and play them instantly."
+  },
+  {
+    "Name": "Scorch",
+    "Ability": "Kills the strongest card(s) on the battlefield."
+  },
+  {
+    "Name": "Spy",
+    "Ability": "Place on your opponent's battlefield (counts towards opponent's total) and draw 2 cards from your deck."
+  },
+  {
+    "Name": "Weather",
+    "Ability": "Reduce the strength of all cards in the given row(s) on the battlefield, including your own."
+  }
+]

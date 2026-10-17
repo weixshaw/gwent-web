@@ -1,0 +1,126 @@
+ Gwent neutral cards can be used as part of any deck.
+ Icon 
+ Name 
+ Type 
+ Row 
+ Str. 
+ Ability 
+ Source
+ Biting Frost 
+ Weather 
+ Sets the strength of all Close Combat cards to 1 for both players.
+ 2 are part of the base deck 1 is a random reward from gwent players 
+ Bovine Defense Force 
+ Unit
+ 8
+ Summoned by the removal of the Cow card during play
+ Cirilla Fiona Elen Riannon 
+ Hero 
+ 15
+ Hero: Not affected by any Special Cards or abilities. Muster: Find the Roach card in your deck and play it instantly. ( Patch 4.0 /expired My Rewards ) 
+ Won from the Scoia'tael merchant during Gwent: Big City Players 
+ Clear Weather 
+ Weather 
+ Removes all Weather Card (Biting Frost, Impenetrable Fog and Torrential Rain) effects.
+ 2 are part of the base deck 1 is a random reward from gwent players 
+ Commander's Horn 
+ Special 
+ Doubles the strength of all unit cards in that row. Limited to 1 per row.
+ Purchase from the Inn at the Crossroads 's innkeep Purchase from Lindenvale 's innkeep Purchase from Marquise Serenity at the Passiflora Purchase from Stjepan at The Alchemy Hearts of Stone expansion: Purchase from merchant at the circus camp near Carsten 
+ Cow 
+ Unit
+ 0
+ When this card is removed from the battlefield, it summons a powerful new Unit Card to take its place.
+ Found inside a barn in Brunwich 
+ Dandelion 
+ Unit
+ 2
+ Commander's Horn: Doubles the strength of all unit cards in that row. Limited to 1 per row.
+ Won during A Matter of Life and Death 
+ Decoy 
+ Special 
+ Swap with a card on the battlefield to return it to your hand.
+ Purchase from Elsa or Bram in White Orchard Purchase from Crow's Perch 's Quartermaster Purchase from the Seven Cats Inn 's Innkeep 
+ Emiel Regis Rohellec Terzieff 
+ Unit
+ 5
+ Random reward from gwent players 
+ Gaunter O'Dimm 
+ Unit
+ 2
+ Muster: Find any cards with the same name in your deck and play them instantly.
+ Won from Robert Hilbert during Open Sesame! 
+ Gaunter O'Dimm: Darkness 
+ Unit
+ 4
+ Muster : Find any cards with the same name in your deck and play them instantly.
+ 1 purchased from Dulla kh'Amanni at Upper Mill 2 purchased from the merchant at the circus camp near Carsten 
+ Geralt of Rivia 
+ Hero 
+ 15
+ Hero: Not affected by any Special Cards or abilities. Muster: Find the Roach card in your deck and play it instantly. ( Patch 4.0 /expired My Rewards ) 
+ Thaler during Gwent: Old Pals or Gwent: Playing Thaler 
+ Impenetrable Fog 
+ Weather 
+ Sets the strength of all Ranged Combat cards to 1 for both players.
+ 2 are part of the base deck 1 is a random reward from gwent players 
+ Mysterious Elf 
+ Hero 
+ 0
+ Spy : Place on your opponent's battlefield (counts towards opponent's total) and draw 2 cards from your deck. Hero: Not affected by any Special Cards or abilities.
+ Won from Gremist during Gwent: Skellige Style 
+ Olgierd von Everec 
+ Unit
+ 6
+ Morale boost : Adds +1 to all units in the row (excluding itself). Agile: Can be placed in either the Close Combat or the Ranged Combat row. Cannot be moved once placed.
+ Won from Shani 
+ Roach 
+ Unit
+ 3
+ Reward for playing Gwent: The Witcher Card Game 
+ Scorch 
+ Special 
+ Scorch: Discards after playing. Kills the strongest card(s) on the battlefield.
+ 1 purchased from the Cunny of the Goose 's Innkeep 1 purchased from Jonas at the New Port Inn 1 purchased from Urialla Harbor 's Innkeep 
+ Skellige Storm 
+ Weather 
+ Reduces the Strength of all Range and Siege Units to 1.
+ 1 is won from the Tourney Grounds ' armorer 1 is won from the Tourney Grounds' barber 1 is won from Beauclair Port 's butcher 
+ Torrential Rain 
+ Weather 
+ Sets the strength of all Siege Combat cards to 1 for both players.
+ 2 are part of the base deck 1 is random rewards from gwent players 
+ Triss Merigold 
+ Hero 
+ 7
+ Hero: Not affected by any Special Cards or abilities.
+ Lambert during Gwent: Old Pals 
+ Vesemir 
+ Unit
+ 6
+ Won from Vimme Vivaldi during Gwent: Big City Players 
+ Villentretenmerth 
+ Unit
+ 7
+ Scorch - Close Combat: Destroy your enemy's strongest Close Combat unit(s) if the combined strength of all his or her Close Combat units is 10 or more.
+ Random reward from gwent players 
+ Yennefer of Vengerberg 
+ Hero 
+ 7
+ Medic: Choose one card from your discard pile and play it instantly (no Heroes or Special Cards). Hero: Not affected by any Special Cards or abilities.
+ Won from Stjepan during Gwent: Playing Innkeeps 
+ Zoltan Chivay 
+ Unit
+ 5
+ Won from Aldert Geert in White Orchard or found under the Hanged Man's Tree 
+ Gwent cards in The Witcher 3: Wild Hunt Decks 
+ Neutral Cards 
+ Combat Row 
+ Abilities 
+ Other Cards 
+ Hearts of Stone cards 
+ Hero cards 
+ Leader cards 
+ Special cards 
+ Weather cards 
+ 

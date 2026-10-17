@@ -1,0 +1,26 @@
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+
+# dependencies
+node_modules/
+
+# python caches
+__pycache__/
+*.pyc
+
+# large captured research artifacts (keep JSON references & QA scripts/reports)
+research/wiki/
+research/decks/*.html
+research/pages/
+research/qa/screenshots/
+research/qa/final/
+research/cards-wiki.json
+research/cards-wiki-merged.json
+research/cards-wiki-extra.json
+research/ability-pages.json
+research/__pycache__/
+
+# local servers / logs
+*.log

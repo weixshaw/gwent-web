@@ -1,0 +1,32 @@
+[
+ {
+  "id": "monsters",
+  "nameEn": "Monsters",
+  "abilityEn": "Keeps random Unit Card out after each round."
+ },
+ {
+  "id": "neutral",
+  "nameEn": "Neutral",
+  "abilityEn": ""
+ },
+ {
+  "id": "nilfgaard",
+  "nameEn": "Nilfgaardian Empire",
+  "abilityEn": "Wins any round that ends in a draw."
+ },
+ {
+  "id": "northern-realms",
+  "nameEn": "Northern Realms",
+  "abilityEn": "Grants an extra card upon winning a round."
+ },
+ {
+  "id": "scoiatael",
+  "nameEn": "Scoia'tael",
+  "abilityEn": "Decides who takes first turn."
+ },
+ {
+  "id": "skellige",
+  "nameEn": "Skellige",
+  "abilityEn": "2 random cards from the graveyard are placed on the battlefield at the start of the third round."
+ }
+]

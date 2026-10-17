@@ -1,0 +1,26 @@
+[
+  {
+    "Name": "Monsters",
+    "Ability": "Keeps random Unit Card out after each round."
+  },
+  {
+    "Name": "Neutral"
+  },
+  {
+    "Name": "Nilfgaardian Empire",
+    "Ability": "Wins any round that ends in a draw."
+  },
+  {
+    "Name": "Northern Realms",
+    "Ability": "Grants an extra card upon winning a round."
+  },
+  {
+    "Name": "Scoia'tael",
+    "Ability": "Decides who takes first turn."
+  },
+  {
+    "Name": "Skellige",
+    "DLC": "Blood and Wine",
+    "Ability": "2 random cards from the graveyard are placed on the battlefield at the start of the third round."
+  }
+]

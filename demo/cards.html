@@ -1,0 +1,1171 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="dark" />
+<title>昆特牌 · 卡面画廊（visualist 验收）</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230d0b09'/%3E%3Cpath d='M32 6l6 14 15 2-11 11 3 15-13-8-13 8 3-15L11 22l15-2z' fill='%23c9a227'/%3E%3C/svg%3E" />
+<link rel="stylesheet" href="../src/styles/theme.css" />
+<link rel="stylesheet" href="../src/styles/card.css" />
+<style>
+  /* ---- demo 页面外壳（只服务于验收，不进入游戏 UI） ---- */
+  html, body {
+    overflow: auto !important;
+    height: auto !important;
+    background: #070605;
+  }
+  body {
+    min-height: 100dvh;
+    padding: 0 0 80px;
+    background:
+      radial-gradient(120% 70% at 50% -12%, rgba(201, 162, 39, 0.12), transparent 58%),
+      radial-gradient(80% 50% at 8% 100%, rgba(122, 31, 31, 0.1), transparent 62%),
+      radial-gradient(70% 44% at 96% 86%, rgba(47, 111, 106, 0.09), transparent 60%),
+      linear-gradient(180deg, #0b0907 0%, #070605 46%, #050404 100%);
+    background-attachment: fixed;
+  }
+  .demo-page {
+    max-width: 1480px;
+    margin: 0 auto;
+    padding: 0 34px;
+  }
+
+  /* 页头 */
+  .demo-header {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 54px 4px 26px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(201, 162, 39, 0.28);
+  }
+  .demo-header::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(240, 208, 120, 0.6), transparent);
+  }
+  .demo-brand {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .demo-brand-mark {
+    width: 58px;
+    height: 58px;
+    flex: 0 0 auto;
+    color: var(--gold);
+    filter: drop-shadow(0 0 16px rgba(240, 208, 120, 0.35));
+  }
+  .demo-title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(26px, 3.2vw, 42px);
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    color: var(--gold-bright);
+    text-shadow: 0 0 26px rgba(240, 208, 120, 0.22);
+  }
+  .demo-subtitle {
+    margin: 7px 0 0;
+    font-family: var(--font-display);
+    font-size: 12px;
+    letter-spacing: 0.42em;
+    color: var(--paper-faint);
+    text-transform: uppercase;
+  }
+  .demo-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--paper-dim);
+  }
+  .demo-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border: 1px solid rgba(201, 162, 39, 0.32);
+    border-radius: 999px;
+    background: rgba(16, 12, 9, 0.7);
+    color: var(--paper-dim);
+    font-size: 11px;
+  }
+  .demo-chip b { color: var(--gold-bright); font-weight: 600; }
+  .demo-chip--ok { border-color: rgba(168, 224, 160, 0.4); color: #bfe6b8; }
+  .demo-chip--bad { border-color: rgba(255, 107, 90, 0.55); color: #ff9d8c; }
+
+  /* 区块 */
+  .demo-section {
+    margin: 52px 0 0;
+    scroll-margin-top: 20px;
+  }
+  .demo-section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 20px;
+    padding-bottom: 9px;
+    border-bottom: 1px solid rgba(201, 162, 39, 0.18);
+  }
+  .demo-section-head h2 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--paper);
+  }
+  .demo-section-head .en {
+    font-family: var(--font-display);
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--paper-faint);
+  }
+  .demo-section-head .count {
+    margin-left: auto;
+    font-size: 11px;
+    color: var(--paper-faint);
+    letter-spacing: 0.08em;
+  }
+  .demo-note {
+    margin: -6px 0 16px;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--paper-faint);
+  }
+  .demo-note kbd {
+    display: inline-block;
+    padding: 1px 6px;
+    border: 1px solid rgba(201, 162, 39, 0.3);
+    border-radius: 4px;
+    background: rgba(20, 15, 11, 0.9);
+    color: var(--paper-dim);
+    font-family: var(--font-ui);
+    font-size: 10px;
+  }
+
+  /* 通用网格 */
+  .demo-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .demo-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px 20px;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .demo-grid > .gt-card,
+  .demo-grid > .gt-leader {
+    margin: 0;
+  }
+  .demo-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    align-items: center;
+  }
+  .demo-cell > .gt-card,
+  .demo-cell > .gt-leader {
+    align-self: center;
+  }
+  .demo-cell-cap {
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: var(--paper-faint);
+    text-align: center;
+    line-height: 1.5;
+  }
+  .demo-cell-cap b { color: var(--gold-dim); font-weight: 600; }
+
+  /* 尺寸区 */
+  .size-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    align-items: flex-end;
+  }
+  .size-strip .demo-cell { gap: 12px; }
+
+  /* 卡背 */
+  .back-strip {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
+    gap: 22px;
+  }
+  .back-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 10px 16px;
+    border: 1px solid rgba(201, 162, 39, 0.14);
+    border-radius: 8px;
+    background: radial-gradient(100% 80% at 50% 0%, rgba(201, 162, 39, 0.05), transparent 60%),
+      rgba(10, 8, 6, 0.5);
+  }
+  .back-cell-name {
+    font-family: var(--font-display);
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    color: var(--paper-dim);
+  }
+  .back-cell-en {
+    font-size: 9px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--paper-faint);
+  }
+
+  /* 契约自检 / 状态演示面板 */
+  .demo-panels {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 22px;
+  }
+  .demo-panel {
+    position: relative;
+    padding: 20px 22px 22px;
+    border: 1px solid rgba(201, 162, 39, 0.28);
+    border-radius: 6px;
+    background: linear-gradient(180deg, rgba(26, 20, 15, 0.92), rgba(11, 9, 7, 0.96));
+    box-shadow: var(--shadow-deep), inset 0 1px 0 rgba(255, 235, 190, 0.05);
+  }
+  .demo-panel h3 {
+    margin: 0 0 14px;
+    font-family: var(--font-display);
+    font-size: 14px;
+    letter-spacing: 0.16em;
+    color: var(--gold-bright);
+    font-weight: 600;
+  }
+  .contract-list {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 7px 14px;
+    margin: 0;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+  }
+  .contract-list dt {
+    color: var(--paper-dim);
+    font-family: var(--font-ui);
+  }
+  .contract-list dd {
+    margin: 0;
+    text-align: right;
+    color: #bfe6b8;
+  }
+  .contract-list dd.bad { color: #ff9d8c; }
+  .contract-list dd.warn { color: var(--gold-bright); }
+
+  .state-stage {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    align-items: center;
+  }
+  .state-stage .demo-cell { gap: 8px; }
+  .demo-btn-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 16px;
+  }
+  .demo-btn {
+    padding: 8px 15px;
+    border: 1px solid rgba(201, 162, 39, 0.42);
+    border-radius: 3px;
+    background: linear-gradient(180deg, rgba(40, 31, 18, 0.9), rgba(17, 13, 9, 0.95));
+    color: var(--paper-dim);
+    font-family: var(--font-ui);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: border-color 140ms, color 140ms, box-shadow 140ms;
+  }
+  .demo-btn:hover {
+    border-color: rgba(240, 208, 120, 0.8);
+    color: var(--gold-bright);
+    box-shadow: 0 0 14px rgba(240, 208, 120, 0.16);
+  }
+  .demo-btn:active { transform: translateY(1px); }
+
+  /* 行图标 */
+  .row-icon-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .row-icon-cell {
+    width: 96px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 8px 12px;
+    border: 1px solid rgba(201, 162, 39, 0.16);
+    border-radius: 6px;
+    background: rgba(12, 9, 7, 0.6);
+    color: var(--gold-bright);
+  }
+  .row-icon-cell .gt-icon {
+    width: 34px;
+    height: 34px;
+    filter: drop-shadow(0 0 8px rgba(240, 208, 120, 0.25));
+  }
+  .row-icon-cell span {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--paper-faint);
+  }
+
+  /* 阵营分区 */
+  .faction-block {
+    margin: 46px 0 0;
+  }
+  .faction-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    border-left: 2px solid var(--faction-color, var(--gold));
+    border-radius: 0 4px 4px 0;
+    background: linear-gradient(90deg, rgba(201, 162, 39, 0.07), transparent 46%);
+  }
+  .faction-sigil {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 auto;
+    color: var(--faction-color, var(--gold));
+    filter: drop-shadow(0 0 8px var(--faction-glow, rgba(240, 208, 120, 0.4)));
+  }
+  .faction-name {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 19px;
+    letter-spacing: 0.18em;
+    color: var(--paper);
+  }
+  .faction-name-en {
+    font-family: var(--font-display);
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--paper-faint);
+  }
+  .faction-count {
+    margin-left: auto;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--paper-faint);
+  }
+  .faction-feature {
+    display: flex;
+    align-items: flex-end;
+    gap: 22px;
+    flex-wrap: wrap;
+    margin-bottom: 22px;
+  }
+  .faction-feature-cap {
+    max-width: 260px;
+    font-size: 12px;
+    line-height: 1.7;
+    color: var(--paper-faint);
+  }
+  .faction-feature-cap b {
+    display: block;
+    margin-bottom: 2px;
+    font-family: var(--font-display);
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    color: var(--paper-dim);
+  }
+
+  /* 底部状态栏 */
+  .demo-console {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 15px;
+    border: 1px solid rgba(201, 162, 39, 0.34);
+    border-radius: 999px;
+    background: rgba(8, 6, 5, 0.92);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: var(--paper-faint);
+    backdrop-filter: blur(2px);
+  }
+  .demo-console .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #6fbf5f;
+    box-shadow: 0 0 8px rgba(111, 191, 95, 0.8);
+  }
+  .demo-console.has-error .dot {
+    background: #ff6b5a;
+    box-shadow: 0 0 8px rgba(255, 107, 90, 0.8);
+  }
+  .demo-console b { color: var(--paper-dim); font-weight: 600; }
+
+  .demo-footer {
+    margin-top: 70px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(201, 162, 39, 0.18);
+    text-align: center;
+    font-family: var(--font-display);
+    font-size: 10px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--paper-faint);
+  }
+
+  .demo-error-list {
+    margin: 12px 0 0;
+    padding: 10px 12px;
+    max-height: 120px;
+    overflow: auto;
+    border: 1px solid rgba(255, 107, 90, 0.3);
+    border-radius: 4px;
+    background: rgba(30, 8, 7, 0.5);
+    font-family: ui-monospace, monospace;
+    font-size: 10px;
+    line-height: 1.5;
+    color: #ffb0a3;
+    white-space: pre-wrap;
+  }
+
+  @media (max-width: 760px) {
+    .demo-page { padding: 0 16px; }
+    .demo-header { padding-top: 34px; }
+    .demo-grid { gap: 16px 10px; }
+  }
+</style>
+</head>
+<body>
+<div class="demo-page">
+  <header class="demo-header">
+    <div class="demo-brand">
+      <svg class="demo-brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+        <path d="M32 5l5.4 12.6 13.6 1.8-9.9 9.7 2.7 13.5L32 35.8l-12 6.8 2.7-13.5-9.9-9.7 13.6-1.8z" fill="none" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="32" cy="32" r="26" fill="none" stroke="currentColor" stroke-width=".7" opacity=".45" stroke-dasharray="1.5 5"/>
+        <circle cx="32" cy="32" r="6" fill="currentColor" opacity=".85"/>
+      </svg>
+      <div>
+        <h1 class="demo-title">卡面画廊</h1>
+        <p class="demo-subtitle">GWENT · Gilded Grimoire Card Gallery</p>
+      </div>
+    </div>
+    <div class="demo-meta" id="demo-meta">
+      <span class="demo-chip">数据源 <b id="data-source">载入中…</b></span>
+      <span class="demo-chip">卡牌 <b id="stat-cards">0</b></span>
+      <span class="demo-chip">领袖 <b id="stat-leaders">0</b></span>
+      <span class="demo-chip">渲染 <b id="stat-perf">—</b></span>
+      <span class="demo-chip demo-chip--ok" id="stat-console">console 错误 0</span>
+    </div>
+  </header>
+
+  <main id="demo-root">
+    <section class="demo-section" id="sec-showcase">
+      <div class="demo-section-head">
+        <h2>尺寸与结构</h2><span class="en">Sizes · Structure</span>
+        <span class="count">xxs / xs / sm / md / lg</span>
+      </div>
+      <p class="demo-note">全部尺寸由 <kbd>--card-w</kbd> / <kbd>--card-h</kbd> 派生；插画、名称条、能力摘要、力量宝石与行图标为同一套 DOM 结构。</p>
+      <div class="size-strip" id="size-strip"></div>
+    </section>
+
+    <section class="demo-section" id="sec-contract">
+      <div class="demo-section-head">
+        <h2>契约自检</h2><span class="en">Contract · API</span>
+        <span class="count">docs/ARCHITECTURE.md §6</span>
+      </div>
+      <div class="demo-panels">
+        <div class="demo-panel">
+          <h3>导出与行为</h3>
+          <dl class="contract-list" id="contract-list"></dl>
+        </div>
+        <div class="demo-panel">
+          <h3>交互演示</h3>
+          <div class="state-stage" id="state-stage"></div>
+          <div class="demo-btn-row">
+            <button class="demo-btn" type="button" id="btn-power-up">战力 +2</button>
+            <button class="demo-btn" type="button" id="btn-power-down">战力 -3</button>
+            <button class="demo-btn" type="button" id="btn-state-cycle">切换状态</button>
+            <button class="demo-btn" type="button" id="btn-reset">复位</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="demo-section" id="sec-rows">
+      <div class="demo-section-head">
+        <h2>行标记与天气符文</h2><span class="en">Row · Weather Icons</span>
+        <span class="count">renderRowIcon()</span>
+      </div>
+      <div class="row-icon-strip" id="row-icon-strip"></div>
+    </section>
+
+    <section class="demo-section" id="sec-backs">
+      <div class="demo-section-head">
+        <h2>阵营牌背</h2><span class="en">Faction Card Backs</span>
+        <span class="count">createCardBack()</span>
+      </div>
+      <div class="back-strip" id="back-strip"></div>
+    </section>
+
+    <section class="demo-section" id="sec-leaders">
+      <div class="demo-section-head">
+        <h2>领袖牌</h2><span class="en">Leaders</span>
+        <span class="count" id="leader-count">0 位</span>
+      </div>
+      <p class="demo-note">可用态带金边呼吸光；已使用 / 已取消态会压暗并显示状态缎带。侧栏迷你版使用 <kbd>xs</kbd> 尺寸。</p>
+      <div class="demo-row" id="leader-showcase" style="margin-bottom:26px"></div>
+      <div class="demo-grid" id="leader-grid"></div>
+    </section>
+
+    <section class="demo-section" id="sec-factions">
+      <div class="demo-section-head">
+        <h2>全部卡牌</h2><span class="en">Full Card Pool · By Faction</span>
+        <span class="count" id="faction-count-sum">—</span>
+      </div>
+      <p class="demo-note">按阵营分组，<b>md</b> 尺寸全量渲染（163 张，含 4 张衍生 token 与 5 张天气牌）。插画由 <kbd>card.id</kbd> + <kbd>art.seed</kbd> 确定性生成：同一张牌永远一致，不同牌构图不同。</p>
+      <div id="faction-sections"></div>
+    </section>
+  </main>
+
+  <footer class="demo-footer">Visualist · Procedural SVG · No external assets</footer>
+</div>
+
+<div class="demo-console" id="demo-console" role="status">
+  <span class="dot"></span>
+  <span>错误 <b id="console-err-count">0</b> · 卡牌 <b id="console-card-count">0</b> · 耗时 <b id="console-time">—</b></span>
+</div>
+
+<script type="module">
+/* ==========================================================================
+   卡面画廊 demo —— 同时是 visualist 的验收页
+   - 优先接入 src/data/cards.js（全量 163 张 + 22 领袖）
+   - 数据层缺失时回退 research/reference/*.json
+   - 再失败则使用内置示例卡（保证页面永远可用）
+   ========================================================================== */
+
+const errors = [];
+function noteError(message) {
+  errors.push(String(message));
+  const badge = document.getElementById("stat-console");
+  const bar = document.getElementById("demo-console");
+  const countEl = document.getElementById("console-err-count");
+  if (badge) {
+    badge.textContent = `console 错误 ${errors.length}`;
+    badge.classList.remove("demo-chip--ok");
+    badge.classList.add("demo-chip--bad");
+  }
+  if (bar) bar.classList.add("has-error");
+  if (countEl) countEl.textContent = String(errors.length);
+}
+window.addEventListener("error", (e) => noteError(e.message || "window error"));
+window.addEventListener("unhandledrejection", (e) => noteError(e.reason?.message || String(e.reason)));
+const originalError = console.error.bind(console);
+console.error = (...args) => {
+  noteError(args.map((a) => (a && a.stack) || String(a)).join(" "));
+  originalError(...args);
+};
+
+/* ------------------------------------------------------------- 内置示例 */
+const SAMPLE_CARDS = {
+  "geralt-of-rivia": {
+    id: "geralt-of-rivia", nameZh: "利维亚的杰洛特", nameEn: "Geralt of Rivia",
+    faction: "neutral", type: "unit", hero: true, rows: ["close"], strength: 15, copies: 1,
+    deckable: true, abilities: [{ id: "hero" }, { id: "muster", group: "Roach" }],
+    abilityZh: "英雄：不受任何特殊牌或能力影响。\n集结：从牌堆找出「萝卜」并立即打出。",
+    flavorZh: "恶就是恶。无论大小、无论轻重。",
+    art: { motif: "hero", palette: "neutral", seed: 42 },
+  },
+  "blue-stripes-commando": {
+    id: "blue-stripes-commando", nameZh: "蓝衣铁卫", nameEn: "Blue Stripes Commando",
+    faction: "northern-realms", type: "unit", hero: false, rows: ["close"], strength: 4, copies: 3,
+    deckable: true, abilities: [{ id: "bond" }],
+    abilityZh: "紧缚：将这张牌放在同名牌旁边，使双方战力翻倍。",
+    flavorZh: "为了泰莫利亚！", art: { motif: "warrior", palette: "northern-realms", seed: 7 },
+  },
+  "arachas": {
+    id: "arachas", nameZh: "蟹蜘蛛", nameEn: "Arachas",
+    faction: "monsters", type: "unit", hero: false, rows: ["close"], strength: 4, copies: 3,
+    deckable: true, abilities: [{ id: "muster" }],
+    abilityZh: "集结：从牌堆找出所有「蟹蜘蛛」卡牌并立即打出。",
+    flavorZh: "丑，是大自然在说：离我远点。", art: { motif: "monster", palette: "monsters", seed: 11 },
+  },
+  "yennefer-of-vengerberg": {
+    id: "yennefer-of-vengerberg", nameZh: "温格堡的叶奈法", nameEn: "Yennefer of Vengerberg",
+    faction: "neutral", type: "unit", hero: true, rows: ["ranged"], strength: 7, copies: 1,
+    deckable: true, abilities: [{ id: "hero" }, { id: "medic" }],
+    abilityZh: "英雄：不受任何特殊牌或能力影响。\n医师：从弃牌堆选择 1 张单位牌立即打出。",
+    flavorZh: "我能让你看到你希望看到的一切。",
+    art: { motif: "hero", palette: "neutral", seed: 23 },
+  },
+  "imlerith": {
+    id: "imlerith", nameZh: "伊勒瑞斯", nameEn: "Imlerith",
+    faction: "monsters", type: "unit", hero: true, rows: ["close"], strength: 10, copies: 1,
+    deckable: true, abilities: [{ id: "hero" }],
+    abilityZh: "英雄：不受任何特殊牌或能力影响。",
+    flavorZh: "你很强。但还不够强。", art: { motif: "hero", palette: "monsters", seed: 5 },
+  },
+  "scorch": {
+    id: "scorch", nameZh: "灼烧", nameEn: "Scorch",
+    faction: "neutral", type: "special", hero: false, rows: [], strength: null, copies: 3,
+    deckable: true, abilities: [{ id: "scorch", mode: "any" }],
+    abilityZh: "灼烧：摧毁场上最强的单位牌。",
+    flavorZh: "火会净化一切。", art: { motif: "spell", palette: "neutral", seed: 3 },
+  },
+};
+
+const SAMPLE_LEADERS = {
+  "eredin-king-of-the-wild-hunt": {
+    id: "eredin-king-of-the-wild-hunt", nameZh: "艾瑞丁：狂猎之王", nameEn: "Eredin: King of the Wild Hunt",
+    faction: "monsters", abilityZh: "从牌堆选择任意一张天气牌并立即打出。",
+    abilityEn: "Pick any weather card from your deck and play it instantly.",
+    art: { motif: "leader", palette: "monsters", seed: 77 },
+  },
+};
+
+/* ------------------------------------------------------------- 数据载入 */
+async function loadData() {
+  try {
+    const [cardsMod, leadersMod, factionsMod, dbMod] = await Promise.all([
+      import("../src/data/cards.js"),
+      import("../src/data/leaders.js"),
+      import("../src/data/factions.js"),
+      import("../src/data/db.js"),
+    ]);
+    if (cardsMod && cardsMod.CARDS) {
+      return {
+        source: "src/data/cards.js（全量）",
+        CARDS: cardsMod.CARDS,
+        CARD_LIST: cardsMod.CARD_LIST || Object.values(cardsMod.CARDS),
+        LEADERS: leadersMod?.LEADERS || {},
+        FACTIONS: factionsMod?.FACTIONS || {},
+        getCard: dbMod?.getCard || ((id) => cardsMod.CARDS[id]),
+        getLeader: dbMod?.getLeader || ((id) => leadersMod?.LEADERS?.[id]),
+        getFaction: dbMod?.getFaction || ((id) => factionsMod?.FACTIONS?.[id]),
+      };
+    }
+    console.warn("[demo] src/data 未导出 CARDS，尝试回退参考数据");
+  } catch (err) {
+    console.warn("[demo] src/data 暂不可用，回退研究参考数据：", err?.message || err);
+  }
+  try {
+    const [cardsRes, leadersRes, factionsRes] = await Promise.all([
+      fetch("../research/reference/cards.final.json"),
+      fetch("../research/reference/leaders.final.json"),
+      fetch("../research/reference/factions.final.json"),
+    ]);
+    if (!cardsRes.ok) throw new Error(`cards.final.json HTTP ${cardsRes.status}`);
+    const cardsArr = await cardsRes.json();
+    const leadersArr = leadersRes.ok ? await leadersRes.json() : [];
+    const factionsArr = factionsRes.ok ? await factionsRes.json() : [];
+    const CARDS = {};
+    for (const c of cardsArr) {
+      CARDS[c.id] = {
+        ...c,
+        nameZh: c.nameZh || c.nameEn || c.id,
+        abilityZh: c.abilityTextZh || c.abilityTextEn || "",
+        abilityEn: c.abilityTextEn || "",
+        flavorZh: c.quoteZh || c.quoteEn || "",
+        flavorEn: c.quoteEn || "",
+        art: c.art || { palette: c.faction, seed: 0 },
+      };
+    }
+    const LEADERS = {};
+    for (const l of leadersArr) {
+      LEADERS[l.id] = {
+        ...l,
+        nameZh: l.nameZh || l.nameEn || l.id,
+        abilityZh: l.abilityTextZh || l.abilityTextEn || "",
+        flavorZh: l.quoteZh || l.quoteEn || "",
+        art: l.art || { motif: "leader", palette: l.faction, seed: 0 },
+      };
+    }
+    const FACTIONS = {};
+    for (const f of factionsArr) FACTIONS[f.id] = f;
+    return {
+      source: "research/reference（回退）",
+      CARDS,
+      CARD_LIST: Object.values(CARDS),
+      LEADERS,
+      FACTIONS,
+      getCard: (id) => CARDS[id],
+      getLeader: (id) => LEADERS[id],
+      getFaction: (id) => FACTIONS[id],
+    };
+  } catch (err) {
+    console.warn("[demo] 参考数据也不可用，使用内置示例卡：", err?.message || err);
+  }
+  const CARDS = { ...SAMPLE_CARDS };
+  const LEADERS = { ...SAMPLE_LEADERS };
+  return {
+    source: "内置示例卡（fallback）",
+    CARDS,
+    CARD_LIST: Object.values(CARDS),
+    LEADERS,
+    FACTIONS: {},
+    getCard: (id) => CARDS[id],
+    getLeader: (id) => LEADERS[id],
+    getFaction: () => undefined,
+  };
+}
+
+/* ------------------------------------------------------------- 动态导入渲染器 */
+async function loadRenderer() {
+  try {
+    return await import("../src/ui/card-render.js");
+  } catch (err) {
+    noteError(`card-render.js 载入失败：${err?.message || err}`);
+    return await import("../src/ui/card-fallback.js");
+  }
+}
+
+const FACTION_ORDER = ["northern-realms", "nilfgaard", "scoiatael", "monsters", "skellige", "neutral"];
+const FACTION_META = {
+  "northern-realms": { name: "北方领域", en: "Northern Realms", color: "var(--nr)", glow: "rgba(156,196,228,.5)" },
+  nilfgaard: { name: "尼弗迦德帝国", en: "Nilfgaardian Empire", color: "var(--ng)", glow: "rgba(240,208,120,.5)" },
+  scoiatael: { name: "松鼠党", en: "Scoia'tael", color: "var(--st)", glow: "rgba(168,224,160,.45)" },
+  monsters: { name: "怪物", en: "Monsters", color: "var(--mo)", glow: "rgba(255,107,90,.45)" },
+  skellige: { name: "史凯利格", en: "Skellige", color: "var(--sk)", glow: "rgba(154,223,214,.45)" },
+  neutral: { name: "中立", en: "Neutral", color: "var(--neutral)", glow: "rgba(217,203,179,.45)" },
+};
+
+/* ------------------------------------------------------------- 工具 */
+const el = (tag, cls, html) => {
+  const node = document.createElement(tag);
+  if (cls) node.className = cls;
+  if (html != null) node.innerHTML = html;
+  return node;
+};
+
+function sigilSvg(renderSigil, factionId, size = 34) {
+  try {
+    const inner = renderSigil(factionId, {
+      x: 50, y: 50, size: 92, rotation: 0, opacity: 0.95, strokeWidth: 1.6,
+    });
+    return `<svg class="faction-sigil" viewBox="0 0 100 100" aria-hidden="true">${inner}</svg>`;
+  } catch (e) {
+    return "";
+  }
+}
+
+/* ------------------------------------------------------------- 主流程 */
+async function main() {
+  const t0 = performance.now();
+  const [data, renderer, artMod] = await Promise.all([loadData(), loadRenderer(), import("../src/ui/art.js")]);
+
+  renderer.initCardRenderer({
+    getCard: data.getCard,
+    getLeader: data.getLeader,
+    getFaction: data.getFaction,
+  });
+
+  document.getElementById("data-source").textContent = data.source;
+  document.getElementById("stat-cards").textContent = String(data.CARD_LIST.length);
+  document.getElementById("stat-leaders").textContent = String(Object.keys(data.LEADERS).length);
+
+  const cards = data.CARD_LIST;
+  const byId = (id) => data.getCard(id) || data.CARDS[id];
+  const makeCard = (card, opts = {}) =>
+    renderer.createCardEl(card, { interactive: true, deferArt: true, ...opts });
+  const allCardEls = [];
+
+  /* ---------- 1. 尺寸与结构 ---------- */
+  const sizeStrip = document.getElementById("size-strip");
+  const demoHero = byId("geralt-of-rivia") || cards.find((c) => c.hero) || cards[0];
+  const demoUnit = byId("blue-stripes-commando") || cards.find((c) => c.type === "unit" && !c.hero) || cards[0];
+  const demoSpecial = byId("scorch") || cards.find((c) => c.type === "special") || cards[0];
+  const demoWeather = byId("biting-frost") || cards.find((c) => c.type === "weather") || cards[0];
+  const sizeSamples = [
+    ["xxs", demoUnit, "牌堆 / 计数"],
+    ["xs", demoHero, "领袖侧栏"],
+    ["sm", demoUnit, "战场行"],
+    ["md", demoHero, "手牌"],
+    ["lg", demoUnit, "放大展示"],
+  ];
+  for (const [size, card, cap] of sizeSamples) {
+    if (!card) continue;
+    const cell = el("div", "demo-cell");
+    const node = makeCard(card, { size });
+    allCardEls.push(node);
+    cell.appendChild(node);
+    cell.appendChild(el("div", "demo-cell-cap", `<b>${size}</b> · ${cap}`));
+    sizeStrip.appendChild(cell);
+  }
+  const extras = [
+    [demoSpecial, "特殊牌", "md"],
+    [demoWeather, "天气牌", "md"],
+    [null, "盖放牌背", "md"],
+  ];
+  for (const [card, cap, size] of extras) {
+    const cell = el("div", "demo-cell");
+    const node = card
+      ? makeCard(card, { size })
+      : renderer.createCardBack(demoHero?.faction || "neutral", size);
+    if (card) allCardEls.push(node);
+    cell.appendChild(node);
+    cell.appendChild(el("div", "demo-cell-cap", cap));
+    sizeStrip.appendChild(cell);
+  }
+
+  /* ---------- 2. 契约自检 ---------- */
+  const contractEl = document.getElementById("contract-list");
+  const contractFns = [
+    "initCardRenderer", "createCardEl", "setCardPower", "setCardState",
+    "createCardBack", "createLeaderCardEl", "renderRowIcon",
+    "getCardArtDataUrl", "preloadArt",
+  ];
+  let contractBad = 0;
+  for (const fn of contractFns) {
+    const ok = typeof renderer[fn] === "function";
+    if (!ok) contractBad += 1;
+    contractEl.appendChild(el("dt", null, `export function ${fn}()`));
+    contractEl.appendChild(el("dd", ok ? null : "bad", ok ? "✓" : "missing"));
+  }
+  const sampleCard = demoHero || cards[0];
+  let dataUrlOk = false;
+  try {
+    const url = renderer.getCardArtDataUrl(sampleCard);
+    dataUrlOk = typeof url === "string" && url.startsWith("data:image/svg+xml") && url.length > 1500;
+  } catch (e) {
+    noteError(`getCardArtDataUrl 失败：${e.message}`);
+  }
+  contractEl.appendChild(el("dt", null, "getCardArtDataUrl(card)"));
+  contractEl.appendChild(el("dd", dataUrlOk ? null : "bad", dataUrlOk ? "data:image/svg+xml ✓" : "invalid"));
+  if (!dataUrlOk) contractBad += 1;
+
+  const rowIconsOk = ["close", "ranged", "siege", "agile", "weather"].every((row) => {
+    try {
+      return String(renderer.renderRowIcon(row)).includes("<svg");
+    } catch (e) {
+      return false;
+    }
+  });
+  contractEl.appendChild(el("dt", null, "renderRowIcon(close|ranged|siege|agile|weather)"));
+  contractEl.appendChild(el("dd", rowIconsOk ? null : "bad", rowIconsOk ? "5/5 SVG ✓" : "failed"));
+  if (!rowIconsOk) contractBad += 1;
+
+  const backOk = ["northern-realms", "nilfgaard", "scoiatael", "monsters", "skellige", "neutral"].every(
+    (f) => {
+      try {
+        const b = renderer.createCardBack(f, "md");
+        return b.querySelector("svg") !== null;
+      } catch (e) {
+        return false;
+      }
+    }
+  );
+  contractEl.appendChild(el("dt", null, "createCardBack(六阵营)"));
+  contractEl.appendChild(el("dd", backOk ? null : "bad", backOk ? "6/6 ✓" : "failed"));
+  if (!backOk) contractBad += 1;
+
+  let leaderOk = false;
+  try {
+    const firstLeader = Object.values(data.LEADERS)[0];
+    if (firstLeader) {
+      const leaderEl = renderer.createLeaderCardEl(firstLeader, { size: "sm" });
+      leaderOk = !!leaderEl && leaderEl.dataset.leaderId === firstLeader.id;
+    }
+  } catch (e) {
+    noteError(`createLeaderCardEl 失败：${e.message}`);
+  }
+  contractEl.appendChild(el("dt", null, "createLeaderCardEl(leader)"));
+  contractEl.appendChild(el("dd", leaderOk ? null : "bad", leaderOk ? "✓" : "failed"));
+  if (!leaderOk) contractBad += 1;
+
+  contractEl.appendChild(el("dt", null, "卡片 class 契约"));
+  contractEl.appendChild(el("dd", null, "gt-card / --{faction} / --{size} ✓"));
+  const apiReady = contractBad === 0;
+
+  /* ---------- 3. 交互演示 ---------- */
+  const stateStage = document.getElementById("state-stage");
+  const stateCard = makeCard(demoUnit || cards[0], { size: "md" });
+  allCardEls.push(stateCard);
+  stateStage.appendChild(stateCard);
+  const stateKinds = ["selected", "target", "disabled", "just-played"];
+  const stateLabels = { selected: "选中", target: "目标", disabled: "不可用", "just-played": "刚打出" };
+  const stateCells = [];
+  for (const kind of stateKinds) {
+    const preview = makeCard(byId("redanian-foot-soldier") || demoUnit || cards[0], { size: "sm" });
+    renderer.setCardState(preview, kind);
+    allCardEls.push(preview);
+    const cell = el("div", "demo-cell");
+    cell.appendChild(preview);
+    cell.appendChild(el("div", "demo-cell-cap", stateLabels[kind]));
+    stateStage.appendChild(cell);
+    stateCells.push({ kind, cell });
+  }
+  const miniBack = renderer.createCardBack(demoUnit?.faction || "neutral", "xs");
+  const backCell = el("div", "demo-cell");
+  backCell.appendChild(miniBack);
+  backCell.appendChild(el("div", "demo-cell-cap", "盖放 · xs"));
+  stateStage.appendChild(backCell);
+
+  let powerState = Number(stateCard.querySelector(".gt-card__power-value")?.textContent || 0) || 0;
+  const cycleStates = ["selected", "target", "disabled", "just-played", "normal"];
+  let cycleIndex = -1;
+  document.getElementById("btn-power-up").addEventListener("click", () => {
+    powerState += 2;
+    renderer.setCardPower(stateCard, powerState, { delta: 2, animate: true });
+  });
+  document.getElementById("btn-power-down").addEventListener("click", () => {
+    powerState -= 3;
+    renderer.setCardPower(stateCard, powerState, { delta: -3, animate: true });
+  });
+  document.getElementById("btn-state-cycle").addEventListener("click", () => {
+    cycleIndex = (cycleIndex + 1) % cycleStates.length;
+    renderer.setCardState(stateCard, cycleStates[cycleIndex]);
+  });
+  document.getElementById("btn-reset").addEventListener("click", () => {
+    powerState = Number(demoUnit?.strength || 0);
+    renderer.setCardPower(stateCard, powerState, { animate: false });
+    renderer.setCardState(stateCard, "normal");
+    cycleIndex = -1;
+  });
+
+  /* ---------- 4. 行图标 ---------- */
+  const rowStrip = document.getElementById("row-icon-strip");
+  const rows = [
+    ["close", "近战行"], ["ranged", "远程行"], ["siege", "攻城行"], ["agile", "灵巧"],
+    ["weather", "天气"], ["frost", "冰霜"], ["fog", "浓雾"], ["rain", "暴雨"],
+    ["storm", "风暴"], ["clear", "天晴"], ["horn", "号角"], ["mardroeme", "曼陀罗"],
+  ];
+  for (const [row, label] of rows) {
+    const cell = el("div", "row-icon-cell");
+    cell.innerHTML = renderer.renderRowIcon(row);
+    cell.appendChild(el("span", null, label));
+    rowStrip.appendChild(cell);
+  }
+
+  /* ---------- 5. 卡背 ---------- */
+  const backStrip = document.getElementById("back-strip");
+  for (const factionId of FACTION_ORDER) {
+    const meta = FACTION_META[factionId];
+    const cell = el("div", "back-cell");
+    cell.style.setProperty("--faction-color", meta.color);
+    cell.appendChild(renderer.createCardBack(factionId, "md"));
+    cell.appendChild(el("div", "back-cell-name", meta.name));
+    cell.appendChild(el("div", "back-cell-en", meta.en));
+    backStrip.appendChild(cell);
+  }
+
+  /* ---------- 6. 领袖牌 ---------- */
+  const leaderShowcase = document.getElementById("leader-showcase");
+  const leaderGrid = document.getElementById("leader-grid");
+  const leaders = Object.values(data.LEADERS);
+  document.getElementById("leader-count").textContent = `${leaders.length} 位`;
+  const leaderStates = [
+    { label: "可用", opts: { available: true } },
+    { label: "已使用", opts: { used: true } },
+    { label: "已取消", opts: { canceled: true } },
+  ];
+  const featured = leaders.slice(0, 3);
+  featured.forEach((leader, index) => {
+    const cell = el("div", "demo-cell");
+    const node = renderer.createLeaderCardEl(leader, {
+      size: "md",
+      interactive: true,
+      ...(leaderStates[index] ? leaderStates[index].opts : {}),
+    });
+    cell.appendChild(node);
+    cell.appendChild(el("div", "demo-cell-cap", `${leader.nameZh || leader.nameEn} · ${leaderStates[index]?.label || "可用"}`));
+    leaderShowcase.appendChild(cell);
+  });
+  const miniLeader = leaders[3] || leaders[0];
+  if (miniLeader) {
+    const cell = el("div", "demo-cell");
+    cell.appendChild(renderer.createLeaderCardEl(miniLeader, { size: "xs", interactive: true }));
+    cell.appendChild(el("div", "demo-cell-cap", "侧栏迷你版 · xs"));
+    leaderShowcase.appendChild(cell);
+  }
+  for (const leader of leaders) {
+    leaderGrid.appendChild(renderer.createLeaderCardEl(leader, { size: "md", interactive: true }));
+  }
+
+  /* ---------- 7. 全量卡牌（按阵营） ---------- */
+  const factionWrap = document.getElementById("faction-sections");
+  const groups = {};
+  for (const card of cards) {
+    const faction = FACTION_ORDER.includes(card.faction) ? card.faction : "neutral";
+    (groups[faction] ||= []).push(card);
+  }
+  let renderedCardCount = 0;
+  for (const factionId of FACTION_ORDER) {
+    const list = groups[factionId] || [];
+    if (!list.length) continue;
+    const meta = FACTION_META[factionId];
+    const block = el("section", "faction-block");
+    block.style.setProperty("--faction-color", meta.color);
+    block.style.setProperty("--faction-glow", meta.glow);
+    block.dataset.faction = factionId;
+
+    const head = el("div", "faction-head");
+    head.innerHTML = `${sigilSvg(artMod.renderSigil, factionId)}
+      <div>
+        <h3 class="faction-name">${meta.name}</h3>
+        <div class="faction-name-en">${meta.en}</div>
+      </div>
+      <div class="faction-count">${list.length} 张</div>`;
+    block.appendChild(head);
+
+    const featureCard =
+      list.find((c) => c.hero) ||
+      list.find((c) => c.type === "unit" && c.strength >= 10) ||
+      list[0];
+    if (featureCard) {
+      const feature = el("div", "faction-feature");
+      const node = makeCard(featureCard, { size: "lg" });
+      allCardEls.push(node);
+      feature.appendChild(node);
+      const cap = el("div", "faction-feature-cap");
+      cap.innerHTML = `<b>${escapeText(featureCard.nameZh || featureCard.nameEn)}</b>${
+        escapeText(featureCard.nameEn || "")
+      }${featureCard.abilityZh ? `<br />${escapeText(String(featureCard.abilityZh).split("\n")[0])}` : ""}`;
+      feature.appendChild(cap);
+      block.appendChild(feature);
+    }
+
+    const grid = el("div", "demo-grid");
+    for (const card of list) {
+      const node = makeCard(card, { size: "md" });
+      allCardEls.push(node);
+      grid.appendChild(node);
+      renderedCardCount += 1;
+    }
+    block.appendChild(grid);
+    factionWrap.appendChild(block);
+  }
+  document.getElementById("faction-count-sum").textContent = `${renderedCardCount} 张`;
+  document.getElementById("console-card-count").textContent = String(renderedCardCount);
+
+  /* ---------- 8. 延迟挂载插画（性能） ---------- */
+  const mountQueue = new Set(allCardEls);
+  const mountOne = (node) => {
+    if (!mountQueue.has(node)) return;
+    mountQueue.delete(node);
+    try {
+      if (typeof node.__gtMountArt === "function") node.__gtMountArt();
+      else if (node.dataset.artDeferred === "1") renderer.mountCardArt?.(node);
+    } catch (err) {
+      noteError(`挂载插画失败（${node.dataset.cardId || "?"}）：${err?.message || err}`);
+    }
+  };
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            mountOne(entry.target);
+            io.unobserve(entry.target);
+          }
+        }
+      },
+      { rootMargin: "700px 0px 700px 0px", threshold: 0.01 }
+    );
+    for (const node of allCardEls) io.observe(node);
+  } else {
+    for (const node of allCardEls) mountOne(node);
+  }
+
+  // 首屏立即挂载（不必等 IO 回调）
+  requestAnimationFrame(() => {
+    const viewportBottom = window.innerHeight + 900;
+    for (const node of Array.from(mountQueue)) {
+      const rect = node.getBoundingClientRect();
+      if (rect.top < viewportBottom) mountOne(node);
+    }
+  });
+
+  // 空闲时按小批次把剩余插画全部生成（30 张/批，避免单帧卡顿）；
+  // 这样即使不滚动，页面最终也会完整渲染（QA 全页截图无需逐屏滚动）。
+  const mountAll = () => {
+    for (const node of Array.from(mountQueue)) mountOne(node);
+  };
+  const idle = window.requestIdleCallback || ((cb) => setTimeout(() => cb({ timeRemaining: () => 8 }), 60));
+  const pumpIdle = () => {
+    if (!mountQueue.size) return;
+    let budget = 26;
+    for (const node of Array.from(mountQueue)) {
+      mountOne(node);
+      budget -= 1;
+      if (budget <= 0) break;
+    }
+    if (mountQueue.size) idle(pumpIdle, { timeout: 400 });
+  };
+  idle(pumpIdle, { timeout: 600 });
+
+  // QA/自动化钩子
+  const renderTime = Math.round(performance.now() - t0);
+  document.getElementById("stat-perf").textContent = `${renderTime} ms`;
+  document.getElementById("console-time").textContent = `${renderTime} ms`;
+  window.__KT_DEMO = {
+    ready: true,
+    source: data.source,
+    cards: data.CARD_LIST.length,
+    leaders: leaders.length,
+    renderedCardCount,
+    errors,
+    contractBad,
+    apiReady,
+    renderTime,
+    needsScrollForFullRender: false,
+    mountAll,
+    data,
+    renderer,
+    mountQueue,
+    get pendingArt() {
+      return mountQueue.size;
+    },
+  };
+  if (!apiReady) noteError(`契约自检失败 ${contractBad} 项`);
+  console.info(
+    `[demo] 卡面画廊就绪：${data.CARD_LIST.length} 张卡 / ${leaders.length} 领袖 / ${renderTime}ms / 契约 ${apiReady ? "OK" : "FAIL"}`
+  );
+}
+
+function escapeText(value) {
+  return String(value == null ? "" : value).replace(/[&<>"']/g, (c) => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+  }[c]));
+}
+
+main().catch((err) => {
+  noteError(err?.stack || String(err));
+  const root = document.getElementById("demo-root");
+  if (root) {
+    root.innerHTML = `<div class="demo-panel" style="margin-top:40px;color:#ffb0a3">画廊初始化失败：${escapeText(
+      err?.message || err
+    )}</div>`;
+  }
+});
+</script>
+</body>
+</html>

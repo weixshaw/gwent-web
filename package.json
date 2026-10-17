@@ -1,0 +1,17 @@
+{
+  "name": "gwent-classic-web",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Web-based Gwent (The Witcher 3) with faithful rules, full card pool, upgraded visuals and effects.",
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test 'tests/*.test.mjs'",
+    "check": "node --test 'tests/*.test.mjs'",
+    "e2e": "node scripts/e2e.mjs --mode=full",
+    "e2e:smoke": "node scripts/e2e.mjs --mode=smoke"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

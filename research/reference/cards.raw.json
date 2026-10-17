@@ -1,0 +1,3634 @@
+[
+ {
+  "slug": "albrich",
+  "nameEn": "Albrich",
+  "faction": "nilfgaard",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 2,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Purchase from Crow's Perch's merchant or Devil's Pit's merchant",
+  "notesEn": "",
+  "quoteEn": "\"A fireball? Of course. Whatever Your Imperial Majesty wishes.\""
+ },
+ {
+  "slug": "arachas",
+  "nameEn": "Arachas",
+  "faction": "monsters",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 3,
+  "rows": [
+   "close"
+  ],
+  "strength": 4,
+  "abilities": [
+   "muster"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Muster: Find any cards with the same name in your deck and play them instantly.",
+  "wikiSource": "1 purchased from Arinbjorn's innkeep\n1 purchased from Urialla Harbor's innkeep\n1 purchased from Svorlag's innkeep",
+  "notesEn": "",
+  "quoteEn": "\"Ugly – nature's way of saying 'Stay the fuck away.'\""
+ },
+ {
+  "slug": "arachas-behemoth",
+  "nameEn": "Arachas Behemoth",
+  "faction": "monsters",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "siege"
+  ],
+  "strength": 6,
+  "abilities": [
+   "muster"
+  ],
+  "prefix": "Arachas",
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Muster: Find any cards with the same name in your deck and play them instantly.",
+  "wikiSource": "Random reward from gwent players",
+  "notesEn": "",
+  "quoteEn": "\"Like a cross between a crab, a spider...and a ploughin' mountain\""
+ },
+ {
+  "slug": "assire-var-anahid",
+  "nameEn": "Assire var Anahid",
+  "faction": "nilfgaard",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 6,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Random reward from gwent players",
+  "notesEn": "",
+  "quoteEn": "\"Nilfgaardian mages do have a choice: servile submission, or the gallows.\""
+ },
+ {
+  "slug": "ballista",
+  "nameEn": "Ballista",
+  "faction": "northern-realms",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "siege"
+  ],
+  "strength": 6,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Part of the base deck",
+  "notesEn": "* There's a bug where sometimes only one ballista is added to the deck, rather than two.",
+  "quoteEn": "\"Usually we give 'em female names.\" \"Like Jenny?\" \"More like Bertha.\""
+ },
+ {
+  "slug": "barclay-els",
+  "nameEn": "Barclay Els",
+  "faction": "scoiatael",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close",
+   "ranged"
+  ],
+  "strength": 6,
+  "abilities": [
+   "agile"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Agile: Can be placed in either the Close Combat or the Ranged Combat row. Cannot be moved once placed.",
+  "wikiSource": "Purchased from the innkeep of The Golden Sturgeon in Novigrad\n{{HoS}}: 1 can be purchased from the merchant at the circus camp near Carsten\n{{BaW}}: A possible reward during Till Death Do You Part",
+  "notesEn": "",
+  "quoteEn": "\"Our mead smells like piss, do it? Easy to fix – I'll break your fuckin' nose!\""
+ },
+ {
+  "slug": "berserker",
+  "nameEn": "Berserker",
+  "faction": "skellige",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 4,
+  "abilities": [
+   "berserker"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "Blood and Wine",
+  "abilityTextEn": "Transforms into a bear when a Mardroeme card is on its row.",
+  "wikiSource": "Part of the base deck",
+  "notesEn": "",
+  "quoteEn": "\"Kill, crush, cleave!\""
+ },
+ {
+  "slug": "birna-bran",
+  "nameEn": "Birna Bran",
+  "faction": "skellige",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 2,
+  "abilities": [
+   "medic"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "Blood and Wine",
+  "abilityTextEn": "Medic: Choose one card from your discard pile and play it instantly (no Heroes or Special Cards).",
+  "wikiSource": "Part of the base deck",
+  "notesEn": "",
+  "quoteEn": "\"Skellige must have a strong king. No matter what it takes.\""
+ },
+ {
+  "slug": "biting-frost",
+  "nameEn": "Biting Frost",
+  "faction": "neutral",
+  "type": "weather",
+  "hero": false,
+  "deckable": true,
+  "copies": 3,
+  "rows": [],
+  "strength": null,
+  "abilities": [
+   "weather"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Sets the strength of all Close Combat cards to 1 for both players.",
+  "wikiSource": "2 are part of the base deck\n1 is a random reward from gwent players",
+  "notesEn": "",
+  "quoteEn": "\"Best part about frost – bodies of the fallen don't rot so quickly.\""
+ },
+ {
+  "slug": "black-infantry-archer",
+  "nameEn": "Black Infantry Archer",
+  "faction": "nilfgaard",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 2,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 10,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "1 purchased from Claywich's merchant \n1 purchased from Lindenvale's merchant",
+  "notesEn": "",
+  "quoteEn": "\"I aim for the knee. Always.\""
+ },
+ {
+  "slug": "blue-stripes-commando",
+  "nameEn": "Blue Stripes Commando",
+  "faction": "northern-realms",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 3,
+  "rows": [
+   "close"
+  ],
+  "strength": 4,
+  "abilities": [
+   "bond"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Tight Bond: Place next to a card with the same name to double the strength of both cards.",
+  "wikiSource": "1 purchased from Elsa or Bram in White Orchard\n1 purchased from Crow's Perch's quartermaster\n1 purchased from Midcopse's merchant",
+  "notesEn": "* In the final version of the third game, all copies of this card look identical. However, within the game's files there are fully complete textures for each unique copy of the card. It is unknown why these other textures were removed.",
+  "quoteEn": "\"I'll do anything for Temeria. Mostly, though, I kill for her.\""
+ },
+ {
+  "slug": "blueboy-lugos",
+  "nameEn": "Blueboy Lugos",
+  "faction": "skellige",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 6,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "Blood and Wine",
+  "abilityTextEn": "",
+  "wikiSource": "Part of the base deck",
+  "notesEn": "",
+  "quoteEn": "\"I'm damn near ready to puke from boredom.\""
+ },
+ {
+  "slug": "botchling",
+  "nameEn": "Botchling",
+  "faction": "monsters",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 4,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Purchased from Jonas at The New Port",
+  "notesEn": "",
+  "quoteEn": "\"Admit your mistakes and bury them proper - else they'll come back to haunt you.\""
+ },
+ {
+  "slug": "bovine-defense-force",
+  "nameEn": "Bovine Defense Force",
+  "faction": "neutral",
+  "type": "unit",
+  "hero": false,
+  "deckable": false,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 8,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "Hearts of Stone",
+  "abilityTextEn": "",
+  "wikiSource": "Summoned by the removal of the Cow card during play",
+  "notesEn": "",
+  "quoteEn": "\"Grrrrr!\""
+ },
+ {
+  "slug": "cahir-mawr-dyffryn-aep-ceallach",
+  "nameEn": "Cahir Mawr Dyffryn aep Ceallach",
+  "faction": "nilfgaard",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 6,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Random reward from gwent players",
+  "notesEn": "",
+  "quoteEn": "\"His eyes flashed under his winged helmet. Fire gleamed from his sword's blade.\""
+ },
+ {
+  "slug": "catapult",
+  "nameEn": "Catapult",
+  "faction": "northern-realms",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 2,
+  "rows": [
+   "siege"
+  ],
+  "strength": 8,
+  "abilities": [
+   "bond"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Tight Bond: Place next to a card with the same name to double the strength of both cards.",
+  "wikiSource": "1 purchased from Elsa or Bram in White Orchard\n1 purchased from Marquise Serenity at the Passiflora\n{{HoS}}: 1 can be purchased from the merchant at the circus camp near Carsten",
+  "notesEn": "* In the final version of the third game, both copies of this card look identical. However, within the game's files there are fully complete textures for the second card. It is unknown why this other texture was removed.",
+  "quoteEn": "\"The gods help those who have better catapults.\""
+ },
+ {
+  "slug": "celaeno-harpy",
+  "nameEn": "Celaeno Harpy",
+  "faction": "monsters",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close",
+   "ranged"
+  ],
+  "strength": 2,
+  "abilities": [
+   "agile"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Agile: Can be placed in either the Close Combat or the Ranged Combat row. Cannot be moved once placed.",
+  "wikiSource": "Random reward from gwent players",
+  "notesEn": "",
+  "quoteEn": "\"Common harpies feed on carrion. Celaeno harpies... they feed on dreams.\""
+ },
+ {
+  "slug": "cerys",
+  "nameEn": "Cerys",
+  "faction": "skellige",
+  "type": "unit",
+  "hero": true,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 10,
+  "abilities": [
+   "hero",
+   "muster"
+  ],
+  "prefix": "Clan Drummond Shield Maiden",
+  "scorchTarget": null,
+  "dlc": "Blood and Wine",
+  "abilityTextEn": "Hero: Not affected by any Special Cards or abilities.\nSummon Shield Maidens: Summons all Shield Maidens from deck and hand.",
+  "wikiSource": "Won from The Barrel and Bung Inn's Innkeep",
+  "notesEn": "",
+  "quoteEn": "\"They call me Sparrowhawk, know why? Because I eat rats like you for breakfast.\""
+ },
+ {
+  "slug": "ciaran-aep-easnillien",
+  "nameEn": "Ciaran aep Easnillien",
+  "faction": "scoiatael",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close",
+   "ranged"
+  ],
+  "strength": 3,
+  "abilities": [
+   "agile"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Agile: Can be placed in either the Close Combat or the Ranged Combat row. Cannot be moved once placed.",
+  "wikiSource": "Random reward from gwent players",
+  "notesEn": "",
+  "quoteEn": "\"The path to freedom is paved in blood, not ink.\""
+ },
+ {
+  "slug": "cirilla-fiona-elen-riannon",
+  "nameEn": "Cirilla Fiona Elen Riannon",
+  "faction": "neutral",
+  "type": "unit",
+  "hero": true,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 15,
+  "abilities": [
+   "hero",
+   "muster"
+  ],
+  "prefix": "Roach",
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Hero: Not affected by any Special Cards or abilities.\nMuster: Find the Roach card in your deck and play it instantly.",
+  "wikiSource": "Won from the Scoia'tael merchant during Gwent: Big City Players",
+  "notesEn": "*This and the Geralt card have the highest base Strength points at 15.\n*As of  there are two versions of this card, one with Muster and another without. Which one you get depends on whether you have the Roach card unlocked or not.\n**Note that if the Roach card was not redeemed before December 31, 2023, there is not a way to obtain it afterwards from [https://www.thewitcher.com/en/my-rewards My Rewards]. While one can use console commands, it will not appear redeemed on the account itself.",
+  "quoteEn": "\"Know when fairy tales cease to be tales? When people start believing in them.\""
+ },
+ {
+  "slug": "clan-an-craite-warrior",
+  "nameEn": "Clan an Craite Warrior",
+  "faction": "skellige",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 3,
+  "rows": [
+   "close"
+  ],
+  "strength": 6,
+  "abilities": [
+   "bond"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "Blood and Wine",
+  "abilityTextEn": "Tight Bond: Place next to a card with the same name to double the strength of both cards.",
+  "wikiSource": "Part of the base deck",
+  "notesEn": "",
+  "quoteEn": "\"I'll bring the an Craites such glory, bards'll go hoarse singin' me praises!\""
+ },
+ {
+  "slug": "clan-brokvar-archer",
+  "nameEn": "Clan Brokvar Archer",
+  "faction": "skellige",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 3,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 6,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "Blood and Wine",
+  "abilityTextEn": "",
+  "wikiSource": "2 are part of the base deck\n1 won from Castel Ravello Vineyard's herbalist",
+  "notesEn": "",
+  "quoteEn": "\"So ye can hit a movin' target at two hundred paces. Me, too. In a storm.\""
+ },
+ {
+  "slug": "clan-dimun-pirate",
+  "nameEn": "Clan Dimun Pirate",
+  "faction": "skellige",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 6,
+  "abilities": [
+   "scorch"
+  ],
+  "prefix": null,
+  "scorchTarget": "any",
+  "dlc": "Blood and Wine",
+  "abilityTextEn": "Scorch: Kills the strongest card(s) on the battlefield.",
+  "wikiSource": "Won from Dupont & Sons' merchant",
+  "notesEn": "",
+  "quoteEn": "\"Can see the fear in their eyes. Fear o' me… fear o' Clan Dimun!\""
+ },
+ {
+  "slug": "clan-drummond-shield-maiden",
+  "nameEn": "Clan Drummond Shield Maiden",
+  "faction": "skellige",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 3,
+  "rows": [
+   "close"
+  ],
+  "strength": 4,
+  "abilities": [
+   "bond"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "Blood and Wine",
+  "abilityTextEn": "Tight Bond: Place next to a card with the same name to double the strength of both cards.",
+  "wikiSource": "1 is part of the base deck\n1 won from The Cockatrice Inn's innkeep\n1 won from the Francollarts' armorer",
+  "notesEn": "",
+  "quoteEn": "\"They'll shatter on our shields like waves on a rocky shore.\""
+ },
+ {
+  "slug": "clan-heymaey-skald",
+  "nameEn": "Clan Heymaey Skald",
+  "faction": "skellige",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 4,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "Blood and Wine",
+  "abilityTextEn": "",
+  "wikiSource": "Part of the base deck",
+  "notesEn": "",
+  "quoteEn": "\"The deeds of Clan Heymaey will go down in history.\""
+ },
+ {
+  "slug": "clan-tordarroch-armorsmith",
+  "nameEn": "Clan Tordarroch Armorsmith",
+  "faction": "skellige",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 4,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "Blood and Wine",
+  "abilityTextEn": "",
+  "wikiSource": "Part of the base deck",
+  "notesEn": "",
+  "quoteEn": "\"Ye're in for a poundin'.\""
+ },
+ {
+  "slug": "clear-weather",
+  "nameEn": "Clear Weather",
+  "faction": "neutral",
+  "type": "weather",
+  "hero": false,
+  "deckable": true,
+  "copies": 2,
+  "rows": [],
+  "strength": null,
+  "abilities": [
+   "weather"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Removes all Weather Card (Biting Frost, Impenetrable Fog and Torrential Rain) effects.",
+  "wikiSource": "2 are part of the base deck\n1 is a random reward from gwent players",
+  "notesEn": "",
+  "quoteEn": "\"The sun's shinin', Dromle! The sun's shinin'! Maybe there's hope left after all…\""
+ },
+ {
+  "slug": "cockatrice",
+  "nameEn": "Cockatrice",
+  "faction": "monsters",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 2,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Random reward from gwent players",
+  "notesEn": "",
+  "quoteEn": "\"Born of an egg laid by a cockerel... if you believe such peasant drivel.\""
+ },
+ {
+  "slug": "commander-s-horn",
+  "nameEn": "Commander's Horn",
+  "faction": "neutral",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 3,
+  "rows": [
+   "close",
+   "ranged"
+  ],
+  "strength": null,
+  "abilities": [
+   "horn"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Doubles the strength of all unit cards in that row. Limited to 1 per row.",
+  "wikiSource": "Purchase from the Inn at the Crossroads's innkeep\nPurchase from Lindenvale's innkeep\nPurchase from Marquise Serenity at the Passiflora\nPurchase from Stjepan at The Alchemy\n{{HoS}}: Purchase from merchant at the circus camp near Carsten",
+  "notesEn": "",
+  "quoteEn": "\"Plus one to morale, minus three to hearing.\""
+ },
+ {
+  "slug": "cow",
+  "nameEn": "Cow",
+  "faction": "neutral",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 0,
+  "abilities": [
+   "avenger"
+  ],
+  "prefix": "Bovine Defense Force",
+  "scorchTarget": null,
+  "dlc": "Hearts of Stone",
+  "abilityTextEn": "When this card is removed from the battlefield, it summons a powerful new Unit Card to take its place.",
+  "wikiSource": "Found inside a barn in Brunwich",
+  "notesEn": "",
+  "quoteEn": "\"Mooo!\""
+ },
+ {
+  "slug": "crinfrid-reavers-dragon-hunter",
+  "nameEn": "Crinfrid Reavers Dragon Hunter",
+  "faction": "northern-realms",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 3,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 5,
+  "abilities": [
+   "bond"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Tight Bond: Place next to a card with the same name to double the strength of both cards.",
+  "wikiSource": "1 purchased from Elsa or Bram in White Orchard\n1 purchased from Claywich's merchant\n1 purchased from Midcopse's merchant",
+  "notesEn": "* In the final version of the third game, all copies of this card look identical. However, within the game's files there are fully complete textures for each unique copy of the card. It is unknown why these other textures were removed.",
+  "quoteEn": "\"Haven't had much luck with monsters of late, so we enlisted.\""
+ },
+ {
+  "slug": "crone-brewess",
+  "nameEn": "Crone Brewess",
+  "faction": "monsters",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 6,
+  "abilities": [
+   "muster"
+  ],
+  "prefix": "Crone",
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Muster: Find any cards with the same name in your deck and play them instantly.",
+  "wikiSource": "Random reward from gwent players",
+  "notesEn": "",
+  "quoteEn": "\"We'll cut you up, boy. A fine broth you will make.\""
+ },
+ {
+  "slug": "crone-weavess",
+  "nameEn": "Crone Weavess",
+  "faction": "monsters",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 6,
+  "abilities": [
+   "muster"
+  ],
+  "prefix": "Crone",
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Muster: Find any cards with the same name in your deck and play them instantly.",
+  "wikiSource": "Won from the Old Sage during Gwent: Velen Players",
+  "notesEn": "",
+  "quoteEn": "\"I sense your pain. I see your fear…\""
+ },
+ {
+  "slug": "crone-whispess",
+  "nameEn": "Crone Whispess",
+  "faction": "monsters",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 6,
+  "abilities": [
+   "muster"
+  ],
+  "prefix": "Crone",
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Muster: Find any cards with the same name in your deck and play them instantly.",
+  "wikiSource": "Purchased from Arinbjorn's innkeep",
+  "notesEn": "",
+  "quoteEn": "\"I'd be your best - and last.\""
+ },
+ {
+  "slug": "cynthia",
+  "nameEn": "Cynthia",
+  "faction": "nilfgaard",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 4,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Purchased from Crow's Perch's quartermaster",
+  "notesEn": "",
+  "quoteEn": "\"Cynthia's talents can be deadly. She needs a tight leash.\""
+ },
+ {
+  "slug": "dandelion",
+  "nameEn": "Dandelion",
+  "faction": "neutral",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 2,
+  "abilities": [
+   "horn"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Commander's Horn: Doubles the strength of all unit cards in that row. Limited to 1 per row.",
+  "wikiSource": "Won during A Matter of Life and Death",
+  "notesEn": "",
+  "quoteEn": "\"Dandelion, you're a cynic, a lecher, a whoremonger, a liar – and my best friend.\""
+ },
+ {
+  "slug": "decoy",
+  "nameEn": "Decoy",
+  "faction": "neutral",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 3,
+  "rows": [
+   "close",
+   "ranged"
+  ],
+  "strength": null,
+  "abilities": [
+   "decoy"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Swap with a card on the battlefield to return it to your hand.",
+  "wikiSource": "Purchase from Elsa or Bram in White Orchard\nPurchase from Crow's Perch's Quartermaster\nPurchase from the Seven Cats Inn's Innkeep",
+  "notesEn": "",
+  "quoteEn": "\"When you run out of peasants, decoys also make decent arrow fodder.\""
+ },
+ {
+  "slug": "dennis-cranmer",
+  "nameEn": "Dennis Cranmer",
+  "faction": "scoiatael",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 6,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Random reward from gwent players",
+  "notesEn": "",
+  "quoteEn": "\"I know how to carry out orders, so you can shove your advice up your coal chute.\""
+ },
+ {
+  "slug": "dethmold",
+  "nameEn": "Dethmold",
+  "faction": "northern-realms",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 6,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Part of the base deck",
+  "notesEn": "",
+  "quoteEn": "\"I once made a prisoner vomit his own entrails... Ah, good times…\""
+ },
+ {
+  "slug": "dol-blathanna-archer",
+  "nameEn": "Dol Blathanna Archer",
+  "faction": "scoiatael",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 4,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Purchase from Marquise Serenity at the Passiflora\n{{HoS}}: Purchase from merchant at the circus camp near Carsten\n{{BaW}}: Purchase from Hugo Monnart or any innkeeper in Toussaint",
+  "notesEn": "",
+  "quoteEn": "\"Take another step, dh'oine. You'd look better with an arrow between your eyes.\""
+ },
+ {
+  "slug": "dol-blathanna-scout",
+  "nameEn": "Dol Blathanna Scout",
+  "faction": "scoiatael",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 3,
+  "rows": [
+   "close",
+   "ranged"
+  ],
+  "strength": 6,
+  "abilities": [
+   "agile"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Agile: Can be placed in either the Close Combat or the Ranged Combat row. Cannot be moved once placed.",
+  "wikiSource": "1 purchased from the The Golden Sturgeon's Innkeep\n2 are random rewards from gwent players\n{{HoS}}: 1 can be purchased from the merchant at the circus camp near Carsten",
+  "notesEn": "",
+  "quoteEn": "\"They track like hounds, run like deer and kill like cold-hearted bastards.\""
+ },
+ {
+  "slug": "donar-an-hindar",
+  "nameEn": "Donar an Hindar",
+  "faction": "skellige",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 4,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "Blood and Wine",
+  "abilityTextEn": "",
+  "wikiSource": "Part of the base deck",
+  "notesEn": "",
+  "quoteEn": "\"I've gathered all the jarls together. Now make your case.\""
+ },
+ {
+  "slug": "draig-bon-dhu",
+  "nameEn": "Draig Bon-Dhu",
+  "faction": "skellige",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "siege"
+  ],
+  "strength": 2,
+  "abilities": [
+   "horn"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "Blood and Wine",
+  "abilityTextEn": "Commander's Horn: Doubles the strength of all unit cards in that row. Limited to 1 per row.",
+  "wikiSource": "Won from The Pheasantry's innkeep",
+  "notesEn": "",
+  "quoteEn": "\"Hear ye now the tale of the heroic deeds of Clan an Craite.\""
+ },
+ {
+  "slug": "draug",
+  "nameEn": "Draug",
+  "faction": "monsters",
+  "type": "unit",
+  "hero": true,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 10,
+  "abilities": [
+   "hero"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Hero: Not affected by any Special Cards or abilities.",
+  "wikiSource": "Won from Crach an Craite during Gwent: Skellige Style",
+  "notesEn": "",
+  "quoteEn": "\"Some men cannot admit defeat. Some keep fighting from beyond the grave.\""
+ },
+ {
+  "slug": "dun-banner-medic",
+  "nameEn": "Dun Banner Medic",
+  "faction": "northern-realms",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "siege"
+  ],
+  "strength": 5,
+  "abilities": [
+   "medic"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Medic: Choose one card from your discard pile and play it instantly (no Heroes or Special Cards).",
+  "wikiSource": "Part of the base deck",
+  "notesEn": "",
+  "quoteEn": "\"Stitch red to red, white to white, and everything will be all right\""
+ },
+ {
+  "slug": "dwarven-skirmisher",
+  "nameEn": "Dwarven Skirmisher",
+  "faction": "scoiatael",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 3,
+  "rows": [
+   "close"
+  ],
+  "strength": 3,
+  "abilities": [
+   "muster"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Muster: Find any cards with the same name in your deck and play them instantly.",
+  "wikiSource": "1 purchased from Stjepan at The Alchemy\n2 are random rewards from gwent players",
+  "notesEn": "",
+  "quoteEn": "\"Worked a pickaxe all me life. Battleaxe won't be any trouble.\""
+ },
+ {
+  "slug": "earth-elemental",
+  "nameEn": "Earth Elemental",
+  "faction": "monsters",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "siege"
+  ],
+  "strength": 6,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Purchased from Jonas at The New Port",
+  "notesEn": "",
+  "quoteEn": "\"How to fight an earth elemental? You don't. You run. Fast as you can.\""
+ },
+ {
+  "slug": "eithne",
+  "nameEn": "Eithne",
+  "faction": "scoiatael",
+  "type": "unit",
+  "hero": true,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 10,
+  "abilities": [
+   "hero"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Hero: Not affected by any Special Cards or abilities.",
+  "wikiSource": "Won from Zoltan during Gwent: Old Pals",
+  "notesEn": "",
+  "quoteEn": "\"The dryad queen has eyes of molten silver, and a heart of cold-forged steel.\""
+ },
+ {
+  "slug": "elven-skirmisher",
+  "nameEn": "Elven Skirmisher",
+  "faction": "scoiatael",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 3,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 2,
+  "abilities": [
+   "muster"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Muster: Find any cards with the same name in your deck and play them instantly.",
+  "wikiSource": "1 purchased from Urialla Harbor's Innkeep\n2 are random rewards from gwent players",
+  "notesEn": "",
+  "quoteEn": "\"No matter what you may have heard, elves don't take human scalps. Too much lice.\""
+ },
+ {
+  "slug": "emiel-regis-rohellec-terzieff",
+  "nameEn": "Emiel Regis Rohellec Terzieff",
+  "faction": "neutral",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 5,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Random reward from gwent players",
+  "notesEn": "",
+  "quoteEn": "\"Men, the polite ones, at least, call me a monster. A blood-drinking freak.\""
+ },
+ {
+  "slug": "endrega",
+  "nameEn": "Endrega",
+  "faction": "monsters",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 2,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Random reward from gwent players",
+  "notesEn": "",
+  "quoteEn": "\"The nest! Take out the nest, or the bastards'll just keep coming!\""
+ },
+ {
+  "slug": "ermion",
+  "nameEn": "Ermion",
+  "faction": "skellige",
+  "type": "unit",
+  "hero": true,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 8,
+  "abilities": [
+   "hero",
+   "mardroeme"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "Blood and Wine",
+  "abilityTextEn": "Hero: Not affected by any Special Cards or abilities.\nMardroeme: Triggers transformation of all Berserker cards on the same row.",
+  "wikiSource": "Won from Francollarts' innkeep",
+  "notesEn": "",
+  "quoteEn": "\"Only the ignorant dismiss the importance of myths.\""
+ },
+ {
+  "slug": "esterad-thyssen",
+  "nameEn": "Esterad Thyssen",
+  "faction": "northern-realms",
+  "type": "unit",
+  "hero": true,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 10,
+  "abilities": [
+   "hero"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Hero: Not affected by any Special Cards or abilities.",
+  "wikiSource": "Won from Sigismund Dijkstra during Gwent: Big City Players",
+  "notesEn": "",
+  "quoteEn": "\"Like all Thyssen men, he was tall, powefully built and criminally handsome.\""
+ },
+ {
+  "slug": "etolian-auxiliary-archers",
+  "nameEn": "Etolian Auxiliary Archers",
+  "faction": "nilfgaard",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 2,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 1,
+  "abilities": [
+   "medic"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Medic: Choose one card from your discard pile and play it instantly (no Heroes or Special Cards).",
+  "wikiSource": "1 purchased from Claywich's merchant \n1 purchased from Lindenvale's merchant",
+  "notesEn": "",
+  "quoteEn": "\"Double or nothing, aim for his cock.\""
+ },
+ {
+  "slug": "fiend",
+  "nameEn": "Fiend",
+  "faction": "monsters",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 6,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Purchased from Arinbjorn's innkeep",
+  "notesEn": "",
+  "quoteEn": "\"A fiend looks a bit like a deer. An enormous, evil deer.\""
+ },
+ {
+  "slug": "filavandrel-aen-fidhail",
+  "nameEn": "Filavandrel aen Fidhail",
+  "faction": "scoiatael",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close",
+   "ranged"
+  ],
+  "strength": 6,
+  "abilities": [
+   "agile"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Agile: Can be placed in either the Close Combat or the Ranged Combat row. Cannot be moved once placed.",
+  "wikiSource": "Random reward from gwent players",
+  "notesEn": "",
+  "quoteEn": "\"Though we are now few and scattered, our hearts burn brighter than ever.\""
+ },
+ {
+  "slug": "fire-elemental",
+  "nameEn": "Fire Elemental",
+  "faction": "monsters",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "siege"
+  ],
+  "strength": 6,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Random reward from gwent players\nPossible loot in house at Hindar",
+  "notesEn": "",
+  "quoteEn": "\"Fire is so delightful.\""
+ },
+ {
+  "slug": "foglet",
+  "nameEn": "Foglet",
+  "faction": "monsters",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 2,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Purchased from Svorlag's innkeep",
+  "notesEn": "",
+  "quoteEn": "\"Fog creeps on little cat feet. Foglets creep over the bodies of their victims.\""
+ },
+ {
+  "slug": "forktail",
+  "nameEn": "Forktail",
+  "faction": "monsters",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 5,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Random reward from gwent players",
+  "notesEn": "",
+  "quoteEn": "\"Fork tails... Bah! Fuckers' tails're more like cleavers.\""
+ },
+ {
+  "slug": "frightener",
+  "nameEn": "Frightener",
+  "faction": "monsters",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 5,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Random reward from gwent players",
+  "notesEn": "",
+  "quoteEn": "\"What have I done?\" the mage cried out, frightened of his own creation."
+ },
+ {
+  "slug": "fringilla-vigo",
+  "nameEn": "Fringilla Vigo",
+  "faction": "nilfgaard",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 6,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "A Dangerous Game or Prison Warden during The Great Escape",
+  "notesEn": "",
+  "quoteEn": "\"Magic is the highest good. It transcends all borders and divisions.\""
+ },
+ {
+  "slug": "gargoyle",
+  "nameEn": "Gargoyle",
+  "faction": "monsters",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 2,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Random reward from gwent players",
+  "notesEn": "",
+  "quoteEn": "\"Ancient sculptors' nightmarish fantasies, brought to life by bored mages.\""
+ },
+ {
+  "slug": "gaunter-o-dimm",
+  "nameEn": "Gaunter O'Dimm",
+  "faction": "neutral",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "siege"
+  ],
+  "strength": 2,
+  "abilities": [
+   "muster"
+  ],
+  "prefix": "Gaunter O'Dimm Darkness",
+  "scorchTarget": null,
+  "dlc": "Hearts of Stone",
+  "abilityTextEn": "Muster: Find any cards with the same name in your deck and play them instantly.",
+  "wikiSource": "Won from Robert Hilbert during Open Sesame!",
+  "notesEn": "",
+  "quoteEn": "\"He always grants exactly what you wish for. That's the problem.\""
+ },
+ {
+  "slug": "gaunter-o-dimm-darkness",
+  "nameEn": "Gaunter O'Dimm Darkness",
+  "faction": "neutral",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 3,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 4,
+  "abilities": [
+   "muster"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "Hearts of Stone",
+  "abilityTextEn": "Muster: Find any cards with the same name in your deck and play them instantly.",
+  "wikiSource": "1 purchased from Dulla kh'Amanni at Upper Mill\n2 purchased from the merchant at the circus camp near Carsten",
+  "notesEn": "",
+  "quoteEn": "\"Fear not the shadows, but the light.\""
+ },
+ {
+  "slug": "geralt-of-rivia",
+  "nameEn": "Geralt of Rivia",
+  "faction": "neutral",
+  "type": "unit",
+  "hero": true,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 15,
+  "abilities": [
+   "hero",
+   "muster"
+  ],
+  "prefix": "Roach",
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Hero: Not affected by any Special Cards or abilities.\nMuster: Find the Roach card in your deck and play it instantly.",
+  "wikiSource": "Thaler during Gwent: Old Pals or Gwent: Playing Thaler",
+  "notesEn": "*Along with Ciri this card has the highest Strength points a single card can give when played without any special effects or risks attached.\n*If you are first to play during the first round and play one of these two cards on your first move there is a good chance your opponent will immediately pass the first round.\n**You can take advantage of this by playing the Scoia'tael deck which allows you to choose who plays first.\n*As of  there are two versions of this card, one with Muster and another without. Which one you get depends on whether you have the Roach card unlocked or not.\n**Note that if the Roach card was not redeemed before December 31, 2023, there is not a way to obtain it afterwards from [https://www.thewitcher.com/en/my-rewards My Rewards]. While one can use console commands, it will not appear redeemed on the account itself.",
+  "quoteEn": "\"If that's what it takes to save the world, it's better to let that world die.\""
+ },
+ {
+  "slug": "ghoul",
+  "nameEn": "Ghoul",
+  "faction": "monsters",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 3,
+  "rows": [
+   "close"
+  ],
+  "strength": 1,
+  "abilities": [
+   "muster"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Muster: Find any cards with the same name in your deck and play them instantly.",
+  "wikiSource": "2 are random rewards from gwent players\n1 purchased from Harviken's innkeep",
+  "notesEn": "* Version 1 of this card was at least at some point supposed to be lootable, on the second floor at Whoreson Junior's casino. The container can still be seen there, a tiny chest between a stool and the stairs to the third floor. There isn't even an apparent reason why it's not lootable, even if Geralt doesn't have the card yet, so it's possible that it becomes functional under some other condition.\n{{clear}}",
+  "quoteEn": "\"If ghouls are part of the Circle of Life... then it's a damn vicious circle.\""
+ },
+ {
+  "slug": "grave-hag",
+  "nameEn": "Grave Hag",
+  "faction": "monsters",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 5,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Random reward from gwent players",
+  "notesEn": "",
+  "quoteEn": "\"Their long tongues're for slurping marrow - and whipping prep.\""
+ },
+ {
+  "slug": "griffin",
+  "nameEn": "Griffin",
+  "faction": "monsters",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 5,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Random reward from gwent players",
+  "notesEn": "",
+  "quoteEn": "\"Griffins like to toy with their prey. Eat 'em alive, piece by piece.\""
+ },
+ {
+  "slug": "harpy",
+  "nameEn": "Harpy",
+  "faction": "monsters",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close",
+   "ranged"
+  ],
+  "strength": 2,
+  "abilities": [
+   "agile"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Agile: Can be placed in either the Close Combat or the Ranged Combat row. Cannot be moved once placed.",
+  "wikiSource": "Purchased from Harviken's innkeep",
+  "notesEn": "",
+  "quoteEn": "\"There are many species of harpy, and all are kleptomaniacs.\""
+ },
+ {
+  "slug": "havekar-healer",
+  "nameEn": "Havekar Healer",
+  "faction": "scoiatael",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 3,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 0,
+  "abilities": [
+   "medic"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Medic: Choose one card from your discard pile and play it instantly (no Heroes or Special Cards).",
+  "wikiSource": "1 purchased from The Kingfisher Inn's Innkeep\n1 purchased from the Cunny of the Goose's Innkeep\n1 is a random reward from gwent players\n{{HoS}}: 1 can be purchased from the merchant at the circus camp near Carsten",
+  "notesEn": "",
+  "quoteEn": "\"Sure, I'll patch you up. Gonna cost you, though.\""
+ },
+ {
+  "slug": "havekar-smuggler",
+  "nameEn": "Havekar Smuggler",
+  "faction": "scoiatael",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 3,
+  "rows": [
+   "close"
+  ],
+  "strength": 5,
+  "abilities": [
+   "muster"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Muster: Find any cards with the same name in your deck and play them instantly.",
+  "wikiSource": "1 purchased from The Kingfisher Inn's Innkeep\n1 purchased from the Seven Cats Inn's Innkeep\n1 is a random reward from gwent players\n{{HoS}}: 1 can be purchased from the merchant at the circus camp near Carsten",
+  "notesEn": "",
+  "quoteEn": "\"I fight for whoever's paying the best. Or whoever's easiest to rob.\""
+ },
+ {
+  "slug": "heavy-zerrikanian-fire-scorpion",
+  "nameEn": "Heavy Zerrikanian Fire Scorpion",
+  "faction": "nilfgaard",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "siege"
+  ],
+  "strength": 10,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Purchase from Lindenvale's merchant",
+  "notesEn": "",
+  "quoteEn": "\"Not the best for taking cities, but great for razing them to the ground.\""
+ },
+ {
+  "slug": "hemdall",
+  "nameEn": "Hemdall",
+  "faction": "skellige",
+  "type": "unit",
+  "hero": true,
+  "deckable": false,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 11,
+  "abilities": [
+   "hero"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "Blood and Wine",
+  "abilityTextEn": "Hero: Not affected by any Special Cards or abilities.",
+  "wikiSource": "Transformed version of Kambi",
+  "notesEn": "",
+  "quoteEn": "\"When the time of the White Frost comes, Hemdall will sound the call for battle.\""
+ },
+ {
+  "slug": "hjalmar",
+  "nameEn": "Hjalmar",
+  "faction": "skellige",
+  "type": "unit",
+  "hero": true,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 10,
+  "abilities": [
+   "hero"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "Blood and Wine",
+  "abilityTextEn": "Hero: Not affected by any Special Cards or abilities.",
+  "wikiSource": "Part of the base deck",
+  "notesEn": "",
+  "quoteEn": "\"Instead of mournin' the fallen, let's drink to their memory!\""
+ },
+ {
+  "slug": "holger-blackhand",
+  "nameEn": "Holger Blackhand",
+  "faction": "skellige",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "siege"
+  ],
+  "strength": 4,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "Blood and Wine",
+  "abilityTextEn": "",
+  "wikiSource": "Part of the base deck",
+  "notesEn": "",
+  "quoteEn": "\"Now let's drink to Emperor of Nilfgaard - may his prick forever stay limp!\""
+ },
+ {
+  "slug": "ice-giant",
+  "nameEn": "Ice Giant",
+  "faction": "monsters",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "siege"
+  ],
+  "strength": 5,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Purchased from Svorlag's innkeep",
+  "notesEn": "",
+  "quoteEn": "\"Fled one time in my life. From the Ice Giant. And I'm not a bit ashamed.\""
+ },
+ {
+  "slug": "ida-emean-aep-sivney",
+  "nameEn": "Ida Emean aep Sivney",
+  "faction": "scoiatael",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 6,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Random reward from gwent players",
+  "notesEn": "",
+  "quoteEn": "\"I am a Sage. My power lies in possessing knowledge. Not sharing it.\""
+ },
+ {
+  "slug": "imlerith",
+  "nameEn": "Imlerith",
+  "faction": "monsters",
+  "type": "unit",
+  "hero": true,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 10,
+  "abilities": [
+   "hero"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Hero: Not affected by any Special Cards or abilities.",
+  "wikiSource": "Random reward from gwent players",
+  "notesEn": "",
+  "quoteEn": "\"Ladd nahw! Kill them! Litter the earth with their entrails!\""
+ },
+ {
+  "slug": "impenetrable-fog",
+  "nameEn": "Impenetrable Fog",
+  "faction": "neutral",
+  "type": "weather",
+  "hero": false,
+  "deckable": true,
+  "copies": 3,
+  "rows": [],
+  "strength": null,
+  "abilities": [
+   "weather"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Sets the strength of all Ranged Combat cards to 1 for both players.",
+  "wikiSource": "2 are part of the base deck\n1 is a random reward from gwent players",
+  "notesEn": "",
+  "quoteEn": "\"A good commander's dream... a bad one's horror.\""
+ },
+ {
+  "slug": "impera-brigade-guard",
+  "nameEn": "Impera Brigade Guard",
+  "faction": "nilfgaard",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 4,
+  "rows": [
+   "close"
+  ],
+  "strength": 3,
+  "abilities": [
+   "bond"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Tight Bond: Place next to a card with the same name to double the strength of both cards.",
+  "wikiSource": "1 purchased from Cunny of the Goose's innkeep\n1 purchased from the Seven Cats Inn's innkeep\n1 purchased from Crow's Perch's merchant or Devil's Pit's merchant\n1 purchased from Inn at the Crossroads' innkeep or Lindenvale's innkeep",
+  "notesEn": "* In the final version of the third game, all copies of this card look identical. However, within the game's files there are fully complete textures for each unique copy of the card. It is unknown why these other textures were removed.",
+  "quoteEn": "\"The Impera Brigade never surrenders. Ever.\""
+ },
+ {
+  "slug": "iorveth",
+  "nameEn": "Iorveth",
+  "faction": "scoiatael",
+  "type": "unit",
+  "hero": true,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 10,
+  "abilities": [
+   "hero"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Hero: Not affected by any Special Cards or abilities.",
+  "wikiSource": "Reward for completing Shock Therapy",
+  "notesEn": "",
+  "quoteEn": "\"King or beggar, what's the difference? One dh'oine less.\""
+ },
+ {
+  "slug": "isengrim-faoiltiarna",
+  "nameEn": "Isengrim Faoiltiarna",
+  "faction": "scoiatael",
+  "type": "unit",
+  "hero": true,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 10,
+  "abilities": [
+   "hero",
+   "morale"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Morale boost: Adds +1 to all units in the row (excluding itself).\nHero: Not affected by any Special Cards or abilities.",
+  "wikiSource": "A Dangerous Game or Prison Warden during The Great Escape",
+  "notesEn": "",
+  "quoteEn": "\"It dawns on them once they notice my scar: a realization of imminent death.\""
+ },
+ {
+  "slug": "john-natalis",
+  "nameEn": "John Natalis",
+  "faction": "northern-realms",
+  "type": "unit",
+  "hero": true,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 10,
+  "abilities": [
+   "hero"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Hero: Not affected by any Special Cards or abilities.",
+  "wikiSource": "A Dangerous Game or Prison Warden during The Great Escape",
+  "notesEn": "",
+  "quoteEn": "\"That square should bear the names of my soldiers, of the dead. Not mine.\""
+ },
+ {
+  "slug": "kaedweni-siege-expert",
+  "nameEn": "Kaedweni Siege Expert",
+  "faction": "northern-realms",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "siege"
+  ],
+  "strength": 1,
+  "abilities": [
+   "morale"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Morale boost: Adds +1 to all units in the row (excluding itself).",
+  "wikiSource": "Part of the base deck",
+  "notesEn": "* In the final version of the third game, all three copies of this card look identical in one's deck. However, within the game's files there are fully complete textures for each unique copy of the card. It is unknown why these other textures were removed.\n**Despite this, some gwent players can be seen using these alternate versions, such as the unnamed halfling during the {{HoS}} quest, Dead Man's Party.\n\n{{clear}}",
+  "quoteEn": "\"You gotta recalibrate the arm by five degrees.\" \"Do what by the what now?\""
+ },
+ {
+  "slug": "kambi",
+  "nameEn": "Kambi",
+  "faction": "skellige",
+  "type": "unit",
+  "hero": true,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 0,
+  "abilities": [
+   "hero",
+   "avenger"
+  ],
+  "prefix": "Hemdall",
+  "scorchTarget": null,
+  "dlc": "Blood and Wine",
+  "abilityTextEn": "When this card is removed from the battlefield, it summons a powerful new Unit Card to take its place.",
+  "wikiSource": "Won from Hauteville's armorer",
+  "notesEn": "",
+  "quoteEn": "\"When the time comes, the cockerel Kambi shall crow and awaken Hemdall.\""
+ },
+ {
+  "slug": "kayran",
+  "nameEn": "Kayran",
+  "faction": "monsters",
+  "type": "unit",
+  "hero": true,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close",
+   "ranged"
+  ],
+  "strength": 8,
+  "abilities": [
+   "hero",
+   "agile",
+   "morale"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Hero: Not affected by any Special Cards or abilities.\nMorale boost: Adds +1 to all units in the row (excluding itself).\nAgile: Can be placed in either the Close Combat or the Ranged Combat row. Cannot be moved once placed.",
+  "wikiSource": "Random reward from gwent players",
+  "notesEn": "* Although the card's special ability is technically Morale boost, it can be placed in either the Ranged combat or the Close combat row, effectively making it an agile card as well.\n* Although the morale boost works well with the Monster deck's heavy reliance on close combat muster cards, NPC players will more often than not play this card in the ranged row, effectively wasting this cards full potential. Even high-end players like Count Tybalt will often make this mistake.",
+  "quoteEn": "\"Kill a kayran? Simple. Take your best sword... then sell it and hire a witcher.\""
+ },
+ {
+  "slug": "keira-metz",
+  "nameEn": "Keira Metz",
+  "faction": "northern-realms",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 5,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Part of the base deck",
+  "notesEn": "",
+  "quoteEn": "\"If I'm to die today, I wish to look smashing for the occasion.\""
+ },
+ {
+  "slug": "leshen",
+  "nameEn": "Leshen",
+  "faction": "monsters",
+  "type": "unit",
+  "hero": true,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 10,
+  "abilities": [
+   "hero"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Hero: Not affected by any Special Cards or abilities.",
+  "wikiSource": "Won from Ermion during Gwent: Skellige Style",
+  "notesEn": "",
+  "quoteEn": "\"We never hunt in these woods. Not even if it means the whole village starves.\""
+ },
+ {
+  "slug": "letho-of-gulet",
+  "nameEn": "Letho of Gulet",
+  "faction": "nilfgaard",
+  "type": "unit",
+  "hero": true,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 10,
+  "abilities": [
+   "hero"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Hero: Not affected by any Special Cards or abilities.",
+  "wikiSource": "Won from the Boatwright during Gwent: Velen Players",
+  "notesEn": "",
+  "quoteEn": "\"Witchers never die in their beds.\""
+ },
+ {
+  "slug": "light-longship",
+  "nameEn": "Light Longship",
+  "faction": "skellige",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 3,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 4,
+  "abilities": [
+   "muster"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "Blood and Wine",
+  "abilityTextEn": "Muster: Find any cards with the same name in your deck and play them instantly.",
+  "wikiSource": "2 are part of the base deck\n1 won from the Perfumery's merchant",
+  "notesEn": "",
+  "quoteEn": "\"Escape them? In the waters of Skellige? Good luck.\""
+ },
+ {
+  "slug": "madman-lugos",
+  "nameEn": "Madman Lugos",
+  "faction": "skellige",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 6,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "Blood and Wine",
+  "abilityTextEn": "",
+  "wikiSource": "Part of the base deck",
+  "notesEn": "",
+  "quoteEn": "\"WAAAAAAAAAAGH!!!!\""
+ },
+ {
+  "slug": "mahakaman-defender",
+  "nameEn": "Mahakaman Defender",
+  "faction": "scoiatael",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 5,
+  "rows": [
+   "close"
+  ],
+  "strength": 5,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "1 purchased from The Kingfisher Inn's Innkeep\n1 purchased from the Seven Cats Inn's Innkeep\n1 purchased from The Golden Sturgeon's Innkeep\n1 purchased from Marquise Serenity at the Passiflora\n1 purchased from Stjepan at The Alchemy\n{{HoS}}: 3 can be purchased from the merchant at the circus camp near Carsten",
+  "notesEn": "",
+  "quoteEn": "\"I'm telling ye, we're born fer battle – we slash straight at their knees!\""
+ },
+ {
+  "slug": "mardroeme",
+  "nameEn": "Mardroeme",
+  "faction": "skellige",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 3,
+  "rows": [
+   "close",
+   "ranged"
+  ],
+  "strength": null,
+  "abilities": [
+   "mardroeme"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "Blood and Wine",
+  "abilityTextEn": "Triggers transformation of all Berserker cards on the same row.",
+  "wikiSource": "1 is part of the base deck\n1 won from The Belles of Beauclair's madame\n1 won from the Herb Store's herbalist",
+  "notesEn": "*The card can be a double-edged sword as when used it prevents the player from using Commander's Horn in the same row.\n**It is possible to bypass this flaw by playing Dandelion in the close combat row. While in the ranged combat row by playing Ermion instead of this card. However such solutions rely heavily on luck",
+  "quoteEn": "\"Eat enough of them, and the world will never be the same…\""
+ },
+ {
+  "slug": "menno-coehoorn",
+  "nameEn": "Menno Coehoorn",
+  "faction": "nilfgaard",
+  "type": "unit",
+  "hero": true,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 10,
+  "abilities": [
+   "hero",
+   "medic"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Hero: Not affected by any Special Cards or abilities.\nMedic: Choose one card from your discard pile and play it instantly (no Heroes or Special Cards).",
+  "wikiSource": "Won from Inn at the Crossroads' innkeep during Gwent: Playing Innkeeps",
+  "notesEn": "",
+  "quoteEn": "\"I'll take an attentive reconnaissance unit over a fine cavalry brigade any day.\""
+ },
+ {
+  "slug": "milva",
+  "nameEn": "Milva",
+  "faction": "scoiatael",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 10,
+  "abilities": [
+   "morale"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Morale boost: Adds +1 to all units in the row (excluding itself).",
+  "wikiSource": "Won during A Matter of Life and Death",
+  "notesEn": "",
+  "quoteEn": "\"With each arrow I loose, I think of my da. He's be proud. I think.\""
+ },
+ {
+  "slug": "morteisen",
+  "nameEn": "Morteisen",
+  "faction": "nilfgaard",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 3,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Purchased from Midcopse's merchant",
+  "notesEn": "",
+  "quoteEn": "\"No Nordling pikemen or dwarven spearbearers can hope to best trained cavalry.\""
+ },
+ {
+  "slug": "morvran-voorhis",
+  "nameEn": "Morvran Voorhis",
+  "faction": "nilfgaard",
+  "type": "unit",
+  "hero": true,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "siege"
+  ],
+  "strength": 10,
+  "abilities": [
+   "hero"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Hero: Not affected by any Special Cards or abilities.",
+  "wikiSource": "Won from Marquise Serenity during Gwent: Big City Players",
+  "notesEn": "",
+  "quoteEn": "\"Summer sun reflecting in the quiet waters of the Alba - that's Nilfgaard to me.\""
+ },
+ {
+  "slug": "mysterious-elf",
+  "nameEn": "Mysterious Elf",
+  "faction": "neutral",
+  "type": "unit",
+  "hero": true,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 0,
+  "abilities": [
+   "hero",
+   "spy"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Spy: Place on your opponent's battlefield (counts towards opponent's total) and draw 2 cards from your deck.\nHero: Not affected by any Special Cards or abilities.",
+  "wikiSource": "Won from Gremist during Gwent: Skellige Style",
+  "notesEn": "",
+  "quoteEn": "\"You humans have...unusual tastes.\""
+ },
+ {
+  "slug": "nausicaa-cavalry-rider",
+  "nameEn": "Nausicaa Cavalry Rider",
+  "faction": "nilfgaard",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 3,
+  "rows": [
+   "close"
+  ],
+  "strength": 2,
+  "abilities": [
+   "bond"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Tight Bond: Place next to a card with the same name to double the strength of both cards.",
+  "wikiSource": "1 purchased from Crow's Perch's quartermaster\n1 purchased from Crow's Perch's merchant or Devil's Pit's merchant\n1 purchased from Inn at the Crossroads' innkeep or Lindenvale's innkeep",
+  "notesEn": "* In the final version of the third game, all three copies of this card look identical. However, within the game's files there are fully complete textures for each unique copy of the card. It is unknown why these other textures were removed.",
+  "quoteEn": "\"The Emperor will teach the North discipline.\""
+ },
+ {
+  "slug": "nekker",
+  "nameEn": "Nekker",
+  "faction": "monsters",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 3,
+  "rows": [
+   "close"
+  ],
+  "strength": 2,
+  "abilities": [
+   "muster"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Muster: Find any cards with the same name in your deck and play them instantly.",
+  "wikiSource": "1 obtained during Following the Thread off Hammond's corpse\n1 purchased from Harviken's innkeep\n1 as random reward from gwent players",
+  "notesEn": "",
+  "quoteEn": "\"Damn things are almost cute, if you ignore the whole vicious killer aspect.\""
+ },
+ {
+  "slug": "olaf",
+  "nameEn": "Olaf",
+  "faction": "skellige",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close",
+   "ranged"
+  ],
+  "strength": 12,
+  "abilities": [
+   "agile",
+   "morale"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "Blood and Wine",
+  "abilityTextEn": "Agile: Can be placed in either the Close Combat or the Ranged Combat row. Cannot be moved once placed.\nMorale boost: Adds +1 to all units in the row (excluding itself).",
+  "wikiSource": "Won from The Adder and Jewels Winery's sommelier",
+  "notesEn": "",
+  "quoteEn": "\"Many've tried to defeat Olaf. But won't hear about it from them - they're dead.\""
+ },
+ {
+  "slug": "olgierd-von-everec",
+  "nameEn": "Olgierd Von Everec",
+  "faction": "neutral",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close",
+   "ranged"
+  ],
+  "strength": 6,
+  "abilities": [
+   "agile",
+   "morale"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "Hearts of Stone",
+  "abilityTextEn": "Morale boost: Adds +1 to all units in the row (excluding itself).\nAgile: Can be placed in either the Close Combat or the Ranged Combat row. Cannot be moved once placed.",
+  "wikiSource": "Won from Shani",
+  "notesEn": "",
+  "quoteEn": "\"At least you know I don't easily lose my head.\""
+ },
+ {
+  "slug": "philippa-eilhart",
+  "nameEn": "Philippa Eilhart",
+  "faction": "northern-realms",
+  "type": "unit",
+  "hero": true,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 10,
+  "abilities": [
+   "hero"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Hero: Not affected by any Special Cards or abilities.",
+  "wikiSource": "Random reward from gwent players",
+  "notesEn": "",
+  "quoteEn": "\"Soon the power of kings will wither, and the Lodge shall seize its rightful place.\""
+ },
+ {
+  "slug": "plague-maiden",
+  "nameEn": "Plague Maiden",
+  "faction": "monsters",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 5,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Random reward from gwent players",
+  "notesEn": "",
+  "quoteEn": "\"The sick rave about a boil-pocked woman surrounded by herds of rabid rats…\""
+ },
+ {
+  "slug": "poor-fucking-infantry",
+  "nameEn": "Poor Fucking Infantry",
+  "faction": "northern-realms",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 3,
+  "rows": [
+   "close"
+  ],
+  "strength": 1,
+  "abilities": [
+   "bond"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Tight Bond: Place next to a card with the same name to double the strength of both cards.",
+  "wikiSource": "1 part of the base deck\n1 purchased from Lindenvale's merchant\n1 purchased from Midcopse's merchant",
+  "notesEn": "* In the final version of the third game, all copies of this card look identical. However, within the game's files there are fully complete textures for each unique copy of the card. It is unknown why these other textures were removed.",
+  "quoteEn": "\"I's a war veteran! ... spare me a crown?\""
+ },
+ {
+  "slug": "prince-stennis",
+  "nameEn": "Prince Stennis",
+  "faction": "northern-realms",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 5,
+  "abilities": [
+   "spy"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Spy: Place on your opponent's battlefield (counts towards opponent's total) and draw 2 cards from your deck.",
+  "wikiSource": "Part of the base deck",
+  "notesEn": "",
+  "quoteEn": "\"He ploughin' wears golden armor. Golden. 'Course he's an arsehole.\""
+ },
+ {
+  "slug": "puttkammer",
+  "nameEn": "Puttkammer",
+  "faction": "nilfgaard",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 3,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Purchased from Claywich's merchant",
+  "notesEn": "",
+  "quoteEn": "\"Learned a lot at Braibant Military Academy. How to scrub potatoes, for instance.\""
+ },
+ {
+  "slug": "rainfarn",
+  "nameEn": "Rainfarn",
+  "faction": "nilfgaard",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 4,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Purchased from Lindenvale's merchant",
+  "notesEn": "",
+  "quoteEn": "\"You'll die as painfully as that pathetic traitor Windhalm did.\""
+ },
+ {
+  "slug": "redanian-foot-soldier",
+  "nameEn": "Redanian Foot Soldier",
+  "faction": "northern-realms",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 2,
+  "rows": [
+   "close"
+  ],
+  "strength": 1,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Part of the base deck",
+  "notesEn": "",
+  "quoteEn": "\"I've bled for Redania! I've killed for Redania.. Dammit, I've even raped for Redania!\""
+ },
+ {
+  "slug": "renuald-aep-matsen",
+  "nameEn": "Renuald aep Matsen",
+  "faction": "nilfgaard",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 5,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Random reward from gwent players",
+  "notesEn": "",
+  "quoteEn": "\"They say the Impera fear nothing. Untrue. Renuald scares them shitless.\""
+ },
+ {
+  "slug": "riordain",
+  "nameEn": "Riordain",
+  "faction": "scoiatael",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 1,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Random reward from gwent players",
+  "notesEn": "",
+  "quoteEn": "\"Stare into their eyes, feast on their terror. Then go in for the kill.\""
+ },
+ {
+  "slug": "roach",
+  "nameEn": "Roach",
+  "faction": "neutral",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 3,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "Gwent: The Witcher Card Game",
+  "abilityTextEn": "",
+  "wikiSource": "Reward for playing {{Gwent}}",
+  "notesEn": "*Note that if the Roach card was not redeemed before December 31, 2023, there is not a way to obtain it afterwards from [https://www.thewitcher.com/en/my-rewards My Rewards]. While one can use console commands, it will not appear redeemed on the account itself.",
+  "quoteEn": "\"Come on, Roach! Faster!\""
+ },
+ {
+  "slug": "rotten-mangonel",
+  "nameEn": "Rotten Mangonel",
+  "faction": "nilfgaard",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "siege"
+  ],
+  "strength": 3,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Random reward from gwent players",
+  "notesEn": "",
+  "quoteEn": "\"The rotten smell brings back childhood memories\""
+ },
+ {
+  "slug": "sabrina-glevissig",
+  "nameEn": "Sabrina Glevissig",
+  "faction": "northern-realms",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 4,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Part of the base deck",
+  "notesEn": "",
+  "quoteEn": "\"Daughter of the Kaedweni Wilderness.\""
+ },
+ {
+  "slug": "saesenthessis",
+  "nameEn": "Saesenthessis",
+  "faction": "scoiatael",
+  "type": "unit",
+  "hero": true,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 10,
+  "abilities": [
+   "hero"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Hero: Not affected by any Special Cards or abilities.",
+  "wikiSource": "Vernon Roche during Gwent: Old Pals",
+  "notesEn": "",
+  "quoteEn": "\"Beautiful, pure, fierce - the perfect icon for a rebellion.\""
+ },
+ {
+  "slug": "schirru",
+  "nameEn": "Schirru",
+  "faction": "scoiatael",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "siege"
+  ],
+  "strength": 8,
+  "abilities": [
+   "scorch"
+  ],
+  "prefix": null,
+  "scorchTarget": "siege",
+  "dlc": "Hearts of Stone",
+  "abilityTextEn": "Scorch - Siege: Destroys your enemy's strongest Siege Combat unit(s) if the combined strength of all his or her Siege Combat units is 10 or more.",
+  "wikiSource": "Won from the merchant at the circus northwest of Carsten",
+  "notesEn": "* This is the only siege card in the Scoia'tael deck.\n** Gaunter O'Dimm is also a siege card that can be used in the deck, however, it's a neutral card.",
+  "quoteEn": "\"Time to look death in the face.\""
+ },
+ {
+  "slug": "scorch",
+  "nameEn": "Scorch",
+  "faction": "neutral",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 3,
+  "rows": [],
+  "strength": null,
+  "abilities": [
+   "scorch"
+  ],
+  "prefix": null,
+  "scorchTarget": "any",
+  "dlc": "",
+  "abilityTextEn": "Scorch: Discards after playing. Kills the strongest card(s) on the battlefield.",
+  "wikiSource": "1 purchased from the Cunny of the Goose's Innkeep\n1 purchased from Jonas at the New Port Inn\n1 purchased from Urialla Harbor's Innkeep",
+  "notesEn": "",
+  "quoteEn": "\"Pillars of flame turn the mightiest to ash. All others tremble in shock and awe.\""
+ },
+ {
+  "slug": "sheldon-skaggs",
+  "nameEn": "Sheldon Skaggs",
+  "faction": "northern-realms",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 4,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Part of the base deck",
+  "notesEn": "",
+  "quoteEn": "\"I was there, on the front lines! Right where the fightin' was thickest!\""
+ },
+ {
+  "slug": "shilard-fitz-oesterlen",
+  "nameEn": "Shilard Fitz-Oesterlen",
+  "faction": "nilfgaard",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 7,
+  "abilities": [
+   "spy"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Spy: Place on your opponent's battlefield (counts towards your opponent's total) and draw 2 cards from your deck.",
+  "wikiSource": "Random reward from gwent players",
+  "notesEn": "",
+  "quoteEn": "\"Warfare is mere sound and fury - diplomacy is what truly shapes history.\""
+ },
+ {
+  "slug": "siege-engineer",
+  "nameEn": "Siege Engineer",
+  "faction": "nilfgaard",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "siege"
+  ],
+  "strength": 6,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Purchased from Inn at the Crossroads' innkeep\nPurchased from Lindenvale's innkeep",
+  "notesEn": "",
+  "quoteEn": "\"Wielded correctly, a protractor can be a deadly weapon.\""
+ },
+ {
+  "slug": "siege-technician",
+  "nameEn": "Siege Technician",
+  "faction": "nilfgaard",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "siege"
+  ],
+  "strength": 0,
+  "abilities": [
+   "medic"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Medic: Choose one card from your discard pile and play it instantly (no Heroes or Special Cards).",
+  "wikiSource": "Purchased from The Golden Sturgeon's innkeep\n{{HoS}}: 1 can be purchased from the merchant at the circus camp near Carsten",
+  "notesEn": "",
+  "quoteEn": "\"I never miss twice.\""
+ },
+ {
+  "slug": "siege-tower",
+  "nameEn": "Siege Tower",
+  "faction": "northern-realms",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "siege"
+  ],
+  "strength": 6,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Random reward from gwent players",
+  "notesEn": "* There's an unused textured within the game files for an unknown reason.",
+  "quoteEn": "\"I love the clamor of siege towers in the morning. Sounds like victory.\""
+ },
+ {
+  "slug": "siegfried-of-denesle",
+  "nameEn": "Siegfried of Denesle",
+  "faction": "northern-realms",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 5,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Part of the base deck",
+  "notesEn": "",
+  "quoteEn": "\"We're on the same side, witcher. You'll realize this one day.\""
+ },
+ {
+  "slug": "sigismund-dijkstra",
+  "nameEn": "Sigismund Dijkstra",
+  "faction": "northern-realms",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 4,
+  "abilities": [
+   "spy"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Spy: Place on your opponent's battlefield (counts towards opponent's total) and draw 2 cards from your deck.",
+  "wikiSource": "Phillip Strenger during Gwent: Velen Players",
+  "notesEn": "",
+  "quoteEn": "\"Gwent's like politics, just more honest.\""
+ },
+ {
+  "slug": "sile-de-tansarville",
+  "nameEn": "Sile de Tansarville",
+  "faction": "northern-realms",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 4,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Part of the base deck",
+  "notesEn": "",
+  "quoteEn": "\"The Lodge lacks humility. Our lust for power may yet be our undoing.\""
+ },
+ {
+  "slug": "skellige-storm",
+  "nameEn": "Skellige Storm",
+  "faction": "neutral",
+  "type": "weather",
+  "hero": false,
+  "deckable": true,
+  "copies": 3,
+  "rows": [],
+  "strength": null,
+  "abilities": [
+   "weather"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "Blood and Wine",
+  "abilityTextEn": "Reduces the Strength of all Range and Siege Units to 1.",
+  "wikiSource": "1 is won from the Tourney Grounds' armorer\n1 is won from the Tourney Grounds' barber\n1 is won from Beauclair Port's butcher",
+  "notesEn": "",
+  "quoteEn": "\"That ain't no normal storm. This here's the wrath of the gods.\""
+ },
+ {
+  "slug": "stefan-skellen",
+  "nameEn": "Stefan Skellen",
+  "faction": "nilfgaard",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 9,
+  "abilities": [
+   "spy"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Spy: Place on your opponent's battlefield (counts towards opponent's total) and draw 2 cards from your deck.",
+  "wikiSource": "Random reward from gwent players",
+  "notesEn": "",
+  "quoteEn": "\"My mark scars the face of our future empress. That is my proudest achievement.\""
+ },
+ {
+  "slug": "svanrige",
+  "nameEn": "Svanrige",
+  "faction": "skellige",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 4,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "Blood and Wine",
+  "abilityTextEn": "",
+  "wikiSource": "Part of the base deck",
+  "notesEn": "",
+  "quoteEn": "\"The emperor also thought him an accidental king. At first.\""
+ },
+ {
+  "slug": "sweers",
+  "nameEn": "Sweers",
+  "faction": "nilfgaard",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 2,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Purchased from Claywich's merchant",
+  "notesEn": "",
+  "quoteEn": "\"And hands off the girl! Whatever we may be, we're not savages.\""
+ },
+ {
+  "slug": "thaler",
+  "nameEn": "Thaler",
+  "faction": "northern-realms",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "siege"
+  ],
+  "strength": 1,
+  "abilities": [
+   "spy"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Spy: Place on your opponent's battlefield (counts towards opponent's total) and draw 2 cards from your deck.",
+  "wikiSource": "Purchased from Arinbjorn's innkeep",
+  "notesEn": "",
+  "quoteEn": "\"Fuck off! We aren't all ploughin' philanderers. Some of us have depth…\""
+ },
+ {
+  "slug": "tibor-eggebracht",
+  "nameEn": "Tibor Eggebracht",
+  "faction": "nilfgaard",
+  "type": "unit",
+  "hero": true,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 10,
+  "abilities": [
+   "hero"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Hero: Not affected by any Special Cards or abilities.",
+  "wikiSource": "Olivier during Gwent: Playing Innkeeps",
+  "notesEn": "",
+  "quoteEn": "\"Albaaaa! Forward!! Alba! Long live the Emperor!\""
+ },
+ {
+  "slug": "toad",
+  "nameEn": "Toad",
+  "faction": "monsters",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 7,
+  "abilities": [
+   "scorch"
+  ],
+  "prefix": null,
+  "scorchTarget": "ranged",
+  "dlc": "Hearts of Stone",
+  "abilityTextEn": "Scorch - Ranged: Destroy your enemy's strongest Ranged Combat unit(s) if the combined strength of all his or her Ranged Combat units is 10 or more.",
+  "wikiSource": "Won from Olgierd von Everec",
+  "notesEn": "* This is one of the only gwent cards that, while it came with an expansion, it was also made available for the base game. If one doesn't have the {{HoS}} installed, it can be be found instead on a table in the Alchemy inn.",
+  "quoteEn": "\"Big. Bad. Ugly. Squats in the sewers.\""
+ },
+ {
+  "slug": "torrential-rain",
+  "nameEn": "Torrential Rain",
+  "faction": "neutral",
+  "type": "weather",
+  "hero": false,
+  "deckable": true,
+  "copies": 2,
+  "rows": [],
+  "strength": null,
+  "abilities": [
+   "weather"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Sets the strength of all Siege Combat cards to 1 for both players.",
+  "wikiSource": "2 are part of the base deck\n 1 is random rewards from gwent players",
+  "notesEn": "",
+  "quoteEn": "\"Even the rain in this land smells like piss.\""
+ },
+ {
+  "slug": "toruviel",
+  "nameEn": "Toruviel",
+  "faction": "scoiatael",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 2,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Random reward from gwent players",
+  "notesEn": "",
+  "quoteEn": "\"I'd gladly kill you from up close, stare in your eyes... But you reek, human.\""
+ },
+ {
+  "slug": "transformed-vildkaarl",
+  "nameEn": "Transformed Vildkaarl",
+  "faction": "skellige",
+  "type": "unit",
+  "hero": false,
+  "deckable": false,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 14,
+  "abilities": [
+   "morale"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "Blood and Wine",
+  "abilityTextEn": "Morale boost: Adds +1 strength to all units in the row (excluding itself).",
+  "wikiSource": "Transformed version of Berserker",
+  "notesEn": "* The usefulness of this card is highly questionable due to the Olaf gwent card. While this card is a bit stronger Olaf can be played in both ranged and close combat rows. Also, Olaf does not require the use of a Mardroeme card.\n{{Gwent Skellige navbox}}\n\nru:Обратившийся вильдкаарл\nCategory:Blood and Wine gwent\nCategory:Skellige gwent deck cards",
+  "quoteEn": "\"Saw them fight once in my life... and once was enough.\""
+ },
+ {
+  "slug": "transformed-young-vildkaarl",
+  "nameEn": "Transformed Young Vildkaarl",
+  "faction": "skellige",
+  "type": "unit",
+  "hero": false,
+  "deckable": false,
+  "copies": 3,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 8,
+  "abilities": [
+   "bond"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "Blood and Wine",
+  "abilityTextEn": "Tight Bond: Place next to a card with the same name to double the strength of both cards.",
+  "wikiSource": "Transformed version of Young Berserker",
+  "notesEn": "",
+  "quoteEn": "\"Rooaaaar!\""
+ },
+ {
+  "slug": "trebuchet",
+  "nameEn": "Trebuchet",
+  "faction": "northern-realms",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 2,
+  "rows": [
+   "siege"
+  ],
+  "strength": 6,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Part of the base deck",
+  "notesEn": "",
+  "quoteEn": "\"Castle won't batter itself down, now will it? Get them trebuchets rollin'!\""
+ },
+ {
+  "slug": "triss-merigold",
+  "nameEn": "Triss Merigold",
+  "faction": "neutral",
+  "type": "unit",
+  "hero": true,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 7,
+  "abilities": [
+   "hero"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Hero: Not affected by any Special Cards or abilities.",
+  "wikiSource": "Lambert during Gwent: Old Pals",
+  "notesEn": "",
+  "quoteEn": "\"I can take care of myself. Trust me.\""
+ },
+ {
+  "slug": "udalryk",
+  "nameEn": "Udalryk",
+  "faction": "skellige",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 4,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "Blood and Wine",
+  "abilityTextEn": "",
+  "wikiSource": "Part of the base deck",
+  "notesEn": "",
+  "quoteEn": "\"Haaaargh! After me, if ye've the bollocks!\""
+ },
+ {
+  "slug": "vampire-bruxa",
+  "nameEn": "Vampire: Bruxa",
+  "faction": "monsters",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 4,
+  "abilities": [
+   "muster"
+  ],
+  "prefix": "Vampire",
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Muster: Find any cards with the same name in your deck and play them instantly",
+  "wikiSource": "Won during A Matter of Life and Death\n{{BaW}}: Rewarded for removing Louis' urn in Till Death Do You Part",
+  "notesEn": "",
+  "quoteEn": "\"A vile, bloodthirsty, man-eating hag. Kind of like my mother-in-law.\""
+ },
+ {
+  "slug": "vampire-ekimmara",
+  "nameEn": "Vampire: Ekimmara",
+  "faction": "monsters",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 4,
+  "abilities": [
+   "muster"
+  ],
+  "prefix": "Vampire",
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Muster: Find any cards with the same name in your deck and play them instantly",
+  "wikiSource": "Purchased from Svorlag's innkeep",
+  "notesEn": "",
+  "quoteEn": "\"Who would think overgrown bats would have a taste for gaudy jewelry?\""
+ },
+ {
+  "slug": "vampire-fleder",
+  "nameEn": "Vampire: Fleder",
+  "faction": "monsters",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 4,
+  "abilities": [
+   "muster"
+  ],
+  "prefix": "Vampire",
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Muster: Find any cards with the same name in your deck and play them instantly",
+  "wikiSource": "Purchased from Harviken's innkeep",
+  "notesEn": "",
+  "quoteEn": "\"Higher vampires embrace their victims. Fleders rip them to shreds.\""
+ },
+ {
+  "slug": "vampire-garkain",
+  "nameEn": "Vampire: Garkain",
+  "faction": "monsters",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 4,
+  "abilities": [
+   "muster"
+  ],
+  "prefix": "Vampire",
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Muster: Find any cards with the same name in your deck and play them instantly",
+  "wikiSource": "Random reward from gwent players",
+  "notesEn": "",
+  "quoteEn": "\"Blood-drinkers and corpse eaters so foul their very ugliness paralyses foes.\""
+ },
+ {
+  "slug": "vampire-katakan",
+  "nameEn": "Vampire: Katakan",
+  "faction": "monsters",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 5,
+  "abilities": [
+   "muster"
+  ],
+  "prefix": "Vampire",
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Muster: Find any cards with the same name in your deck and play them instantly.",
+  "wikiSource": "Madman Lugos during Gwent: Skellige Style",
+  "notesEn": "",
+  "quoteEn": "\"Drinking the blood of the Continent since the Conjunction.\""
+ },
+ {
+  "slug": "vanhemar",
+  "nameEn": "Vanhemar",
+  "faction": "nilfgaard",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 4,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Random reward from gwent players",
+  "notesEn": "",
+  "quoteEn": "\"For a fire mage, he's not very... flamboyant.\""
+ },
+ {
+  "slug": "vattier-de-rideaux",
+  "nameEn": "Vattier de Rideaux",
+  "faction": "nilfgaard",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 4,
+  "abilities": [
+   "spy"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Spy: Place on your opponent's battlefield (counts towards opponent's total) and draw 2 cards from your deck.",
+  "wikiSource": "Random reward from gwent players",
+  "notesEn": "",
+  "quoteEn": "\"There's never been a problem a well-planned assassination couldn't solve.\""
+ },
+ {
+  "slug": "vernon-roche",
+  "nameEn": "Vernon Roche",
+  "faction": "northern-realms",
+  "type": "unit",
+  "hero": true,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 10,
+  "abilities": [
+   "hero"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Hero: Not affected by any Special Cards or abilities.",
+  "wikiSource": "Won from Haddy during Gwent: Velen Players",
+  "notesEn": "",
+  "quoteEn": "\"A patriot... and a real son of a bitch.\""
+ },
+ {
+  "slug": "ves",
+  "nameEn": "Ves",
+  "faction": "northern-realms",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 5,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Part of the base deck",
+  "notesEn": "",
+  "quoteEn": "\"Better to live one day as a king than a whole life as a beggar.\""
+ },
+ {
+  "slug": "vesemir",
+  "nameEn": "Vesemir",
+  "faction": "neutral",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 6,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Won from Vimme Vivaldi during Gwent: Big City Players",
+  "notesEn": "",
+  "quoteEn": "\"If you're to be hanged, ask for water. Anything can happen before they fetch it.\""
+ },
+ {
+  "slug": "villentretenmerth",
+  "nameEn": "Villentretenmerth",
+  "faction": "neutral",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 7,
+  "abilities": [
+   "scorch"
+  ],
+  "prefix": null,
+  "scorchTarget": "close",
+  "dlc": "",
+  "abilityTextEn": "Scorch - Close Combat: Destroy your enemy's strongest Close Combat unit(s) if the combined strength of all his or her Close Combat units is 10 or more.",
+  "wikiSource": "Random reward from gwent players",
+  "notesEn": "",
+  "quoteEn": "\"Also calls himself Borkh Three Jackdaws… he's not the best at names.\""
+ },
+ {
+  "slug": "vreemde",
+  "nameEn": "Vreemde",
+  "faction": "nilfgaard",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 2,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Random reward from gwent players",
+  "notesEn": "",
+  "quoteEn": "\"Discipline is the Empire's deadliest weapon.\""
+ },
+ {
+  "slug": "vrihedd-brigade-recruit",
+  "nameEn": "Vrihedd Brigade Recruit",
+  "faction": "scoiatael",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 4,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Random reward from gwent players",
+  "notesEn": "",
+  "quoteEn": "\"Hatred burns brighter than any fire, and cuts deeper than any blade.\""
+ },
+ {
+  "slug": "vrihedd-brigade-veteran",
+  "nameEn": "Vrihedd Brigade Veteran",
+  "faction": "scoiatael",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 2,
+  "rows": [
+   "close",
+   "ranged"
+  ],
+  "strength": 5,
+  "abilities": [
+   "agile"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Agile: Can be placed in either the Close Combat or the Ranged Combat row. Cannot be moved once placed.",
+  "wikiSource": "1 purchased from Stjepan at The Alchemy\n1 purchased from The Kingfisher Inn's Innkeep\n{{HoS}}: 1 can be purchased from the merchant at the circus camp near Carsten",
+  "notesEn": "",
+  "quoteEn": "\"Vrihedd? What's that mean?\" \"Trouble.\""
+ },
+ {
+  "slug": "war-longship",
+  "nameEn": "War Longship",
+  "faction": "skellige",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 3,
+  "rows": [
+   "siege"
+  ],
+  "strength": 6,
+  "abilities": [
+   "bond"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "Blood and Wine",
+  "abilityTextEn": "Tight Bond: Place next to a card with the same name to double the strength of both cards.",
+  "wikiSource": "2 are part of the base deck\n1 won from the Tourney Grounds' innkeep",
+  "notesEn": "",
+  "quoteEn": "\"They say Hemdall's heart swells whenever the longships sail out on a raid.\""
+ },
+ {
+  "slug": "werewolf",
+  "nameEn": "Werewolf",
+  "faction": "monsters",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 5,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Purchased from Urialla Harbor's innkeep",
+  "notesEn": "",
+  "quoteEn": "\"Wolves aren't as bad as they say. Werewolves, though – they're worse.\""
+ },
+ {
+  "slug": "wyvern",
+  "nameEn": "Wyvern",
+  "faction": "monsters",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 2,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Random reward from gwent players",
+  "notesEn": "",
+  "quoteEn": "\"Imagine a cross between a winged snake and a nightmare. Wyverns are worse.\""
+ },
+ {
+  "slug": "yaevinn",
+  "nameEn": "Yaevinn",
+  "faction": "scoiatael",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close",
+   "ranged"
+  ],
+  "strength": 6,
+  "abilities": [
+   "agile"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Agile: Can be placed in either the Close Combat or the Ranged Combat row. Cannot be moved once placed.",
+  "wikiSource": "Won from Sjusta during Gwent: Skellige Style",
+  "notesEn": "",
+  "quoteEn": "\"We are the drops of rain that together make a ferocious storm.\""
+ },
+ {
+  "slug": "yarpen-zigrin",
+  "nameEn": "Yarpen Zigrin",
+  "faction": "northern-realms",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 2,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Part of the base deck",
+  "notesEn": "",
+  "quoteEn": "\"The world belongs to whoever's best at crackin' skulls and impregnatin' lasses.\""
+ },
+ {
+  "slug": "yennefer-of-vengerberg",
+  "nameEn": "Yennefer of Vengerberg",
+  "faction": "neutral",
+  "type": "unit",
+  "hero": true,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 7,
+  "abilities": [
+   "hero",
+   "medic"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Medic: Choose one card from your discard pile and play it instantly (no Heroes or Special Cards).\nHero: Not affected by any Special Cards or abilities.",
+  "wikiSource": "Won from Stjepan during Gwent: Playing Innkeeps",
+  "notesEn": "*Unless selecting Eredin: Bringer of Death as the Leader this is the only medic that can be added to the Monsters Gwent deck.",
+  "quoteEn": "\"Magic is Chaos, Art and Science. It's a curse, a blessing and a progression.\""
+ },
+ {
+  "slug": "young-berserker",
+  "nameEn": "Young Berserker",
+  "faction": "skellige",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 3,
+  "rows": [
+   "ranged"
+  ],
+  "strength": 2,
+  "abilities": [
+   "berserker"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "Blood and Wine",
+  "abilityTextEn": "Transforms into a bear when a Mardroeme card is on its row.",
+  "wikiSource": "1 is part of the base deck\n1 won from the Tourney Grounds' blacksmith\n1 won from Pierre at Tailor's Workshop",
+  "notesEn": "",
+  "quoteEn": "\"Want some?\""
+ },
+ {
+  "slug": "young-emissary",
+  "nameEn": "Young Emissary",
+  "faction": "nilfgaard",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 2,
+  "rows": [
+   "close"
+  ],
+  "strength": 5,
+  "abilities": [
+   "bond"
+  ],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "Tight Bond: Place next to a card with the same name to double the strength of both cards.",
+  "wikiSource": "1 purchased from Cunny of the Goose's innkeep\n1 purchased from the Seven Cats Inn's innkeep",
+  "notesEn": "",
+  "quoteEn": "\"If I acquit myself well, perhaps next they'll post me somewhere civilized.\""
+ },
+ {
+  "slug": "zerrikanian-fire-scorpion",
+  "nameEn": "Zerrikanian Fire Scorpion",
+  "faction": "nilfgaard",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "siege"
+  ],
+  "strength": 5,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Purchase from Crow's Perch's merchant or Devil's Pit's merchant",
+  "notesEn": "",
+  "quoteEn": "\"The Zerrikania Desert used to be a lush garden. Then these came along.\""
+ },
+ {
+  "slug": "zoltan-chivay",
+  "nameEn": "Zoltan Chivay",
+  "faction": "neutral",
+  "type": "unit",
+  "hero": false,
+  "deckable": true,
+  "copies": 1,
+  "rows": [
+   "close"
+  ],
+  "strength": 5,
+  "abilities": [],
+  "prefix": null,
+  "scorchTarget": null,
+  "dlc": "",
+  "abilityTextEn": "",
+  "wikiSource": "Won from Aldert Geert in White Orchard or found under the Hanged Man's Tree",
+  "notesEn": "",
+  "quoteEn": "\"Life without old mates and booze is like a woman without a rump.\""
+ }
+]

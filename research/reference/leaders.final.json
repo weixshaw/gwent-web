@@ -1,0 +1,333 @@
+[
+ {
+  "id": "crach-an-craite",
+  "nameEn": "Crach an Craite",
+  "nameZh": "",
+  "faction": "skellige",
+  "ability": [
+   {
+    "id": "shuffleGraveyards"
+   }
+  ],
+  "abilityTextEn": "Shuffle all cards from each player's graveyard back into their decks.",
+  "quoteEn": "\"A king's gotta be wise. A king's gotta command respect. A king's gotta have stones.\"",
+  "dlc": "Blood and Wine"
+ },
+ {
+  "id": "emhyr-var-emreis-emperor-of-nilfgaard",
+  "nameEn": "Emhyr var Emreis: Emperor of Nilfgaard",
+  "nameZh": "",
+  "faction": "nilfgaard",
+  "ability": [
+   {
+    "id": "viewOpponentHand",
+    "count": 3
+   }
+  ],
+  "abilityTextEn": "Look at 3 random cards from your opponent's hand.",
+  "quoteEn": "\"Your motives do not interest me. Only results.\"",
+  "dlc": ""
+ },
+ {
+  "id": "emhyr-var-emreis-his-imperial-majesty",
+  "nameEn": "Emhyr var Emreis: His Imperial Majesty",
+  "nameZh": "",
+  "faction": "nilfgaard",
+  "ability": [
+   {
+    "id": "playWeatherFromDeck",
+    "weather": "rain"
+   }
+  ],
+  "abilityTextEn": "Pick a Torrential Rain card from your deck and play it instantly.",
+  "quoteEn": "\"The skies wept when my Pavetta died. They will not weep for me.\"",
+  "dlc": ""
+ },
+ {
+  "id": "emhyr-var-emreis-invader-of-the-north",
+  "nameEn": "Emhyr var Emreis: Invader of the North",
+  "nameZh": "",
+  "faction": "nilfgaard",
+  "ability": [
+   {
+    "id": "randomRevive",
+    "passive": true
+   }
+  ],
+  "abilityTextEn": "Abilities that restore a unit to the battlefield restore a randomly-chosen unit. Affects both players.",
+  "quoteEn": "\"Emperors command magnitudes, yet cannot control two things: their time and their hearts.\"",
+  "dlc": "Hearts of Stone"
+ },
+ {
+  "id": "emhyr-var-emreis-the-relentless",
+  "nameEn": "Emhyr var Emreis: The Relentless",
+  "nameZh": "",
+  "faction": "nilfgaard",
+  "ability": [
+   {
+    "id": "takeGraveyardUnitToHand",
+    "from": "opponent"
+   }
+  ],
+  "abilityTextEn": "Draw a card from your opponent's discard pile.",
+  "quoteEn": "\"They do not call me the Patient. Take care they do not call you the Headless.\"",
+  "dlc": ""
+ },
+ {
+  "id": "emhyr-var-emreis-the-white-flame",
+  "nameEn": "Emhyr var Emreis: The White Flame",
+  "nameZh": "",
+  "faction": "nilfgaard",
+  "ability": [
+   {
+    "id": "cancelLeader"
+   }
+  ],
+  "abilityTextEn": "Cancel your opponent's Leader Ability.",
+  "quoteEn": "\"A sword is but one of many tools at a rules's disposal.\"",
+  "dlc": ""
+ },
+ {
+  "id": "eredin-breacc-glas-the-treacherous",
+  "nameEn": "Eredin Bréacc Glas: The Treacherous",
+  "nameZh": "",
+  "faction": "monsters",
+  "ability": [
+   {
+    "id": "doubleSpy",
+    "passive": true
+   }
+  ],
+  "abilityTextEn": "Doubles the strength of all spy cards (affects both players).",
+  "quoteEn": "\"I'm enjoying this. You are my toy.\"",
+  "dlc": "Hearts of Stone"
+ },
+ {
+  "id": "eredin-bringer-of-death",
+  "nameEn": "Eredin: Bringer of Death",
+  "nameZh": "",
+  "faction": "monsters",
+  "ability": [
+   {
+    "id": "takeGraveyardUnitToHand",
+    "from": "own"
+   }
+  ],
+  "abilityTextEn": "Restore a card from your discard pile to your hand.",
+  "quoteEn": "\"Go on. Show me your spins, pirouettes and feints. I want to watch.\"",
+  "dlc": ""
+ },
+ {
+  "id": "eredin-commander-of-the-red-riders",
+  "nameEn": "Eredin: Commander of the Red Riders",
+  "nameZh": "",
+  "faction": "monsters",
+  "ability": [
+   {
+    "id": "leaderHorn",
+    "row": "close"
+   }
+  ],
+  "abilityTextEn": "Double the strength of all your Close Combat units (unless a Commander's horn is also present on that row).",
+  "quoteEn": "\"Have some dignity. You know how this will end.\"",
+  "dlc": ""
+ },
+ {
+  "id": "eredin-destroyer-of-worlds",
+  "nameEn": "Eredin: Destroyer of Worlds",
+  "nameZh": "",
+  "faction": "monsters",
+  "ability": [
+   {
+    "id": "discardDraw",
+    "discard": 2,
+    "draw": 1
+   }
+  ],
+  "abilityTextEn": "Discard 2 card and draw 1 card of your choice from your deck.",
+  "quoteEn": "\"It is unavoidable.\"",
+  "dlc": ""
+ },
+ {
+  "id": "eredin-king-of-the-wild-hunt",
+  "nameEn": "Eredin: King of the Wild Hunt",
+  "nameZh": "",
+  "faction": "monsters",
+  "ability": [
+   {
+    "id": "playWeatherFromDeck",
+    "weather": "any"
+   }
+  ],
+  "abilityTextEn": "Pick any weather card from your deck and play it instantly.",
+  "quoteEn": "\"I've long awaited this…\"",
+  "dlc": ""
+ },
+ {
+  "id": "foltest-king-of-temeria",
+  "nameEn": "Foltest: King of Temeria",
+  "nameZh": "",
+  "faction": "northern-realms",
+  "ability": [
+   {
+    "id": "playWeatherFromDeck",
+    "weather": "fog"
+   }
+  ],
+  "abilityTextEn": "Pick an Impenetrable Fog card from your deck and play it instantly.",
+  "quoteEn": "\"It is natural and beautiful that a man should love his sister.\"",
+  "dlc": ""
+ },
+ {
+  "id": "foltest-lord-commander-of-the-north",
+  "nameEn": "Foltest: Lord Commander of the North",
+  "nameZh": "",
+  "faction": "northern-realms",
+  "ability": [
+   {
+    "id": "clearWeather"
+   }
+  ],
+  "abilityTextEn": "Clear any weather effects (resulting from Biting Frost, Torrential Rain or Impenetrable Fog cards) in play.",
+  "quoteEn": "\"Sod advisors and their schemes. I place my trust in my soldiers' blades.\"",
+  "dlc": ""
+ },
+ {
+  "id": "foltest-son-of-medell",
+  "nameEn": "Foltest: Son of Medell",
+  "nameZh": "",
+  "faction": "northern-realms",
+  "ability": [
+   {
+    "id": "scorchRow",
+    "row": "ranged",
+    "requireEnemyRowTotalAtLeast": 10
+   }
+  ],
+  "abilityTextEn": "Destroy your enemy's strongest Ranged Combat unit(s) if the combined strength of all his or her Ranged Combat units is 10 or more.",
+  "quoteEn": "\"Dammit, I rule this land and I refuse to creep around its corners.\"",
+  "dlc": "Hearts of Stone"
+ },
+ {
+  "id": "foltest-the-siegemaster",
+  "nameEn": "Foltest: The Siegemaster",
+  "nameZh": "",
+  "faction": "northern-realms",
+  "ability": [
+   {
+    "id": "leaderHorn",
+    "row": "siege"
+   }
+  ],
+  "abilityTextEn": "Doubles the strength of all your Siege units (unless a Commander's Horn is also present on that row).",
+  "quoteEn": "\"A well-aimed ballista razes not just the enemy's walls, but his morale as well.\"",
+  "dlc": ""
+ },
+ {
+  "id": "foltest-the-steel-forged",
+  "nameEn": "Foltest: The Steel-Forged",
+  "nameZh": "",
+  "faction": "northern-realms",
+  "ability": [
+   {
+    "id": "scorchRow",
+    "row": "siege",
+    "requireEnemyRowTotalAtLeast": 10
+   }
+  ],
+  "abilityTextEn": "Destroy your enemy's strongest Siege unit(s) if the combined strength of all his or her Siege units is 10 or more.",
+  "quoteEn": "\"A beautiful day for battle.\"",
+  "dlc": ""
+ },
+ {
+  "id": "francesca-findabair-daisy-of-the-valley",
+  "nameEn": "Francesca Findabair: Daisy of the Valley",
+  "nameZh": "",
+  "faction": "scoiatael",
+  "ability": [
+   {
+    "id": "drawExtraStart",
+    "count": 1,
+    "passive": true
+   }
+  ],
+  "abilityTextEn": "Draw an extra card at the beginning of the battle",
+  "quoteEn": "\"The Elder Races have forgotten more than humans can ever hope to know.\"",
+  "dlc": ""
+ },
+ {
+  "id": "francesca-findabair-hope-of-the-aen-seidhe",
+  "nameEn": "Francesca Findabair: Hope of the Aen Seidhe",
+  "nameZh": "",
+  "faction": "scoiatael",
+  "ability": [
+   {
+    "id": "repositionAgile"
+   }
+  ],
+  "abilityTextEn": "Move agile units to whichever valid row maximizes their strength (don't move units already in optimal row).",
+  "quoteEn": "\"Daede sian caente, Aen Seidhe en'allane ael coeden…\"",
+  "dlc": "Hearts of Stone"
+ },
+ {
+  "id": "francesca-findabair-pureblood-elf",
+  "nameEn": "Francesca Findabair: Pureblood Elf",
+  "nameZh": "",
+  "faction": "scoiatael",
+  "ability": [
+   {
+    "id": "playWeatherFromDeck",
+    "weather": "frost"
+   }
+  ],
+  "abilityTextEn": "Pick a Biting Frost card from your deck and play it instantly.",
+  "quoteEn": "\"Ash shall fertilize the soil. By spring, the valley shall bloom once more.\"",
+  "dlc": ""
+ },
+ {
+  "id": "francesca-findabair-queen-of-dol-blathanna",
+  "nameEn": "Francesca Findabair: Queen of Dol Blathanna",
+  "nameZh": "",
+  "faction": "scoiatael",
+  "ability": [
+   {
+    "id": "scorchRow",
+    "row": "close",
+    "requireEnemyRowTotalAtLeast": 10
+   }
+  ],
+  "abilityTextEn": "Destroy your enemy's strongest Close Combat unit(s) if the combined strength of all his or her Close Combat units is 10 or more.",
+  "quoteEn": "\"To live in peace, we first must kill. This is human opression's cruel finale.\"",
+  "dlc": ""
+ },
+ {
+  "id": "francesca-findabair-the-beautiful",
+  "nameEn": "Francesca Findabair: The Beautiful",
+  "nameZh": "",
+  "faction": "scoiatael",
+  "ability": [
+   {
+    "id": "leaderHorn",
+    "row": "ranged"
+   }
+  ],
+  "abilityTextEn": "Doubles the strength of all your Ranged Combat units (unless a Commander's Horn is also present on that row).",
+  "quoteEn": "\"Do not let my beauty distract your aim.\"",
+  "dlc": ""
+ },
+ {
+  "id": "king-bran",
+  "nameEn": "King Bran",
+  "nameZh": "",
+  "faction": "skellige",
+  "ability": [
+   {
+    "id": "halfWeather",
+    "passive": true
+   }
+  ],
+  "abilityTextEn": "Units only lose half their Strength in bad weather conditions.",
+  "quoteEn": "\"No one can replace Bran. Though they're sure to try.\"",
+  "dlc": "Blood and Wine"
+ }
+]

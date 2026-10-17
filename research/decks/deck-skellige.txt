@@ -1,0 +1,179 @@
+ The Skellige Gwent deck , although originally planned in 2014 as part of the base game , [ 1 ] wasn't introduced until the Blood and Wine expansion. The inspiration for this deck comes from Skellige 's clans and legends. The base deck is received from Count Monnier and for collecting all cards there is an achievement called I Have a Gwent Problem .
+ Special - 2 random Unit cards from the graveyard are placed on the battlefield at the start of the third round. 
+ Contents 
+ 1 Overview 
+ 2 Associated quests 
+ 3 Cards 
+ 4 Notes 
+ 5 References 
+ Overview [ ] 
+ While capable of both swarm and Tight-Bond, the deck focuses on resilience. The Skellige deck faction ability doesn't trigger until the beginning of round 3 when two random normal (non-hero or "special") cards are returned to the board. The King Bran leader card ability halves the effect of adverse weather cards, while the King Crach an Craite leader card ability shuffles the contents of both players' graveyards back into their decks. The Skellige deck also features the Kambi card, which, like the neutral Cow card is played with a 0 score that, when removed from the board, "transforms" into a powerful being. Unlike the Cow card, however, Kambi becomes a hero card with 11 score, whereas the Cow card transformation yields 8 score. This deck excels at attrition, but lacks the double-edged risk of, say, the Nilfgaardian deck.
+ The deck possesses 2 unique features, each introducing potential advantages, with the first tapping into the powers of the default leader card.
+ Cerys is a hero with the swarm ability, summoning Shield-Maidens who in turn possess Tight-Bond. When fortunate enough to possess both 2+ Shield Maidens and Cerys in the starting hand, Shield Maidens can be used on an early round, then restored to deck via the default leader card and summoned by Cerys in a subsequent round. 
+ Berserker feature hinges upon units capable of turning into stronger, row-buffing/Tight-Bond variants when triggered by the user's mutation-inducing cards, but this feature places rather significant reliance on luck. 
+ From a general standpoint, the deck can be played very conventionally, using solely brute force. With potent Tight-Bond cards on both close-combat and siege rows, the deck also benefits from swarm cards on the ranged row. This approach works best with King Bran leader card to counter potential debuff cards played by the other side. Under this approach, Cerys is a VERY nice addition (10+4*(1+200%)*3=46 on an empty board) but not the focus of the strategy.
+ With solid line-ups on all three rows, unique ability to withstand adverse weather and round 3 benefits, this deck's only vulnerability is its sheer reliance on luck. Lacking spy cards and medics, while focusing on card combos (tight bonds or berserker + mardroeme) means that the player practically relies on a good initial hand.
+ Associated quests [ ] 
+ Gwent: Never Fear, Skellige's Here 
+ Gwent: To Everything - Turn, Turn, Tournament! 
+ Cards [ ] 
+ Icon 
+ Name 
+ Type 
+ Row 
+ Str. 
+ Ability 
+ Source
+ Berserker 
+ Unit
+ 4
+ Transforms into a bear when a Mardroeme card is on its row.
+ Part of the base deck
+ Birna Bran 
+ Unit
+ 2
+ Medic: Choose one card from your discard pile and play it instantly (no Heroes or Special Cards).
+ Part of the base deck
+ Blueboy Lugos 
+ Unit
+ 6
+ Part of the base deck
+ Cerys 
+ Hero 
+ 10
+ Hero: Not affected by any Special Cards or abilities. Summon Shield Maidens : Summons all Shield Maidens from deck and hand.
+ Won from The Barrel and Bung Inn 's Innkeep 
+ Clan Brokvar Archer 
+ Unit
+ 6
+ 2 are part of the base deck 1 won from Castel Ravello Vineyard 's herbalist 
+ Clan Dimun Pirate 
+ Unit
+ 6
+ Scorch: Kills the strongest card(s) on the battlefield.
+ Won from Dupont & Sons ' merchant 
+ Clan Drummond Shield Maiden 
+ Unit
+ 4
+ Tight Bond : Place next to a card with the same name to double the strength of both cards.
+ 1 is part of the base deck 1 won from The Cockatrice Inn 's innkeep 1 won from the Francollarts ' armorer 
+ Clan Heymaey Skald 
+ Unit
+ 4
+ Part of the base deck
+ Clan Tordarroch Armorsmith 
+ Unit
+ 4
+ Part of the base deck
+ Clan an Craite Warrior 
+ Unit
+ 6
+ Tight Bond : Place next to a card with the same name to double the strength of both cards.
+ Part of the base deck
+ Crach an Craite 
+ leader 
+ Shuffle all cards from each player's graveyard back into their decks.
+ Part of the base deck
+ Donar an Hindar 
+ Unit
+ 4
+ Part of the base deck
+ Draig Bon-Dhu 
+ Unit
+ 2
+ Commander's Horn: Doubles the strength of all unit cards in that row. Limited to 1 per row.
+ Won from The Pheasantry 's innkeep 
+ Ermion 
+ Hero 
+ 8
+ Hero: Not affected by any Special Cards or abilities. Mardroeme: Triggers transformation of all Berserker cards on the same row.
+ Won from Francollarts ' innkeep 
+ Hemdall 
+ Hero 
+ 11
+ Hero: Not affected by any Special Cards or abilities.
+ Transformed version of Kambi 
+ Hjalmar 
+ Hero 
+ 10
+ Hero: Not affected by any Special Cards or abilities.
+ Part of the base deck
+ Holger Blackhand 
+ Unit
+ 4
+ Part of the base deck
+ Kambi 
+ Unit
+ 0
+ When this card is removed from the battlefield, it summons a powerful new Unit Card to take its place.
+ Won from Hauteville 's armorer 
+ King Bran 
+ leader 
+ Units only lose half their Strength in bad weather conditions.
+ Won from the Ducal Camerlengo in Beauclair Completing Gwent: To Everything - Turn, Turn, Tournament! 
+ Light Longship 
+ Unit
+ 4
+ Muster : Find any cards with the same name in your deck and play them instantly.
+ 2 are part of the base deck 1 won from the Perfumery 's merchant 
+ Madman Lugos 
+ Unit
+ 6
+ Part of the base deck
+ Mardroeme 
+ Special 
+ Triggers transformation of all Berserker cards on the same row.
+ 1 is part of the base deck 1 won from The Belles of Beauclair 's madame 1 won from the Herb Store 's herbalist 
+ Olaf 
+ Unit
+ 12
+ Agile: Can be placed in either the Close Combat or the Ranged Combat row. Cannot be moved once placed. Morale boost : Adds +1 to all units in the row (excluding itself).
+ Won from The Adder and Jewels Winery 's sommelier 
+ Skellige Storm 
+ Weather 
+ Reduces the Strength of all Range and Siege Units to 1.
+ 1 is won from the Tourney Grounds ' armorer 1 is won from the Tourney Grounds' barber 1 is won from Beauclair Port 's butcher 
+ Svanrige 
+ Unit
+ 4
+ Part of the base deck
+ Transformed Vildkaarl 
+ Unit
+ 14
+ Morale boost : Adds +1 strength to all units in the row (excluding itself).
+ Transformed version of Berserker 
+ Transformed Young Vildkaarl 
+ Unit
+ 8
+ Tight Bond : Place next to a card with the same name to double the strength of both cards.
+ Transformed version of Young Berserker 
+ Udalryk 
+ Unit
+ 4
+ Part of the base deck
+ War Longship 
+ Unit
+ 6
+ Tight Bond : Place next to a card with the same name to double the strength of both cards.
+ 2 are part of the base deck 1 won from the Tourney Grounds ' innkeep 
+ Young Berserker 
+ Unit
+ 2
+ Transforms into a bear when a Mardroeme card is on its row.
+ 1 is part of the base deck 1 won from the Tourney Grounds ' blacksmith 1 won from Pierre at Tailor's Workshop 
+ Notes [ ] 
+ It should be noted that while Skellige Storm was introduced with the rest of the Skellige deck, and reflects it in its name, Skellige Storm is actually a neutral card and can thus be used in any of the decks. 
+ According to the leaked 2014 concept documents, Eist Tuirseach was also set to appear in the deck, but did not manage to make the final cut. 
+ References [ ] 
+ ↑ Leaked CD PROJEKT RED materials from 2014 
+ Gwent cards in The Witcher 3: Wild Hunt Decks 
+ Neutral Cards 
+ Combat Row 
+ Abilities 
+ Other Cards 
+ Hearts of Stone cards 
+ Hero cards 
+ Leader cards 
+ Special cards 
+ Weather cards 
+ 

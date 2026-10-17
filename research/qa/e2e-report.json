@@ -1,0 +1,356 @@
+{
+  "startedAt": "2026-10-17T13:59:13.769Z",
+  "baseUrl": "http://127.0.0.1:8788",
+  "mode": "full",
+  "browser": "system-chrome",
+  "steps": [
+    {
+      "name": "01-首页加载",
+      "status": "ok"
+    },
+    {
+      "name": "02-首页 1920×1080 布局",
+      "status": "ok"
+    },
+    {
+      "name": "03-快速对局 → 阵营选择",
+      "status": "ok"
+    },
+    {
+      "name": "04-选择阵营（北方领域）",
+      "status": "ok"
+    },
+    {
+      "name": "05-开始对局（预设牌组 vs AI）",
+      "status": "ok"
+    },
+    {
+      "name": "06-换牌（选 2 张 + 确认，或跳过）",
+      "status": "ok"
+    },
+    {
+      "name": "07-对局主循环（出牌/行选择/Pass/AI/小局结算/比赛结束）",
+      "status": "ok"
+    },
+    {
+      "name": "08-结算弹窗内容与引擎结果一致",
+      "status": "ok"
+    }
+  ],
+  "issues": [],
+  "screenshots": [
+    "/Users/phantasy/Playground/ktp/research/qa/screenshots/01-home-1280x800.png",
+    "/Users/phantasy/Playground/ktp/research/qa/screenshots/01b-home-1920x1080.png",
+    "/Users/phantasy/Playground/ktp/research/qa/screenshots/02-faction.png",
+    "/Users/phantasy/Playground/ktp/research/qa/screenshots/03-game-start.png",
+    "/Users/phantasy/Playground/ktp/research/qa/screenshots/04-mulligan.png",
+    "/Users/phantasy/Playground/ktp/research/qa/screenshots/06-play-mid.png",
+    "/Users/phantasy/Playground/ktp/research/qa/screenshots/06b-play-1920x1080.png",
+    "/Users/phantasy/Playground/ktp/research/qa/screenshots/05-round-1-end.png",
+    "/Users/phantasy/Playground/ktp/research/qa/screenshots/pending-medic.png",
+    "/Users/phantasy/Playground/ktp/research/qa/screenshots/05-round-2-end.png",
+    "/Users/phantasy/Playground/ktp/research/qa/screenshots/08-game-over-engine.png",
+    "/Users/phantasy/Playground/ktp/research/qa/screenshots/08b-result-modal.png"
+  ],
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "pageErrors": [],
+  "httpErrors": [],
+  "actions": [
+    {
+      "label": "quick-play",
+      "at": 3259
+    },
+    {
+      "label": "faction:northern-realms",
+      "at": 3843
+    },
+    {
+      "label": "start-game",
+      "at": 4603
+    },
+    {
+      "label": "mulligan-card:crinfrid-rea",
+      "at": 9321
+    },
+    {
+      "label": "mulligan-confirm",
+      "at": 13470
+    },
+    {
+      "label": "hand-card:blue-stripes",
+      "at": 15389
+    },
+    {
+      "label": "hand-card:poor-fucking",
+      "at": 17972
+    },
+    {
+      "label": "hand-card:prince-stenn",
+      "at": 20970
+    },
+    {
+      "label": "hand-card:catapult-0-1",
+      "at": 23056
+    },
+    {
+      "label": "hand-card:vernon-roche",
+      "at": 25105
+    },
+    {
+      "label": "hand-card:redanian-foo",
+      "at": 25504
+    },
+    {
+      "label": "hand-card:redanian-foo",
+      "at": 29953
+    },
+    {
+      "label": "pass",
+      "at": 30402
+    },
+    {
+      "label": "pass",
+      "at": 32152
+    },
+    {
+      "label": "modal-confirm",
+      "at": 32627
+    },
+    {
+      "label": "pending:medic",
+      "at": 34855
+    },
+    {
+      "label": "hand-card:thaler-0-18",
+      "at": 35453
+    },
+    {
+      "label": "hand-card:redanian-foo",
+      "at": 37537
+    },
+    {
+      "label": "hand-card:blue-stripes",
+      "at": 39518
+    },
+    {
+      "label": "hand-card:philippa-eil",
+      "at": 39920
+    },
+    {
+      "label": "hand-card:philippa-eil",
+      "at": 44354
+    },
+    {
+      "label": "hand-card:crinfrid-rea",
+      "at": 44769
+    },
+    {
+      "label": "hand-card:crinfrid-rea",
+      "at": 49204
+    },
+    {
+      "label": "hand-card:keira-metz-0",
+      "at": 49618
+    },
+    {
+      "label": "hand-card:keira-metz-0",
+      "at": 54052
+    },
+    {
+      "label": "pass",
+      "at": 54499
+    },
+    {
+      "label": "pass",
+      "at": 56250
+    },
+    {
+      "label": "modal-confirm",
+      "at": 56722
+    },
+    {
+      "label": "hand-card:esterad-thys",
+      "at": 57300
+    },
+    {
+      "label": "hand-card:esterad-thys",
+      "at": 61717
+    },
+    {
+      "label": "pending:medic",
+      "at": 63371
+    },
+    {
+      "label": "pending:medic",
+      "at": 63802
+    },
+    {
+      "label": "hand-card:crinfrid-rea",
+      "at": 64099
+    },
+    {
+      "label": "hand-card:commander-s-",
+      "at": 65848
+    },
+    {
+      "label": "row:close",
+      "at": 66281
+    },
+    {
+      "label": "pass",
+      "at": 67765
+    },
+    {
+      "label": "modal-confirm",
+      "at": 68230
+    }
+  ],
+  "game": {
+    "rounds": [
+      {
+        "round": 1,
+        "played": 6
+      },
+      {
+        "round": 2,
+        "played": 6
+      },
+      {
+        "round": 3,
+        "played": 3
+      }
+    ],
+    "roundsFinished": 3,
+    "gameOver": true,
+    "result": {
+      "winner": 1,
+      "gems": [
+        0,
+        1
+      ],
+      "history": [
+        {
+          "round": 1,
+          "scores": [
+            24,
+            25
+          ],
+          "winner": 1,
+          "tie": false,
+          "nilfTie": false,
+          "gems": [
+            1,
+            2
+          ]
+        },
+        {
+          "round": 2,
+          "scores": [
+            25,
+            22
+          ],
+          "winner": 0,
+          "tie": false,
+          "nilfTie": false,
+          "gems": [
+            1,
+            1
+          ]
+        },
+        {
+          "round": 3,
+          "scores": [
+            15,
+            23
+          ],
+          "winner": 1,
+          "tie": false,
+          "nilfTie": false,
+          "gems": [
+            0,
+            1
+          ]
+        }
+      ],
+      "reason": "rounds"
+    },
+    "gems": [
+      0,
+      1
+    ],
+    "scores": [
+      0,
+      0
+    ],
+    "finalRound": 3,
+    "final": {
+      "phase": "game-over",
+      "round": 3,
+      "gems": [
+        0,
+        1
+      ],
+      "result": {
+        "winner": 1,
+        "gems": [
+          0,
+          1
+        ],
+        "history": [
+          {
+            "round": 1,
+            "scores": [
+              24,
+              25
+            ],
+            "winner": 1,
+            "tie": false,
+            "nilfTie": false,
+            "gems": [
+              1,
+              2
+            ]
+          },
+          {
+            "round": 2,
+            "scores": [
+              25,
+              22
+            ],
+            "winner": 0,
+            "tie": false,
+            "nilfTie": false,
+            "gems": [
+              1,
+              1
+            ]
+          },
+          {
+            "round": 3,
+            "scores": [
+              15,
+              23
+            ],
+            "winner": 1,
+            "tie": false,
+            "nilfTie": false,
+            "gems": [
+              0,
+              1
+            ]
+          }
+        ],
+        "reason": "rounds"
+      },
+      "scores": [
+        0,
+        0
+      ]
+    }
+  },
+  "result": "game-over-reached",
+  "error": null,
+  "finishedAt": "2026-10-17T14:00:29.535Z",
+  "durationMs": 75766
+}

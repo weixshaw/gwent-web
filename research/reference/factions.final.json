@@ -1,0 +1,72 @@
+[
+ {
+  "id": "northern-realms",
+  "nameEn": "Northern Realms",
+  "nameZh": "北方领域",
+  "sigil": "lion",
+  "abilityEn": "Draw a card from your deck whenever you win a round.",
+  "ability": {
+   "id": "drawOnRoundWin"
+  },
+  "palette": {
+   "primary": "#4d7ea8",
+   "accent": "#c9a227"
+  }
+ },
+ {
+  "id": "nilfgaard",
+  "nameEn": "Nilfgaardian Empire",
+  "nameZh": "尼弗迦德帝国",
+  "sigil": "sun",
+  "abilityEn": "Wins any round that ends in a draw.",
+  "ability": {
+   "id": "winTies"
+  },
+  "palette": {
+   "primary": "#1b1b1d",
+   "accent": "#d4af37"
+  }
+ },
+ {
+  "id": "scoiatael",
+  "nameEn": "Scoia'tael",
+  "nameZh": "松鼠党",
+  "sigil": "leaf",
+  "abilityEn": "Decide who takes the first turn at the start of the game.",
+  "ability": {
+   "id": "chooseFirstPlayer"
+  },
+  "palette": {
+   "primary": "#2f5d3a",
+   "accent": "#b87333"
+  }
+ },
+ {
+  "id": "monsters",
+  "nameEn": "Monsters",
+  "nameZh": "怪物",
+  "sigil": "claw",
+  "abilityEn": "Keeps a random unit card on the battlefield after each round.",
+  "ability": {
+   "id": "keepRandomUnit"
+  },
+  "palette": {
+   "primary": "#7a1f1f",
+   "accent": "#d9cbb3"
+  }
+ },
+ {
+  "id": "skellige",
+  "nameEn": "Skellige",
+  "nameZh": "史凯利格",
+  "sigil": "longship",
+  "abilityEn": "2 random unit cards from the graveyard are placed on the battlefield at the start of the third round.",
+  "ability": {
+   "id": "round3Revive"
+  },
+  "palette": {
+   "primary": "#2f6f6a",
+   "accent": "#c9a227"
+  }
+ }
+]

@@ -1,0 +1,300 @@
+/* ============================================================
+   GWENT · Gilded Grimoire — design tokens & base layer
+   Owner: Lead.  其他模块只消费这些变量，不修改本文件。
+   ============================================================ */
+
+:root {
+  /* 黑曜石 → 焦木 */
+  --ink-0: #070605;
+  --ink-1: #0d0b09;
+  --ink-2: #14100c;
+  --ink-3: #1e1812;
+  --ink-4: #2a2118;
+  --paper: #e7dcc2;
+  --paper-dim: #c9bda3;
+  --paper-faint: #8f8570;
+  --gold: #c9a227;
+  --gold-bright: #f0d078;
+  --gold-dim: #8a6f22;
+  --blood: #7a1f1f;
+  --ember: #ff7a2f;
+
+  /* 阵营色 */
+  --nr: #4d7ea8;
+  --nr-glow: #9cc4e4;
+  --ng: #c9a227;
+  --ng-glow: #f0d078;
+  --st: #2f7a4a;
+  --st-glow: #a8e0a0;
+  --mo: #8a2323;
+  --mo-glow: #ff6b5a;
+  --sk: #2f6f6a;
+  --sk-glow: #9adfd6;
+  --neutral: #8b7d5c;
+  --neutral-glow: #d9cbb3;
+
+  /* 字体 */
+  --font-display: "Palatino Linotype", "Iowan Old Style", "Songti SC", "Noto Serif SC", "STSong", serif;
+  --font-ui: "Avenir Next", "PingFang SC", "Noto Sans SC", "Hiragino Sans GB", system-ui, sans-serif;
+
+  /* 卡牌尺寸 */
+  --card-w: 132px;
+  --card-h: 184px;
+  --card-radius: 10px;
+  --card-sm-w: 92px;
+  --card-sm-h: 128px;
+  --card-xs-w: 64px;
+  --card-xs-h: 89px;
+  --card-lg-w: 210px;
+  --card-lg-h: 293px;
+
+  /* 动效 */
+  --ease-out: cubic-bezier(0.22, 0.8, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 280ms;
+  --dur-slow: 520ms;
+
+  /* 阴影 */
+  --shadow-deep: 0 18px 44px rgba(0, 0, 0, 0.65), 0 2px 8px rgba(0, 0, 0, 0.5);
+  --shadow-gold: 0 0 18px rgba(240, 208, 120, 0.28);
+  --shadow-inset: inset 0 1px 0 rgba(255, 235, 190, 0.08);
+
+  /* 布局 */
+  --topbar-h: 92px;
+  --hand-h: 210px;
+  --side-w: 190px;
+  --row-h: 128px;
+
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background: var(--ink-0);
+  color: var(--paper);
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow: hidden;
+}
+
+body {
+  min-height: 100dvh;
+}
+
+#app {
+  position: relative;
+  width: 100vw;
+  height: 100dvh;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(120% 90% at 50% -10%, rgba(201, 162, 39, 0.1), transparent 55%),
+    radial-gradient(90% 70% at 12% 100%, rgba(122, 31, 31, 0.1), transparent 60%),
+    radial-gradient(80% 60% at 88% 90%, rgba(47, 111, 106, 0.08), transparent 60%),
+    linear-gradient(180deg, #0b0907 0%, #070605 55%, #050404 100%);
+}
+
+#app::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");
+}
+
+#fx-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 60;
+}
+
+#screen-root,
+#overlay-root,
+#tooltip-root,
+#toast-root {
+  position: absolute;
+  inset: 0;
+}
+
+#screen-root {
+  z-index: 10;
+}
+
+#overlay-root {
+  z-index: 40;
+  pointer-events: none;
+}
+
+#overlay-root > * {
+  pointer-events: auto;
+}
+
+#tooltip-root {
+  z-index: 70;
+  pointer-events: none;
+}
+
+#toast-root {
+  z-index: 80;
+  pointer-events: none;
+}
+
+.hidden {
+  display: none !important;
+}
+
+button {
+  font-family: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--gold-bright);
+  outline-offset: 2px;
+}
+
+/* 通用鎏金面板 */
+.gilded-panel {
+  position: relative;
+  background:
+    linear-gradient(180deg, rgba(30, 24, 18, 0.96), rgba(13, 11, 9, 0.98));
+  border: 1px solid rgba(201, 162, 39, 0.38);
+  border-radius: 6px;
+  box-shadow: var(--shadow-deep), var(--shadow-inset);
+}
+
+.gilded-panel::before,
+.gilded-panel::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+  opacity: 0.75;
+  background: center / contain no-repeat
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M2 2h9v2H5v7H2zM22 2h-9v2h6v7h2zM2 22h9v-2H5v-7H2zM22 22h-9v-2h6v-7h2z' fill='%23c9a227'/%3E%3C/svg%3E");
+}
+
+.gilded-panel::before {
+  top: -5px;
+  left: -5px;
+}
+
+.gilded-panel::after {
+  bottom: -5px;
+  right: -5px;
+}
+
+.gold-text {
+  color: var(--gold-bright);
+  text-shadow: 0 0 12px rgba(240, 208, 120, 0.25);
+}
+
+.serif {
+  font-family: var(--font-display);
+}
+
+/* 启动屏 */
+.boot-screen {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: radial-gradient(60% 60% at 50% 45%, #17120d 0%, #070605 70%);
+  transition: opacity 600ms var(--ease-out), visibility 600ms;
+}
+
+.boot-screen.is-gone {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.boot-mark {
+  font-size: 54px;
+  color: var(--gold);
+  filter: drop-shadow(0 0 18px rgba(240, 208, 120, 0.4));
+  animation: boot-pulse 2.4s ease-in-out infinite;
+}
+
+.boot-title {
+  font-family: var(--font-display);
+  font-size: 38px;
+  letter-spacing: 0.35em;
+  color: var(--gold-bright);
+  text-indent: 0.35em;
+}
+
+.boot-sub {
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  color: var(--paper-faint);
+  text-indent: 0.4em;
+}
+
+.boot-loading {
+  margin-top: 18px;
+  font-size: 12px;
+  color: var(--paper-faint);
+  letter-spacing: 0.2em;
+  animation: boot-breathe 2s ease-in-out infinite;
+}
+
+@keyframes boot-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.85; }
+  50% { transform: scale(1.06); opacity: 1; }
+}
+
+@keyframes boot-breathe {
+  0%, 100% { opacity: 0.45; }
+  50% { opacity: 0.9; }
+}
+
+/* 滚动条 */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(201, 162, 39, 0.28);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(201, 162, 39, 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

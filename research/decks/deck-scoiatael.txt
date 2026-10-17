@@ -1,0 +1,155 @@
+ 
+ Scoia'tael Gwent deck is one of the 4 base decks available in The Witcher 3: Wild Hunt and considered the more flexible of them. Where the Nilfgaard and the Realms are truly straightforward and the Monsters are pure brute force comprised of monsters, the Scoia'tael focus on combining debuffs that affect the enemy units like the Weather cards , along with a moderately strong assortment of units.
+ Special - Geralt chooses who goes first at the start of a round. If both players are using the Scoia'tael deck, then the normal coin flip is used. 
+ Overview [ ] 
+ Units with Agility can be deployed in either the Close or Ranged combat rows, giving you tactical flexibility: Field a debuff against a strong enemy unit set, then counter with your own units in unaffected rows. Another advantage of the deck is that Geralt get to choose who plays first. While the AI usually chooses to be the first to play its cards, it's usually more advantageous to let the opponent play when you turn. You also have access to Muster-type cards like the Monsters but not just restricted to Melee, allowing for greater tactical flexibility.
+ In general the Scoia'tael does not have as much raw point strength as the other decks due to a lower number of high-point-value cards and a limited number of cards that multiply their own strength; they do have Muster-type cards for swarming but nowhere near as many as Monsters.
+ However, due to the Agility trait on a large number of their cards they can effectively dodge Weather effects in the Melee or Ranged rows and line up very large groups of units in one row to use Commander's Horn (gwent card) , making them by far the most efficient at using the strength that they have. However, this also means that against an opponent that can hit both the Melee and Ranged rows with weather and follow up with a strong set of Siege units whose strength can be protected - particularly the Northern Realms deck - Scoia'tael will get resoundingly crushed.
+ As well Scoia'tael deck many medic cards making it easy for you to replay your strong cards and reclaim your opponent spies. As well when playing against a scoia'tael deck it might be a good to save spies to the last round as your opponent might reclaim them.
+ Cards [ ] 
+ Icon 
+ Name 
+ Type 
+ Row 
+ Str. 
+ Ability 
+ Source
+ Barclay Els 
+ Unit
+ 6
+ Agile: Can be placed in either the Close Combat or the Ranged Combat row. Cannot be moved once placed.
+ Purchased from the innkeep of The Golden Sturgeon in Novigrad Hearts of Stone expansion: 1 can be purchased from the merchant at the circus camp near Carsten Blood and Wine expansion: A possible reward during Till Death Do You Part 
+ Ciaran aep Easnillien 
+ Unit
+ 3
+ Agile: Can be placed in either the Close Combat or the Ranged Combat row. Cannot be moved once placed.
+ Random reward from gwent players 
+ Dennis Cranmer 
+ Unit
+ 6
+ Random reward from gwent players 
+ Dol Blathanna Archer 
+ Unit
+ 4
+ Purchase from Marquise Serenity at the Passiflora Hearts of Stone expansion: Purchase from merchant at the circus camp near Carsten Blood and Wine expansion: Purchase from Hugo Monnart or any innkeeper in Toussaint 
+ Dol Blathanna Scout 
+ Unit
+ 6
+ Agile: Can be placed in either the Close Combat or the Ranged Combat row. Cannot be moved once placed.
+ 1 purchased from the The Golden Sturgeon 's Innkeep 2 are random rewards from gwent players Hearts of Stone expansion: 1 can be purchased from the merchant at the circus camp near Carsten 
+ Dwarven Skirmisher 
+ Unit
+ 3
+ Muster: Find any cards with the same name in your deck and play them instantly.
+ 1 purchased from Stjepan at The Alchemy 2 are random rewards from gwent players 
+ Eithné 
+ Hero 
+ 10
+ Hero: Not affected by any Special Cards or abilities.
+ Won from Zoltan during Gwent: Old Pals 
+ Elven Skirmisher 
+ Unit
+ 2
+ Muster: Find any cards with the same name in your deck and play them instantly.
+ 1 purchased from Urialla Harbor 's Innkeep 2 are random rewards from gwent players 
+ Filavandrel aen Fidhail 
+ Unit
+ 6
+ Agile : Can be placed in either the Close Combat or the Ranged Combat row. Cannot be moved once placed.
+ Random reward from gwent players 
+ Francesca Findabair: Daisy of the Valley 
+ leader 
+ Daisy of the Valley: Draw an extra card at the beginning of the battle.
+ Purchased from Cunny of the Goose 's Innkeep 
+ Francesca Findabair: Hope of the Aen Seidhe 
+ leader 
+ Hope of the Aen Seidhe : Move agile units to whichever valid row maximizes their strength (don't move units already in optimal row).
+ Purchase from Dulla kh'Amanni at Upper Mill 
+ Francesca Findabair: Pureblood Elf 
+ leader 
+ Pureblood Elf: Pick a Biting Frost card from your deck and play it instantly.
+ Part of the base deck
+ Francesca Findabair: Queen of Dol Blathanna 
+ leader 
+ Queen of Dol Blathanna: Destroy your enemy's strongest Close Combat unit(s) if the combined strength of all his or her Close Combat units is 10 or more.
+ Won from Finneas during High Stakes 
+ Francesca Findabair: The Beautiful 
+ leader 
+ The Beautiful: Doubles the strength of all your Ranged Combat units (unless a Commander's Horn is also present on that row).
+ Won during Gwent: Big City Players 
+ Havekar Healer 
+ Unit
+ 0
+ Medic: Choose one card from your discard pile and play it instantly (no Heroes or Special Cards).
+ 1 purchased from The Kingfisher Inn 's Innkeep 1 purchased from the Cunny of the Goose 's Innkeep 1 is a random reward from gwent players Hearts of Stone expansion: 1 can be purchased from the merchant at the circus camp near Carsten 
+ Havekar Smuggler 
+ Unit
+ 5
+ Muster: Find any cards with the same name in your deck and play them instantly.
+ 1 purchased from The Kingfisher Inn 's Innkeep 1 purchased from the Seven Cats Inn 's Innkeep 1 is a random reward from gwent players Hearts of Stone expansion: 1 can be purchased from the merchant at the circus camp near Carsten 
+ Ida Emean aep Sivney 
+ Unit
+ 6
+ Random reward from gwent players 
+ Iorveth 
+ Hero 
+ 10
+ Hero: Not affected by any Special Cards or abilities.
+ Reward for completing Shock Therapy 
+ Isengrim Faoiltiarna 
+ Hero 
+ 10
+ Morale boost : Adds +1 to all units in the row (excluding itself). Hero: Not affected by any Special Cards or abilities.
+ A Dangerous Game or Prison Warden during The Great Escape 
+ Mahakaman Defender 
+ Unit
+ 5
+ 1 purchased from The Kingfisher Inn 's Innkeep 1 purchased from the Seven Cats Inn 's Innkeep 1 purchased from The Golden Sturgeon 's Innkeep 1 purchased from Marquise Serenity at the Passiflora 1 purchased from Stjepan at The Alchemy Hearts of Stone expansion: 3 can be purchased from the merchant at the circus camp near Carsten 
+ Milva 
+ Unit
+ 10
+ Morale boost : Adds +1 to all units in the row (excluding itself).
+ Won during A Matter of Life and Death 
+ Riordain 
+ Unit
+ 1
+ Random reward from gwent players 
+ Saesenthessis 
+ Hero 
+ 10
+ Hero: Not affected by any Special Cards or abilities.
+ Vernon Roche during Gwent: Old Pals 
+ Schirrú 
+ Unit
+ 8
+ Scorch - Siege: Destroys your enemy's strongest Siege Combat unit(s) if the combined strength of all his or her Siege Combat units is 10 or more.
+ Won from the merchant at the circus northwest of Carsten 
+ Toruviel 
+ Unit
+ 2
+ Random reward from gwent players 
+ Vrihedd Brigade Recruit 
+ Unit
+ 4
+ Random reward from gwent players 
+ Vrihedd Brigade Veteran 
+ Unit
+ 5
+ Agile: Can be placed in either the Close Combat or the Ranged Combat row. Cannot be moved once placed.
+ 1 purchased from Stjepan at The Alchemy 1 purchased from The Kingfisher Inn 's Innkeep Hearts of Stone expansion: 1 can be purchased from the merchant at the circus camp near Carsten 
+ Yaevinn 
+ Unit
+ 6
+ Agile: Can be placed in either the Close Combat or the Ranged Combat row. Cannot be moved once placed.
+ Won from Sjusta during Gwent: Skellige Style 
+ Gwent cards in The Witcher 3: Wild Hunt Decks 
+ Neutral Cards 
+ Combat Row 
+ Abilities 
+ Other Cards 
+ Hearts of Stone cards 
+ Hero cards 
+ Leader cards 
+ Special cards 
+ Weather cards 
+ 

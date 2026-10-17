@@ -1,0 +1,176 @@
+ 
+ Nilfgaardian Empire Gwent deck must be built from scratch by acquiring cards. The deck consists of a total of 38 available gwent cards.
+ Special - Nilfgaard wins if the round ends in a tie. 
+ Overview [ ] 
+ In general, the Nilfgaard card set consists primarily of strong stand-alone cards; a few standard units have point values of 10. However they are quite limited in the number of cards that can strengthen each other; they do have a few with Tight Bond but apart from the Impera Brigade Guard quartet those cards are significantly weaker than the Tight Bond ones found in the Northern Realms Gwent deck . Like the Northern Realms deck there are three standard spy cards but the point values for the Nilfgaard variants are higher.
+ In general this deck is designed for straightforward, plodding progress and outlasting an opponent in the long run. With their large number of Heroes and wide spread of cards with strong point values throughout the three rows they are the most resistant to Weather effects, but they are also the least capable of taking advantage of the Commander's Horn (gwent card) because their strength is so spread out among their rows and Hero cards aren't affected by them, so they are vulnerable to enemy Decks that can get high burst strength via multiple Tight Bond or Muster units combined with a Horn that they can protect from weather.
+ One other tactic with it when using it for yourself is the Setup. This takes use of multiple Spies, primarily the high point Melee versions, and Biting Frost (gwent card) . Spies increase the strength of your opponent, and if your opponent is able to get a significantly higher point score than you at some point (it appears to be at least a 30-point lead) they will frequently Pass the rest of the round to conserve their cards for further rounds. This appears to trigger a bit earlier if your Card count is notably higher than theirs. So play on this; use a number of melee Spies and nothing else (if you have to put down other cards don't put down Melee and nothing high valued), wait for them to eventually Pass with the supposedly higher hand, and now since they can't do anything else for the rest of the round put down Frost to destroy the advantage they got from your Spies, empty the rest of your hand of Spies of all types to collect as large of a non-Spy hand as possible and lay down the smallest number of cards you need to get a higher point score than them, and win the round. So you end up winning the first round and start the second with a massively greater number of cards left in your hand. Not much should be able to stop you at this point.
+ Note that NPC Nilfgaard opponents may try exactly the same thing on you. There's more of a chance of them Passing the round when the point score of your hand gets a sizeable lead and they just sacrifice the round but they'll have a much bigger card count than you for the second and likely third rounds, starving you out. The best way to counter this is to Pass when the point lead of your hand is notable (at least 20) but before they have Passed, ideally at a point when they would have Passed on their very next turn. What usually happens is they instead don't Pass and try to beat you in the round anyways, and end up fighting their own spies. You will likely lose the round but they'll burn through a number of the extra cards they picked up and they will no longer have their Spies, giving you a good chance at taking the second and third rounds.
+ This deck can receive a maximum of 16 additional cards for a total of 26 playable cards when the initial hand of 10 cards is included (3 spy cards, reclaim 3 spy cards opponent uses against you with decoys, mysterious elf spy card, Emhyr var Emreis: the Relentless leader card ability). This calculation doesn't take into account that spies can be revived with medics for additional cards.
+ Cards [ ] 
+ Icon 
+ Name 
+ Type 
+ Row 
+ Str. 
+ Ability 
+ Source
+ Albrich 
+ Unit
+ 2
+ Purchase from Crow's Perch 's merchant or Devil's Pit 's merchant 
+ Assire var Anahid 
+ Unit
+ 6
+ Random reward from gwent players 
+ Black Infantry Archer 
+ Unit
+ 10
+ 1 purchased from Claywich 's merchant 1 purchased from Lindenvale 's merchant 
+ Cahir Mawr Dyffryn aep Ceallach 
+ Unit
+ 6
+ Random reward from gwent players 
+ Cynthia 
+ Unit
+ 4
+ Purchased from Crow's Perch 's quartermaster 
+ Emhyr var Emreis: Emperor of Nilfgaard 
+ leader 
+ Emperor of Nilfgaard: Look at 3 random cards from your opponent's hand.
+ Purchased from Inn at the Crossroads 's innkeep Purchased from Lindenvale 's innkeep 
+ Emhyr var Emreis: His Imperial Majesty 
+ leader 
+ His Imperial Majesty: Pick a Torrential Rain card from your deck and play it instantly.
+ Part of the base deck
+ Emhyr var Emreis: Invader of the North 
+ leader 
+ Invader of the North: Abilities that restore a unit to the battlefield restore a randomly-chosen unit. Affects both players.
+ Purchased from the merchant at the circus camp near Carsten 
+ Emhyr var Emreis: The Relentless 
+ leader 
+ The Relentless: Draw a card from your opponent's discard pile.
+ Won from Sasha during High Stakes 
+ Emhyr var Emreis: The White Flame 
+ leader 
+ The White Flame: Cancel your opponent's Leader Ability.
+ Won during Gwent: Skellige Style 
+ Etolian Auxiliary Archers 
+ Unit
+ 1
+ Medic : Choose one card from your discard pile and play it instantly (no Heroes or Special Cards).
+ 1 purchased from Claywich 's merchant 1 purchased from Lindenvale 's merchant 
+ Fringilla Vigo 
+ Unit
+ 6
+ A Dangerous Game or Prison Warden during The Great Escape 
+ Heavy Zerrikanian Fire Scorpion 
+ Unit
+ 10
+ Purchase from Lindenvale 's merchant 
+ Impera Brigade Guard 
+ Unit
+ 3
+ Tight Bond : Place next to a card with the same name to double the strength of both cards.
+ 1 purchased from Cunny of the Goose 's innkeep 1 purchased from the Seven Cats Inn 's innkeep 1 purchased from Crow's Perch 's merchant or Devil's Pit 's merchant 1 purchased from Inn at the Crossroads ' innkeep or Lindenvale 's innkeep 
+ Letho of Gulet 
+ Hero 
+ 10
+ Hero: Not affected by any Special Cards or abilities.
+ Won from the Boatwright during Gwent: Velen Players 
+ Menno Coehoorn 
+ Hero 
+ 10
+ Hero: Not affected by any Special Cards or abilities. Medic: Choose one card from your discard pile and play it instantly (no Heroes or Special Cards).
+ Won from Inn at the Crossroads ' innkeep during Gwent: Playing Innkeeps 
+ Morteisen 
+ Unit
+ 3
+ Purchased from Midcopse 's merchant 
+ Morvran Voorhis 
+ Hero 
+ 10
+ Hero: Not affected by any Special Cards or abilities.
+ Won from Marquise Serenity during Gwent: Big City Players 
+ Nausicaa Cavalry Rider 
+ Unit
+ 2
+ Tight Bond : Place next to a card with the same name to double the strength of both cards.
+ 1 purchased from Crow's Perch 's quartermaster 1 purchased from Crow's Perch 's merchant or Devil's Pit 's merchant 1 purchased from Inn at the Crossroads ' innkeep or Lindenvale 's innkeep 
+ Puttkammer 
+ Unit
+ 3
+ Purchased from Claywich 's merchant 
+ Rainfarn 
+ Unit
+ 4
+ Purchased from Lindenvale 's merchant 
+ Renuald aep Matsen 
+ Unit
+ 5
+ Random reward from gwent players 
+ Rotten Mangonel 
+ Unit
+ 3
+ Random reward from gwent players 
+ Shilard Fitz-Oesterlen 
+ Unit
+ 7
+ Spy : Place on your opponent's battlefield (counts towards your opponent's total) and draw 2 cards from your deck.
+ Random reward from gwent players 
+ Siege Engineer 
+ Unit
+ 6
+ Purchased from Inn at the Crossroads ' innkeep Purchased from Lindenvale 's innkeep 
+ Siege Technician 
+ Unit
+ 0
+ Medic: Choose one card from your discard pile and play it instantly (no Heroes or Special Cards).
+ Purchased from The Golden Sturgeon 's innkeep Hearts of Stone expansion: 1 can be purchased from the merchant at the circus camp near Carsten 
+ Stefan Skellen 
+ Unit
+ 9
+ Spy : Place on your opponent's battlefield (counts towards opponent's total) and draw 2 cards from your deck.
+ Random reward from gwent players 
+ Sweers 
+ Unit
+ 2
+ Purchased from Claywich 's merchant 
+ Tibor Eggebracht 
+ Hero 
+ 10
+ Hero: Not affected by any Special Cards or abilities.
+ Olivier during Gwent: Playing Innkeeps 
+ Vanhemar 
+ Unit
+ 4
+ Random reward from gwent players 
+ Vattier de Rideaux 
+ Unit
+ 4
+ Spy : Place on your opponent's battlefield (counts towards opponent's total) and draw 2 cards from your deck.
+ Random reward from gwent players 
+ Vreemde 
+ Unit
+ 2
+ Random reward from gwent players 
+ Young Emissary 
+ Unit
+ 5
+ Tight Bond : Place next to a card with the same name to double the strength of both cards.
+ 1 purchased from Cunny of the Goose 's innkeep 1 purchased from the Seven Cats Inn 's innkeep 
+ Zerrikanian Fire Scorpion 
+ Unit
+ 5
+ Purchase from Crow's Perch 's merchant or Devil's Pit 's merchant 
+ Gwent cards in The Witcher 3: Wild Hunt Decks 
+ Neutral Cards 
+ Combat Row 
+ Abilities 
+ Other Cards 
+ Hearts of Stone cards 
+ Hero cards 
+ Leader cards 
+ Special cards 
+ Weather cards 
+ 

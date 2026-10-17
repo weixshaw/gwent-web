@@ -1,0 +1,1574 @@
+/* ============================================================================
+   card.css — 卡牌视觉（visualist）
+   ----------------------------------------------------------------------------
+   设计语言：黑曜石底 + 鎏金描边 + 羊皮纸能力区 + 阵营色内衬（Gilded Grimoire）。
+   仅消费 theme.css 的 token；不修改任何公共变量。
+   尺寸完全由 --card-w / --card-h 控制：
+     · .gt-card--md 继承 :root 的 --card-w/--card-h（默认 132×184）；
+     · xs / sm / lg 使用 theme.css 的 --card-xs-w / --card-sm-w / --card-lg-w；
+     · xxs 为侧栏/牌堆用极小尺寸。
+     如需整体缩放某一批卡牌，用更高优先级覆盖 --card-w/--card-h（或内联样式）。
+   ========================================================================== */
+
+/* ------------------------------------------------------------------ 尺寸 */
+.gt-card,
+.gt-leader {
+  --gt-w: var(--card-w, 132px);
+  --gt-h: var(--card-h, 184px);
+  --gt-u: calc(var(--gt-w) / 132); /* md=1px 的等比单位，所有内部字号/间距由它派生 */
+  --gt-core: var(--neutral);
+  --gt-glow: var(--neutral-glow);
+  --gt-line: rgba(201, 162, 39, 0.45);
+  --gt-glow-soft: rgba(217, 203, 179, 0.2);
+  --gt-rx: 0deg;
+  --gt-ry: 0deg;
+  --gt-mx: 50%;
+  --gt-my: 38%;
+  --gt-lift: 0px;
+  --gt-scale: 1;
+  position: relative;
+  display: block;
+  flex: 0 0 auto;
+  width: var(--gt-w);
+  height: var(--gt-h);
+  border-radius: calc(var(--gt-u) * 9);
+  font-family: var(--font-ui);
+  color: var(--paper);
+  isolation: isolate;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  pointer-events: auto;
+}
+
+/* 所有装饰层不参与命中测试（点击统一落到卡牌/board 监听器） */
+.gt-card__art,
+.gt-card__art-shade,
+.gt-card__frame,
+.gt-card__shine,
+.gt-card__foil,
+.gt-card__weather,
+.gt-card__name,
+.gt-card__paper,
+.gt-card__row,
+.gt-card__power,
+.gt-card__back-art,
+.gt-card__back-sheen,
+.gt-leader__art,
+.gt-leader__art-shade,
+.gt-leader__frame,
+.gt-leader__name,
+.gt-leader__paper,
+.gt-leader__state,
+.gt-leader__crown {
+  pointer-events: none;
+}
+
+/* 尺寸表（与 Lead 的对局布局对齐：board 行 sm / 手牌 md / 领袖迷你 xs）
+   可用 --gt-xxs-w 等覆盖任意档位；--card-w + --card-h 始终成对生效。 */
+.gt-card--xxs {
+  --card-w: var(--gt-xxs-w, 46px);
+  --card-h: var(--gt-xxs-h, 64px);
+}
+
+.gt-card--xs,
+.gt-leader--xs {
+  --card-w: var(--gt-xs-w, 64px);
+  --card-h: var(--gt-xs-h, 89px);
+}
+
+.gt-card--sm,
+.gt-leader--sm {
+  --card-w: var(--gt-sm-w, 96px);
+  --card-h: var(--gt-sm-h, 134px);
+}
+
+.gt-card--md,
+.gt-leader--md {
+  /* 手牌区可用高度约 176px：md 固定 126×176，不再继承 :root 的 132×184 */
+  --card-w: var(--gt-md-w, 126px);
+  --card-h: var(--gt-md-h, 176px);
+}
+
+.gt-card--lg,
+.gt-leader--lg {
+  --card-w: var(--gt-lg-w, 210px);
+  --card-h: var(--gt-lg-h, 293px);
+}
+
+/* -------------------------------------------------------------- 阵营色 */
+.gt-card--northern-realms,
+.gt-card--nr,
+.gt-leader--northern-realms,
+.gt-leader--nr {
+  --gt-core: var(--nr, #4d7ea8);
+  --gt-glow: var(--nr-glow, #9cc4e4);
+  --gt-line: rgba(156, 196, 228, 0.42);
+  --gt-glow-soft: rgba(156, 196, 228, 0.26);
+}
+
+.gt-card--nilfgaard,
+.gt-card--ng,
+.gt-leader--nilfgaard,
+.gt-leader--ng {
+  --gt-core: var(--ng, #c9a227);
+  --gt-glow: var(--ng-glow, #f0d078);
+  --gt-line: rgba(240, 208, 120, 0.48);
+  --gt-glow-soft: rgba(240, 208, 120, 0.26);
+}
+
+.gt-card--scoiatael,
+.gt-card--st,
+.gt-leader--scoiatael,
+.gt-leader--st {
+  --gt-core: var(--st, #2f7a4a);
+  --gt-glow: var(--st-glow, #a8e0a0);
+  --gt-line: rgba(168, 224, 160, 0.36);
+  --gt-glow-soft: rgba(168, 224, 160, 0.2);
+}
+
+.gt-card--monsters,
+.gt-card--mo,
+.gt-leader--monsters,
+.gt-leader--mo {
+  --gt-core: var(--mo, #8a2323);
+  --gt-glow: var(--mo-glow, #ff6b5a);
+  --gt-line: rgba(255, 107, 90, 0.36);
+  --gt-glow-soft: rgba(255, 107, 90, 0.24);
+}
+
+.gt-card--skellige,
+.gt-card--sk,
+.gt-leader--skellige,
+.gt-leader--sk {
+  --gt-core: var(--sk, #2f6f6a);
+  --gt-glow: var(--sk-glow, #9adfd6);
+  --gt-line: rgba(154, 223, 214, 0.36);
+  --gt-glow-soft: rgba(154, 223, 214, 0.22);
+}
+
+.gt-card--neutral,
+.gt-card--neutral,
+.gt-leader--neutral,
+.gt-leader--neutral {
+  --gt-core: var(--neutral, #8b7d5c);
+  --gt-glow: var(--neutral-glow, #d9cbb3);
+  --gt-line: rgba(201, 162, 39, 0.4);
+  --gt-glow-soft: rgba(217, 203, 179, 0.2);
+}
+
+/* ------------------------------------------------------------ 卡面主体 */
+.gt-card__surface {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  background:
+    linear-gradient(158deg, #1a140e 0%, #0e0a07 42%, #070504 100%);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.7),
+    0 10px 26px rgba(0, 0, 0, 0.55),
+    0 22px 48px -14px rgba(0, 0, 0, 0.8),
+    inset 0 0 0 1px rgba(201, 162, 39, 0.22),
+    inset 0 1px 0 rgba(255, 235, 190, 0.06);
+  transform: perspective(760px) translate3d(0, var(--gt-lift), 0) rotateX(var(--gt-rx))
+    rotateY(var(--gt-ry)) scale(var(--gt-scale));
+  transform-origin: 50% 62%;
+  will-change: transform;
+  transition:
+    transform 170ms var(--ease-out),
+    box-shadow 220ms var(--ease-out),
+    filter 220ms var(--ease-out);
+}
+
+/* 内衬：阵营色一圈 */
+.gt-card__surface::before {
+  content: "";
+  position: absolute;
+  inset: calc(var(--gt-u) * 2.2);
+  border-radius: calc(var(--gt-u) * 7);
+  pointer-events: none;
+  z-index: 9;
+  border: 1px solid var(--gt-line);
+  opacity: 0.5;
+  mix-blend-mode: screen;
+}
+
+/* 金属反光（静态斜向高光） */
+.gt-card__surface::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 10;
+  background: linear-gradient(
+    108deg,
+    rgba(255, 240, 200, 0.05) 0%,
+    transparent 22%,
+    transparent 62%,
+    rgba(0, 0, 0, 0.16) 100%
+  );
+  opacity: 0.9;
+}
+
+/* 插画区（约 62% 高） */
+.gt-card__art {
+  position: absolute;
+  top: 1.5%;
+  left: 1.8%;
+  right: 1.8%;
+  height: 57%;
+  overflow: hidden;
+  z-index: 1;
+  border-radius: calc(var(--gt-u) * 6.4) calc(var(--gt-u) * 6.4) calc(var(--gt-u) * 2)
+    calc(var(--gt-u) * 2);
+  background: #060504;
+  box-shadow:
+    inset 0 0 0 1px rgba(201, 162, 39, 0.24),
+    inset 0 0 calc(var(--gt-u) * 22) rgba(0, 0, 0, 0.62);
+}
+
+.gt-card__art-svg,
+.gt-card__art > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: transform 380ms var(--ease-out);
+  transform: scale(1.005);
+}
+
+.gt-card__art-placeholder {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(120% 90% at 50% 10%, rgba(201, 162, 39, 0.12), transparent 55%),
+    linear-gradient(180deg, #16110c, #070504);
+  color: rgba(201, 162, 39, 0.5);
+  font-size: calc(var(--gt-u) * 26);
+}
+
+.gt-card__art-shade {
+  position: absolute;
+  left: 1.8%;
+  right: 1.8%;
+  top: calc(1.5% + 57% - 26%);
+  height: 26%;
+  z-index: 2;
+  pointer-events: none;
+  border-radius: 0 0 calc(var(--gt-u) * 2) calc(var(--gt-u) * 2);
+  background: linear-gradient(180deg, transparent, rgba(5, 4, 3, 0.55) 62%, rgba(5, 4, 3, 0.86));
+}
+
+/* ------------------------------------------------------------- 名称条 */
+.gt-card__name {
+  position: absolute;
+  left: 5.4%;
+  right: 5.4%;
+  top: 50.6%;
+  height: 11.2%;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--gt-u) * 0.6);
+  padding: 0 calc(var(--gt-u) * 3);
+  border-top: 1px solid rgba(201, 162, 39, 0.32);
+  border-bottom: 1px solid rgba(201, 162, 39, 0.24);
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(9, 7, 5, 0.84) 12%,
+      rgba(9, 7, 5, 0.92) 50%,
+      rgba(9, 7, 5, 0.84) 88%,
+      transparent 100%
+    );
+  text-align: center;
+  white-space: nowrap;
+}
+
+.gt-card__name-crown {
+  position: absolute;
+  left: calc(var(--gt-u) * 2.6);
+  top: 50%;
+  width: calc(var(--gt-u) * 11);
+  height: calc(var(--gt-u) * 8);
+  transform: translateY(-50%);
+  color: var(--gold-bright, #f0d078);
+  filter: drop-shadow(0 0 4px rgba(240, 208, 120, 0.45));
+  display: none;
+}
+
+.gt-card--hero .gt-card__name-crown {
+  display: block;
+}
+
+.gt-card--hero .gt-card__name {
+  border-top-color: rgba(240, 208, 120, 0.6);
+  border-bottom-color: rgba(240, 208, 120, 0.4);
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(58, 42, 16, 0.9) 14%,
+      rgba(42, 30, 10, 0.94) 50%,
+      rgba(58, 42, 16, 0.9) 86%,
+      transparent
+    );
+}
+
+.gt-card__name-zh {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: var(--font-display);
+  font-size: calc(var(--gt-u) * 13);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: 0.02em;
+  color: #f3e6c2;
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.95),
+    0 0 10px rgba(201, 162, 39, 0.28);
+}
+
+.gt-card--hero .gt-card__name-zh {
+  color: #ffe9a8;
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.95),
+    0 0 12px rgba(240, 208, 120, 0.4);
+}
+
+.gt-card__name-en {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: calc(var(--gt-u) * 5.9);
+  line-height: 1.1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(201, 189, 163, 0.82);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+}
+
+/* --------------------------------------------------------- 羊皮纸能力区 */
+.gt-card__paper {
+  position: absolute;
+  left: 1.8%;
+  right: 1.8%;
+  bottom: 1.6%;
+  top: 61.2%;
+  z-index: 3;
+  display: flex;
+  align-items: flex-start;
+  gap: calc(var(--gt-u) * 2.2);
+  padding: calc(var(--gt-u) * 4.2) calc(var(--gt-u) * 4.6) calc(var(--gt-u) * 3.4);
+  border-radius: calc(var(--gt-u) * 2) calc(var(--gt-u) * 2) calc(var(--gt-u) * 6)
+    calc(var(--gt-u) * 6);
+  background:
+    radial-gradient(120% 100% at 18% 0%, rgba(255, 252, 240, 0.45), transparent 46%),
+    radial-gradient(90% 80% at 92% 100%, rgba(92, 70, 38, 0.24), transparent 55%),
+    linear-gradient(176deg, #d9ccb0 0%, #cfc0a0 52%, #b8a67f 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(201, 162, 39, 0.36),
+    inset 0 0 calc(var(--gt-u) * 12) rgba(60, 44, 22, 0.3),
+    0 1px 0 rgba(255, 244, 214, 0.18);
+  overflow: hidden;
+}
+
+/* 纸张颗粒 / 做旧 */
+.gt-card__paper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.42;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23p)' opacity='.16'/%3E%3C/svg%3E");
+}
+
+/* 做旧斑点 */
+.gt-card__paper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.55;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(96, 72, 38, 0.22) 0 1.1px, transparent 1.4px),
+    radial-gradient(circle at 74% 26%, rgba(96, 72, 38, 0.16) 0 0.9px, transparent 1.2px),
+    radial-gradient(circle at 38% 76%, rgba(96, 72, 38, 0.18) 0 1.2px, transparent 1.5px),
+    radial-gradient(circle at 88% 68%, rgba(96, 72, 38, 0.14) 0 0.8px, transparent 1.1px);
+}
+
+.gt-card__ability-icon {
+  flex: 0 0 auto;
+  width: calc(var(--gt-u) * 11);
+  height: calc(var(--gt-u) * 11);
+  margin-top: calc(var(--gt-u) * 0.4);
+  color: #6d5320;
+  opacity: 0.88;
+  filter: drop-shadow(0 1px 0 rgba(255, 248, 228, 0.35));
+}
+
+.gt-card__ability-icon svg,
+.gt-card__row-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.gt-card__ability-text {
+  position: relative;
+  z-index: 1;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+  font-size: calc(var(--gt-u) * 7.5);
+  line-height: 1.34;
+  letter-spacing: 0.01em;
+  color: #2c2316;
+  text-shadow: 0 1px 0 rgba(255, 248, 230, 0.35);
+  word-break: break-word;
+}
+
+.gt-card__ability-text--flavor {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: #5c4a2f;
+  line-height: 1.42;
+  opacity: 0.92;
+}
+
+/* --------------------------------------------------------------- 力量宝石 */
+.gt-card__power {
+  position: absolute;
+  top: 1.2%;
+  right: 0.8%;
+  z-index: 8;
+  width: calc(var(--gt-u) * 26);
+  height: calc(var(--gt-u) * 26);
+  display: grid;
+  place-items: center;
+  filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.7));
+}
+
+.gt-card__power::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background: linear-gradient(168deg, #f7e3a1 0%, #f0d078 24%, #c9a227 52%, #8a6f22 78%, #e6c565 100%);
+}
+
+.gt-card__power::after {
+  content: "";
+  position: absolute;
+  inset: calc(var(--gt-u) * 1.7);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background:
+    radial-gradient(circle at 34% 26%, #ffb2a4 0%, rgba(255, 150, 130, 0.7) 16%, transparent 42%),
+    radial-gradient(circle at 50% 58%, #b32a2a 0%, #7d1616 52%, #480b0b 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 220, 160, 0.32);
+}
+
+.gt-card--hero .gt-card__power::after {
+  background:
+    radial-gradient(circle at 34% 26%, #fff4cf 0%, rgba(255, 236, 176, 0.85) 18%, transparent 46%),
+    radial-gradient(circle at 50% 58%, #f0d078 0%, #b8912f 54%, #6d5316 100%);
+}
+
+.gt-card__power-value {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-display);
+  font-size: calc(var(--gt-u) * 12.5);
+  font-weight: 700;
+  line-height: 1;
+  color: #fff6dd;
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.95),
+    0 0 8px rgba(255, 210, 150, 0.4);
+  transform: translateY(calc(var(--gt-u) * -0.3));
+}
+
+.gt-card--hero .gt-card__power-value {
+  color: #2a1d05;
+  text-shadow: 0 1px 0 rgba(255, 250, 230, 0.55);
+}
+
+.gt-card__power--hidden {
+  display: none;
+}
+
+/* +N / -N 上浮 */
+.gt-card__power-delta {
+  position: absolute;
+  left: 50%;
+  top: 4%;
+  z-index: 3;
+  transform: translate(-50%, 0);
+  font-family: var(--font-display);
+  font-size: calc(var(--gt-u) * 10.5);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  pointer-events: none;
+  white-space: nowrap;
+  color: #b7f0a8;
+  text-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.95),
+    0 0 10px rgba(120, 255, 140, 0.4);
+}
+
+.gt-card__power-delta.is-down {
+  color: #ff9d8c;
+  text-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.95),
+    0 0 10px rgba(255, 90, 70, 0.4);
+}
+
+.gt-card__power.is-bumped {
+  animation: gt-gem-bump 720ms var(--ease-out);
+}
+
+.gt-card__power.is-bumped-down {
+  animation: gt-gem-bump-down 720ms var(--ease-out);
+}
+
+@keyframes gt-gem-bump {
+  0% { transform: scale(1); filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.7)); }
+  28% { transform: scale(1.18); filter: drop-shadow(0 0 12px rgba(240, 208, 120, 0.75)); }
+  100% { transform: scale(1); filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.7)); }
+}
+
+@keyframes gt-gem-bump-down {
+  0% { transform: scale(1); }
+  28% { transform: scale(1.12) translateY(2%); filter: drop-shadow(0 0 12px rgba(255, 90, 70, 0.65)); }
+  100% { transform: scale(1); }
+}
+
+/* ------------------------------------------------------------- 行标记 */
+.gt-card__row {
+  position: absolute;
+  left: 2.2%;
+  bottom: 2.6%;
+  z-index: 7;
+  width: calc(var(--gt-u) * 17);
+  height: calc(var(--gt-u) * 17);
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 38% 30%, rgba(58, 46, 26, 0.95), rgba(10, 8, 6, 0.96) 72%);
+  border: 1px solid rgba(201, 162, 39, 0.6);
+  box-shadow:
+    0 2px 5px rgba(0, 0, 0, 0.6),
+    inset 0 0 6px rgba(201, 162, 39, 0.18);
+  color: var(--gold-bright, #f0d078);
+}
+
+.gt-card__row::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: 50%;
+  border: 1px solid rgba(201, 162, 39, 0.26);
+  pointer-events: none;
+}
+
+.gt-card__row-icon {
+  width: calc(var(--gt-u) * 12);
+  height: calc(var(--gt-u) * 12);
+  display: block;
+  opacity: 0.92;
+}
+
+.gt-card--weather .gt-card__row,
+.gt-card--special .gt-card__row {
+  color: var(--gt-glow);
+}
+
+/* ------------------------------------------------------- 金色高光 / Foil */
+.gt-card__shine {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0;
+  border-radius: inherit;
+  mix-blend-mode: screen;
+  background: radial-gradient(
+    62% 62% at var(--gt-mx) var(--gt-my),
+    rgba(255, 238, 186, 0.28) 0%,
+    rgba(255, 224, 158, 0.1) 34%,
+    transparent 66%
+  );
+  transition: opacity 200ms var(--ease-out);
+}
+
+.gt-card.is-hovered .gt-card__shine {
+  opacity: 1;
+}
+
+.gt-card__foil {
+  position: absolute;
+  inset: -20% -40%;
+  z-index: 6;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(
+    116deg,
+    transparent 34%,
+    rgba(255, 240, 195, 0.02) 41%,
+    rgba(255, 245, 210, 0.24) 47%,
+    rgba(255, 255, 255, 0.08) 51%,
+    rgba(255, 235, 180, 0.02) 58%,
+    transparent 66%
+  );
+  mix-blend-mode: screen;
+  transform: translateX(-38%);
+}
+
+.gt-card--hero .gt-card__foil {
+  opacity: 0.85;
+  animation: gt-foil-sweep 8s linear infinite;
+}
+
+@keyframes gt-foil-sweep {
+  0% { transform: translateX(-55%) rotate(0.001deg); }
+  55% { transform: translateX(55%) rotate(0.001deg); }
+  100% { transform: translateX(55%) rotate(0.001deg); }
+}
+
+/* --------------------------------------------------------------- 鎏金外框 */
+.gt-card__frame {
+  position: absolute;
+  inset: 0;
+  z-index: 12;
+  pointer-events: none;
+}
+
+.gt-card__frame > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* ------------------------------------------------------- 特殊 / 天气叠层 */
+.gt-card__weather {
+  position: absolute;
+  top: 1.5%;
+  left: 1.8%;
+  right: 1.8%;
+  height: 57%;
+  z-index: 3;
+  pointer-events: none;
+  overflow: hidden;
+  border-radius: calc(var(--gt-u) * 6.4) calc(var(--gt-u) * 6.4) calc(var(--gt-u) * 2)
+    calc(var(--gt-u) * 2);
+}
+
+.gt-card__weather::before,
+.gt-card__weather::after {
+  content: "";
+  position: absolute;
+  inset: -14%;
+  pointer-events: none;
+}
+
+/* 霜 */
+.gt-card__weather[data-weather="frost"]::before {
+  background-image:
+    radial-gradient(circle, rgba(220, 240, 255, 0.9) 0 0.9px, transparent 1.4px),
+    radial-gradient(circle, rgba(180, 220, 250, 0.75) 0 0.7px, transparent 1.1px);
+  background-size: 28px 28px, 19px 19px;
+  background-position: 6px 10px, 14px 4px;
+  opacity: 0.65;
+  animation: gt-weather-frost 9s linear infinite;
+}
+
+.gt-card__weather[data-weather="frost"]::after {
+  inset: 0;
+  background: radial-gradient(120% 80% at 50% 100%, rgba(156, 196, 228, 0.2), transparent 62%);
+  box-shadow: inset 0 0 calc(var(--gt-u) * 24) rgba(156, 196, 228, 0.16);
+}
+
+@keyframes gt-weather-frost {
+  0% { transform: translate3d(0, -8%, 0); }
+  100% { transform: translate3d(-4%, 10%, 0); }
+}
+
+/* 雾 */
+.gt-card__weather[data-weather="fog"]::before {
+  inset: -20%;
+  background: linear-gradient(
+    176deg,
+    transparent 8%,
+    rgba(217, 203, 179, 0.16) 38%,
+    rgba(217, 203, 179, 0.05) 58%,
+    transparent 82%
+  );
+  filter: blur(calc(var(--gt-u) * 2.2));
+  animation: gt-weather-fog 14s ease-in-out infinite alternate;
+}
+
+.gt-card__weather[data-weather="fog"]::after {
+  inset: -20%;
+  background: linear-gradient(
+    182deg,
+    transparent 22%,
+    rgba(233, 226, 208, 0.12) 48%,
+    transparent 74%
+  );
+  filter: blur(calc(var(--gt-u) * 3));
+  animation: gt-weather-fog 19s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes gt-weather-fog {
+  0% { transform: translate3d(-6%, 3%, 0); opacity: 0.6; }
+  100% { transform: translate3d(6%, -3%, 0); opacity: 1; }
+}
+
+/* 雨 */
+.gt-card__weather[data-weather="rain"]::before,
+.gt-card__weather[data-weather="storm"]::before {
+  inset: -20%;
+  background-image: repeating-linear-gradient(
+    104deg,
+    rgba(205, 228, 238, 0.26) 0 1px,
+    transparent 1px 9px
+  );
+  background-size: 100% /* placeholder */;
+  opacity: 0.5;
+  animation: gt-weather-rain 0.85s linear infinite;
+}
+
+.gt-card__weather[data-weather="rain"]::after {
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20, 30, 38, 0.22), transparent 42%, rgba(20, 30, 38, 0.12));
+  box-shadow: inset 0 0 calc(var(--gt-u) * 20) rgba(130, 170, 190, 0.16);
+}
+
+@keyframes gt-weather-rain {
+  0% { background-position: 0 0; }
+  100% { background-position: calc(var(--gt-u) * -22) calc(var(--gt-u) * 34); }
+}
+
+/* 风暴：雨 + 闪电闪白 */
+.gt-card__weather[data-weather="storm"]::before {
+  opacity: 0.62;
+  background-image: repeating-linear-gradient(
+    100deg,
+    rgba(210, 235, 240, 0.3) 0 1.2px,
+    transparent 1.2px 8px
+  );
+  animation: gt-weather-rain 0.65s linear infinite;
+}
+
+.gt-card__weather[data-weather="storm"]::after {
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20, 34, 40, 0.26), transparent 50%);
+  box-shadow:
+    inset 0 0 calc(var(--gt-u) * 20) rgba(154, 223, 214, 0.2),
+    inset 0 0 calc(var(--gt-u) * 8) rgba(206, 244, 255, 0.0);
+  animation: gt-weather-storm 5.2s ease-in-out infinite;
+}
+
+@keyframes gt-weather-storm {
+  0%, 78%, 100% { box-shadow: inset 0 0 calc(var(--gt-u) * 20) rgba(154, 223, 214, 0.16); }
+  80% { box-shadow: inset 0 0 calc(var(--gt-u) * 30) rgba(206, 244, 255, 0.55); }
+  82% { box-shadow: inset 0 0 calc(var(--gt-u) * 20) rgba(154, 223, 214, 0.16); }
+  84% { box-shadow: inset 0 0 calc(var(--gt-u) * 34) rgba(206, 244, 255, 0.45); }
+  87% { box-shadow: inset 0 0 calc(var(--gt-u) * 20) rgba(154, 223, 214, 0.16); }
+}
+
+/* 天晴：暖金光晕 */
+.gt-card__weather[data-weather="clear"]::before {
+  inset: 0;
+  background: radial-gradient(70% 70% at 60% 24%, rgba(255, 226, 150, 0.3), transparent 62%);
+  animation: gt-weather-clear 6s ease-in-out infinite;
+}
+
+.gt-card__weather[data-weather="clear"]::after {
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(201, 162, 39, 0.12));
+}
+
+@keyframes gt-weather-clear {
+  0%, 100% { opacity: 0.75; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+/* ------------------------------------------------------------- 卡背 */
+.gt-card__surface--back {
+  overflow: hidden;
+}
+
+.gt-card__back-art {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.gt-card__back-art > svg,
+.gt-back-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.gt-card__back-sheen {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(
+    118deg,
+    transparent 30%,
+    rgba(255, 240, 195, 0.07) 46%,
+    transparent 58%
+  );
+  mix-blend-mode: screen;
+}
+
+.gt-card--back {
+  cursor: default;
+}
+
+/* ------------------------------------------------------------- 状态样式 */
+/* hover 抬升（由 JS 加 is-hovered；纯 CSS :hover 兜底） */
+.gt-card.is-interactive .gt-card__surface {
+  cursor: pointer;
+}
+
+.gt-card.is-interactive.is-hovered .gt-card__surface,
+.gt-card.is-interactive:hover .gt-card__surface {
+  --gt-lift: calc(var(--gt-u) * -9);
+  --gt-scale: 1.05;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.65),
+    0 22px 44px rgba(0, 0, 0, 0.62),
+    0 30px 60px -18px rgba(0, 0, 0, 0.8),
+    0 0 calc(var(--gt-u) * 26) var(--gt-glow-soft),
+    inset 0 0 0 1px rgba(240, 208, 120, 0.4),
+    inset 0 1px 0 rgba(255, 235, 190, 0.1);
+}
+
+.gt-card.is-interactive.is-hovered .gt-card__art > svg,
+.gt-card.is-interactive:hover .gt-card__art > svg {
+  transform: scale(1.045);
+}
+
+.gt-card--hero.is-hovered .gt-card__foil {
+  opacity: 1;
+}
+
+.gt-card.is-interactive.is-hovered {
+  z-index: 30;
+}
+
+/* 不可打出：灰度 + 降饱和 */
+.gt-card.is-disabled .gt-card__surface,
+.gt-card[data-state="disabled"] .gt-card__surface {
+  filter: grayscale(0.48) brightness(0.7) saturate(0.62);
+}
+
+.gt-card.is-disabled .gt-card__power,
+.gt-card[data-state="disabled"] .gt-card__power {
+  filter: grayscale(0.7) brightness(0.7);
+}
+
+.gt-card.is-disabled.is-hovered .gt-card__surface {
+  --gt-lift: 0px;
+  --gt-scale: 1.01;
+}
+
+/* 选中：金框呼吸光 */
+.gt-card.is-selected .gt-card__surface,
+.gt-card[data-state="selected"] .gt-card__surface {
+  box-shadow:
+    0 0 0 1.5px rgba(240, 208, 120, 0.85),
+    0 0 calc(var(--gt-u) * 30) rgba(240, 208, 120, 0.4),
+    0 22px 44px rgba(0, 0, 0, 0.62),
+    inset 0 0 0 1px rgba(240, 208, 120, 0.35);
+  animation: gt-selected-breathe 2.6s ease-in-out infinite;
+}
+
+@keyframes gt-selected-breathe {
+  0%, 100% { box-shadow: 0 0 0 1.5px rgba(240, 208, 120, 0.8), 0 0 calc(var(--gt-u) * 20) rgba(240, 208, 120, 0.28), 0 22px 44px rgba(0, 0, 0, 0.62); }
+  50% { box-shadow: 0 0 0 2px rgba(255, 235, 170, 0.95), 0 0 calc(var(--gt-u) * 34) rgba(240, 208, 120, 0.52), 0 22px 44px rgba(0, 0, 0, 0.62); }
+}
+
+/* 目标：金色脉冲圈 */
+.gt-card.is-target .gt-card__surface,
+.gt-card[data-state="target"] .gt-card__surface {
+  box-shadow:
+    0 0 0 2px rgba(255, 235, 170, 0.9),
+    0 0 calc(var(--gt-u) * 26) rgba(255, 220, 130, 0.5),
+    0 0 calc(var(--gt-u) * 8) rgba(255, 240, 190, 0.5);
+  animation: gt-target-pulse 1.5s var(--ease-out) infinite;
+  cursor: crosshair;
+}
+
+@keyframes gt-target-pulse {
+  0%, 100% { transform: perspective(760px) translate3d(0, var(--gt-lift), 0) scale(1); }
+  50% { transform: perspective(760px) translate3d(0, var(--gt-lift), 0) scale(1.03); }
+}
+
+/* 色弱/降级模式下不再放大 */
+@media (prefers-reduced-motion: reduce) {
+  .gt-card.is-target .gt-card__surface,
+  .gt-card[data-state="target"] .gt-card__surface,
+  .gt-card.is-selected .gt-card__surface,
+  .gt-card[data-state="selected"] .gt-card__surface {
+    animation: none;
+  }
+}
+
+/* 刚打出：入场闪金 + 落位弹跳 */
+.gt-card.is-just-played .gt-card__surface,
+.gt-card[data-state="just-played"] .gt-card__surface {
+  animation: gt-just-played 620ms var(--ease-out);
+}
+
+.gt-card__surface.is-just-played-anim {
+  animation: gt-just-played 700ms var(--ease-out);
+}
+
+@keyframes gt-just-played {
+  0% { transform: perspective(760px) translate3d(0, calc(var(--gt-u) * -16), 0) scale(1.08); filter: brightness(1.65); }
+  42% { transform: perspective(760px) translate3d(0, calc(var(--gt-u) * 2), 0) scale(0.98); filter: brightness(1.12); }
+  70% { transform: perspective(760px) translate3d(0, calc(var(--gt-u) * -1), 0) scale(1.008); filter: brightness(1.03); }
+  100% { transform: perspective(760px) translate3d(0, 0, 0) scale(1); filter: brightness(1); }
+}
+
+/* 入场（board 用 is-entering） */
+.gt-card.is-entering .gt-card__surface {
+  animation: gt-card-enter 420ms var(--ease-out) both;
+}
+
+@keyframes gt-card-enter {
+  0% { opacity: 0; transform: perspective(760px) translate3d(0, calc(var(--gt-u) * -14), 0) scale(1.06); }
+  100% { opacity: 1; transform: perspective(760px) translate3d(0, 0, 0) scale(1); }
+}
+
+/* 无法打出时抖动 */
+.gt-card.is-shake .gt-card__surface {
+  animation: gt-card-shake 380ms ease-in-out;
+}
+
+@keyframes gt-card-shake {
+  0%, 100% { translate: 0 0; }
+  18% { translate: calc(var(--gt-u) * -3) 0; }
+  36% { translate: calc(var(--gt-u) * 3) 0; }
+  54% { translate: calc(var(--gt-u) * -2) 0; }
+  72% { translate: calc(var(--gt-u) * 2) 0; }
+}
+
+/* 增益 / 减益（board 直接 toggle 的类） */
+.gt-card.is-buffed .gt-card__power::after {
+  background:
+    radial-gradient(circle at 34% 26%, #d6ffc4 0%, rgba(150, 255, 140, 0.75) 16%, transparent 44%),
+    radial-gradient(circle at 50% 58%, #3d8a35 0%, #245c1f 54%, #0f2c0c 100%);
+}
+
+.gt-card.is-debuffed .gt-card__power::after {
+  background:
+    radial-gradient(circle at 34% 26%, #ffc2b6 0%, rgba(255, 120, 100, 0.65) 16%, transparent 44%),
+    radial-gradient(circle at 50% 58%, #8f2b24 0%, #5e1611 54%, #2c0806 100%);
+}
+
+.gt-card.is-buffed .gt-card__power-value { color: #eaffe0; }
+.gt-card.is-debuffed .gt-card__power-value { color: #ffe6df; }
+
+/* 间谍 / 诱饵 token 标记 */
+.gt-card.is-decoy-token .gt-card__surface::after {
+  background:
+    linear-gradient(108deg, rgba(255, 240, 200, 0.05) 0%, transparent 22%, transparent 62%, rgba(0, 0, 0, 0.16) 100%),
+    repeating-linear-gradient(135deg, transparent 0 10px, rgba(201, 162, 39, 0.05) 10px 11px);
+}
+
+/* ------------------------------------------------------- 尺寸紧凑化 */
+/* xs / xxs：只保留插画 + 名称 + 宝石，用于领袖侧栏 / 牌堆 */
+.gt-card--xs .gt-card__art,
+.gt-card--xxs .gt-card__art {
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  border-radius: inherit;
+  box-shadow: none;
+}
+
+.gt-card--xs .gt-card__art-shade,
+.gt-card--xxs .gt-card__art-shade {
+  display: none;
+}
+
+.gt-card--xs .gt-card__paper,
+.gt-card--xxs .gt-card__paper,
+.gt-card--sm .gt-card__paper {
+  display: none;
+}
+
+.gt-card--xs .gt-card__name,
+.gt-card--xxs .gt-card__name {
+  top: auto;
+  bottom: 2%;
+  left: 3%;
+  right: 3%;
+  height: 22%;
+  background: linear-gradient(180deg, transparent, rgba(5, 4, 3, 0.88) 46%);
+  border: none;
+  padding: 0 calc(var(--gt-u) * 2);
+  justify-content: flex-end;
+}
+
+.gt-card--sm .gt-card__name {
+  top: auto;
+  bottom: 1.8%;
+  left: 3.2%;
+  right: 3.2%;
+  height: 20%;
+  background:
+    linear-gradient(180deg, transparent 0%, rgba(9, 7, 5, 0.78) 34%, rgba(9, 7, 5, 0.95) 100%);
+  border: none;
+  padding-bottom: calc(var(--gt-u) * 1.6);
+}
+
+.gt-card--xs .gt-card__name-en,
+.gt-card--xxs .gt-card__name-en,
+.gt-card--sm .gt-card__name-en {
+  display: none;
+}
+
+.gt-card--xs .gt-card__name-zh,
+.gt-card--xxs .gt-card__name-zh {
+  font-size: calc(var(--gt-u) * 13.5);
+}
+
+.gt-card--sm .gt-card__name-zh {
+  font-size: calc(var(--gt-u) * 12);
+}
+
+.gt-card--xs .gt-card__name-crown,
+.gt-card--xxs .gt-card__name-crown {
+  display: none;
+}
+
+.gt-card--xs .gt-card__row,
+.gt-card--xxs .gt-card__row {
+  width: calc(var(--gt-u) * 15);
+  height: calc(var(--gt-u) * 15);
+  bottom: 22%;
+  left: 2.6%;
+}
+
+.gt-card--sm .gt-card__row {
+  width: calc(var(--gt-u) * 15);
+  height: calc(var(--gt-u) * 15);
+  bottom: 20%;
+  left: 2.4%;
+}
+
+.gt-card--xs .gt-card__row-icon,
+.gt-card--xxs .gt-card__row-icon,
+.gt-card--sm .gt-card__row-icon {
+  width: calc(var(--gt-u) * 10.5);
+  height: calc(var(--gt-u) * 10.5);
+}
+
+.gt-card--xxs .gt-card__row {
+  display: none;
+}
+
+.gt-card--xs .gt-card__power,
+.gt-card--xxs .gt-card__power {
+  width: calc(var(--gt-u) * 30);
+  height: calc(var(--gt-u) * 30);
+  top: 0.6%;
+  right: 0.6%;
+}
+
+.gt-card--xs .gt-card__power-value,
+.gt-card--xxs .gt-card__power-value {
+  font-size: calc(var(--gt-u) * 14);
+}
+
+.gt-card--xxs .gt-card__frame > svg rect:nth-child(2),
+.gt-card--xxs .gt-card__frame > svg rect:nth-child(3) {
+  display: none;
+}
+
+/* 小尺寸隐藏英雄 foil（避免视觉噪音） */
+.gt-card--xs.gt-card--hero .gt-card__foil,
+.gt-card--xxs.gt-card--hero .gt-card__foil {
+  animation-duration: 12s;
+  opacity: 0.5;
+}
+
+/* ---------------------------------------------------------- 领袖牌 */
+.gt-leader {
+  --gt-w: var(--card-w, 132px);
+  --gt-h: var(--card-h, 184px);
+  --gt-u: calc(var(--gt-w) / 132);
+}
+
+.gt-leader__surface {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  background: linear-gradient(160deg, #1c150e 0%, #0f0b08 46%, #070504 100%);
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.7),
+    0 16px 36px rgba(0, 0, 0, 0.6),
+    inset 0 0 0 1px rgba(201, 162, 39, 0.3);
+  transform: perspective(760px) translate3d(0, var(--gt-lift), 0) rotateX(var(--gt-rx))
+    rotateY(var(--gt-ry)) scale(var(--gt-scale));
+  transform-origin: 50% 62%;
+  transition: transform 170ms var(--ease-out), box-shadow 220ms var(--ease-out), filter 220ms var(--ease-out);
+}
+
+.gt-leader.is-interactive {
+  cursor: pointer;
+}
+
+.gt-leader.is-interactive.is-hovered .gt-leader__surface,
+.gt-leader.is-interactive:hover .gt-leader__surface {
+  --gt-lift: calc(var(--gt-u) * -7);
+  --gt-scale: 1.045;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.65),
+    0 22px 44px rgba(0, 0, 0, 0.62),
+    0 0 calc(var(--gt-u) * 26) var(--gt-glow-soft),
+    inset 0 0 0 1px rgba(240, 208, 120, 0.45);
+}
+
+.gt-leader__art {
+  position: absolute;
+  top: 1.5%;
+  left: 1.8%;
+  right: 1.8%;
+  height: 58%;
+  overflow: hidden;
+  border-radius: calc(var(--gt-u) * 6.4) calc(var(--gt-u) * 6.4) calc(var(--gt-u) * 2)
+    calc(var(--gt-u) * 2);
+  box-shadow: inset 0 0 0 1px rgba(201, 162, 39, 0.26);
+}
+
+.gt-leader__art > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: transform 380ms var(--ease-out);
+}
+
+.gt-leader.is-hovered .gt-leader__art > svg {
+  transform: scale(1.04);
+}
+
+.gt-leader__art-shade {
+  position: absolute;
+  left: 1.8%;
+  right: 1.8%;
+  top: 36%;
+  height: 24%;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent, rgba(5, 4, 3, 0.88));
+}
+
+.gt-leader__crown {
+  position: absolute;
+  top: 2.4%;
+  right: 3.4%;
+  z-index: 5;
+  width: calc(var(--gt-u) * 17);
+  height: calc(var(--gt-u) * 13);
+  color: var(--gold-bright, #f0d078);
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 6px rgba(240, 208, 120, 0.35));
+}
+
+.gt-leader__name {
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  top: 50.5%;
+  height: 12%;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--gt-u) * 0.5);
+  padding: 0 calc(var(--gt-u) * 2.4);
+  border-top: 1px solid rgba(201, 162, 39, 0.42);
+  border-bottom: 1px solid rgba(201, 162, 39, 0.28);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(38, 28, 12, 0.92) 14%,
+    rgba(28, 20, 8, 0.96) 50%,
+    rgba(38, 28, 12, 0.92) 86%,
+    transparent
+  );
+  white-space: nowrap;
+}
+
+.gt-leader__name-zh {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: var(--font-display);
+  font-size: calc(var(--gt-u) * 11.5);
+  font-weight: 600;
+  color: #ffe9a8;
+  text-shadow: 0 1px 2px #000, 0 0 10px rgba(240, 208, 120, 0.3);
+}
+
+.gt-leader__name-en {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: calc(var(--gt-u) * 5.4);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(201, 189, 163, 0.75);
+}
+
+.gt-leader__paper {
+  position: absolute;
+  left: 1.8%;
+  right: 1.8%;
+  bottom: 1.6%;
+  top: 61%;
+  z-index: 3;
+  padding: calc(var(--gt-u) * 4) calc(var(--gt-u) * 4.6);
+  border-radius: calc(var(--gt-u) * 2) calc(var(--gt-u) * 2) calc(var(--gt-u) * 6)
+    calc(var(--gt-u) * 6);
+  overflow: hidden;
+  background:
+    radial-gradient(120% 100% at 18% 0%, rgba(255, 252, 240, 0.42), transparent 46%),
+    linear-gradient(176deg, #d9ccb0 0%, #cbbb9a 55%, #b09d76 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(201, 162, 39, 0.36),
+    inset 0 0 calc(var(--gt-u) * 12) rgba(60, 44, 22, 0.3);
+}
+
+.gt-leader__paper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.4;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23p)' opacity='.16'/%3E%3C/svg%3E");
+}
+
+.gt-leader__ability-text {
+  position: relative;
+  z-index: 1;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  overflow: hidden;
+  font-size: calc(var(--gt-u) * 7.4);
+  line-height: 1.36;
+  color: #2c2316;
+  text-shadow: 0 1px 0 rgba(255, 248, 230, 0.3);
+}
+
+.gt-leader__state {
+  position: absolute;
+  top: 5.6%;
+  left: 4.6%;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  gap: calc(var(--gt-u) * 1.6);
+  padding: calc(var(--gt-u) * 1.2) calc(var(--gt-u) * 3);
+  border-radius: calc(var(--gt-u) * 20);
+  border: 1px solid rgba(240, 208, 120, 0.45);
+  background: rgba(10, 8, 5, 0.82);
+  color: #f0d078;
+  font-size: calc(var(--gt-u) * 6.4);
+  letter-spacing: 0.08em;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.gt-leader__state-dot {
+  width: calc(var(--gt-u) * 4.2);
+  height: calc(var(--gt-u) * 4.2);
+  border-radius: 50%;
+  background: #f0d078;
+  box-shadow: 0 0 6px rgba(240, 208, 120, 0.8);
+}
+
+.gt-leader--state-available .gt-leader__surface {
+  animation: gt-leader-available 3.4s ease-in-out infinite;
+}
+
+@keyframes gt-leader-available {
+  0%, 100% { box-shadow: 0 2px 6px rgba(0, 0, 0, 0.7), 0 16px 36px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(201, 162, 39, 0.3), 0 0 12px rgba(240, 208, 120, 0.12); }
+  50% { box-shadow: 0 2px 6px rgba(0, 0, 0, 0.7), 0 16px 36px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(240, 208, 120, 0.5), 0 0 24px rgba(240, 208, 120, 0.3); }
+}
+
+.gt-leader--state-used .gt-leader__surface,
+.side-leader.is-used .gt-leader--state-available .gt-leader__surface,
+.side-leader.is-used .gt-leader .gt-leader__surface {
+  filter: grayscale(0.55) brightness(0.62) saturate(0.6);
+  animation: none;
+}
+
+.gt-leader--state-used .gt-leader__state,
+.side-leader.is-used .gt-leader__state {
+  color: #c9bda3;
+  border-color: rgba(201, 189, 163, 0.32);
+}
+
+.gt-leader--state-used .gt-leader__state-dot,
+.side-leader.is-used .gt-leader__state-dot {
+  background: #8f8570;
+  box-shadow: none;
+}
+
+.gt-leader--state-canceled .gt-leader__surface,
+.side-leader.is-used .gt-leader--state-canceled .gt-leader__surface {
+  filter: grayscale(0.7) brightness(0.55) sepia(0.3) hue-rotate(-24deg);
+  animation: none;
+}
+
+.gt-leader--state-canceled .gt-leader__state,
+.side-leader.is-used .gt-leader--state-canceled .gt-leader__state {
+  color: #ff9d8c;
+  border-color: rgba(255, 107, 90, 0.4);
+  background: rgba(30, 8, 7, 0.86);
+}
+
+.gt-leader--state-canceled .gt-leader__state-dot,
+.side-leader.is-used .gt-leader--state-canceled .gt-leader__state-dot {
+  background: #ff6b5a;
+  box-shadow: 0 0 8px rgba(255, 107, 90, 0.7);
+}
+
+.gt-leader__frame {
+  position: absolute;
+  inset: 0;
+  z-index: 12;
+  pointer-events: none;
+}
+
+.gt-leader__frame > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* 领袖 xs 迷你版 */
+.gt-leader--xs .gt-leader__art,
+.gt-leader--xxs .gt-leader__art {
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  border-radius: inherit;
+  box-shadow: none;
+}
+
+.gt-leader--xs .gt-leader__art-shade,
+.gt-leader--xxs .gt-leader__art-shade {
+  display: none;
+}
+
+.gt-leader--xs .gt-leader__paper,
+.gt-leader--xxs .gt-leader__paper {
+  display: none;
+}
+
+.gt-leader--xs .gt-leader__name,
+.gt-leader--xxs .gt-leader__name {
+  top: auto;
+  bottom: 2%;
+  left: 3%;
+  right: 3%;
+  height: 26%;
+  border: none;
+  background: linear-gradient(180deg, transparent, rgba(5, 4, 3, 0.9) 48%);
+  justify-content: flex-end;
+  padding: 0 calc(var(--gt-u) * 2) calc(var(--gt-u) * 1.6);
+}
+
+.gt-leader--xs .gt-leader__name-en,
+.gt-leader--xxs .gt-leader__name-en {
+  display: none;
+}
+
+.gt-leader--xs .gt-leader__name-zh,
+.gt-leader--xxs .gt-leader__name-zh {
+  font-size: calc(var(--gt-u) * 12.5);
+}
+
+.gt-leader--xs .gt-leader__crown,
+.gt-leader--xxs .gt-leader__crown {
+  width: calc(var(--gt-u) * 14);
+  height: calc(var(--gt-u) * 11);
+  top: 3%;
+  right: 4%;
+}
+
+.gt-leader--xs .gt-leader__state,
+.gt-leader--xxs .gt-leader__state {
+  top: 3%;
+  left: 3%;
+  padding: calc(var(--gt-u) * 1);
+  border-radius: 50%;
+  width: calc(var(--gt-u) * 7);
+  height: calc(var(--gt-u) * 7);
+  justify-content: center;
+}
+
+.gt-leader--xs .gt-leader__state-text,
+.gt-leader--xxs .gt-leader__state-text {
+  display: none;
+}
+
+.gt-leader--xs .gt-leader__state-dot,
+.gt-leader--xxs .gt-leader__state-dot {
+  width: calc(var(--gt-u) * 3.6);
+  height: calc(var(--gt-u) * 3.6);
+}
+
+/* 领袖 sm：保留名称 + 状态，隐藏能力正文 */
+.gt-leader--sm .gt-leader__paper {
+  display: none;
+}
+
+.gt-leader--sm .gt-leader__name {
+  top: auto;
+  bottom: 2%;
+  height: 24%;
+  border: none;
+  background: linear-gradient(180deg, transparent, rgba(5, 4, 3, 0.9) 46%);
+  justify-content: flex-end;
+}
+
+.gt-leader--sm .gt-leader__name-en {
+  display: none;
+}
+
+.gt-leader--sm .gt-leader__art {
+  height: 100%;
+}
+
+.gt-leader--sm .gt-leader__art-shade {
+  display: none;
+}
+
+.gt-leader--sm .gt-leader__state {
+  top: 3%;
+  left: 3%;
+  font-size: calc(var(--gt-u) * 7.2);
+}
+
+/* ------------------------------------------------- 行标题图标（board 用） */
+.gt-icon {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* --------------------------------------------------- 行为降级 / 无障碍 */
+@media (prefers-reduced-motion: reduce) {
+  .gt-card__surface,
+  .gt-leader__surface {
+    transition: none;
+  }
+  .gt-card--hero .gt-card__foil {
+    animation: none;
+    opacity: 0;
+  }
+  .gt-card__weather::before,
+  .gt-card__weather::after,
+  .gt-leader--state-available .gt-leader__surface {
+    animation: none !important;
+  }
+  .gt-card.is-selected .gt-card__surface,
+  .gt-card[data-state="selected"] .gt-card__surface,
+  .gt-card.is-target .gt-card__surface,
+  .gt-card[data-state="target"] .gt-card__surface {
+    animation: none;
+  }
+  .gt-card.is-shake .gt-card__surface {
+    animation: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .gt-card__frame,
+  .gt-card__foil,
+  .gt-card__shine,
+  .gt-card__weather {
+    display: none;
+  }
+}
+
+/* ----------------------------------------------------- 焦点可见（键盘） */
+.gt-card:focus-visible,
+.gt-leader:focus-visible {
+  outline: 2px solid var(--gold-bright, #f0d078);
+  outline-offset: 2px;
+  border-radius: calc(var(--gt-u) * 9);
+}
+
+/* ============================================================================
+   兼容层：screens.css（Lead 的 fallback 样式，可能在本文件之后加载）
+   ----------------------------------------------------------------------------
+   Lead 的 screens.css 里残留了 `.gt-card__power` 的 fallback 圆形宝石样式；
+   这里用更高特异性把它压回 visualist 的六边形宝石，避免受样式表加载顺序影响。
+   ========================================================================== */
+.gt-card .gt-card__power {
+  position: absolute;
+  top: 1.2%;
+  right: 0.8%;
+  z-index: 8;
+  width: calc(var(--gt-u) * 26);
+  height: calc(var(--gt-u) * 26);
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  display: grid;
+  place-items: center;
+  filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.7));
+}
+
+.gt-card--xs .gt-card__power,
+.gt-card--xxs .gt-card__power {
+  width: calc(var(--gt-u) * 30);
+  height: calc(var(--gt-u) * 30);
+}
+
+/* 领袖槽位（board 固定 52×76）内保持正确比例 */
+.side-leader > .gt-leader {
+  --gt-u: calc(var(--card-w, 52px) / 132);
+}
+
+/* board 行内缩小时禁用 hero foil 动画开销（不可见细节） */
+.board-row__cards .gt-card__foil {
+  animation: none;
+  opacity: 0;
+}
